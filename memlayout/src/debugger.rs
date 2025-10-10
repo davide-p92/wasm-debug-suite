@@ -117,6 +117,20 @@ impl<'a> WasmDebugger<'a> {
                         None => println!("Variable '{}' not found", var),
                     }
                 }
+                "symbols" => {
+                    let query = args.get(1).map(|s| s.to_lowercase());
+                    println!("📜 Symbol Table: ");
+                    let symtab = self.runtime.symbol_table.borrow();
+                    if symtab.is_empty() {
+                        println!("(no symbols found)");
+                    } else {
+                        for (name, desc) in symtab.iter() {
+                            if query.as_ref().map_or(true, |q| name.to_lowercase().contains(1)) {
+                                println!("   {:<30} {}", name, desc);
+                            }
+                        }
+                    }
+                }
                 "quit" | "exit" => {
                     println!("Exiting wasmdbg.");
                     break;

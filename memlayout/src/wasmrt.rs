@@ -20,6 +20,8 @@ use std::collections::HashMap;
 use std::fmt::Write as _; // für write!()
 use std::rc::Rc;
 
+use rustc_demangle::demangle;
+
 use wasmer_types::lib::std::cell::RefCell;
 use crate::MemoryLayout;
 use crate::DwarfParser;
@@ -36,6 +38,7 @@ pub struct WasmRuntime<'a> {
     exported_memories: HashMap<String, Memory>,
     fake_pc: usize,
     pub dwarf: Option<Rc<DwarfParser<'a>>>,
+    pub symbol_table: RefCell<HashMap<String, String>>,
 }
 
 impl<'a> WasmRuntime<'a> {
@@ -69,7 +72,7 @@ impl<'a> WasmRuntime<'a> {
         Store::new(engine)
     }
 
-    pub fn new(wasm_bytes: &[u8], dwarf: Option<Rc<DwarfParser<'a>>>) -> Result<Self, anyhow::Error> {
+    pub fn new(&self, wasm_bytes: &[u8], dwarf: Option<Rc<DwarfParser<'a>>>) -> Result<Self, anyhow::Error> {
         // Store mit Cranelift Compiler erstellen
         //let engine = Universal::new(compiler).engine();
         let mut store = Self::init_store();// statt Store::default();
@@ -86,6 +89,43 @@ impl<'a> WasmRuntime<'a> {
         /*let memory = instance.exports.get_memory("memory")
             .map_err(|e| RuntimeError::MemoryNotFound(format!("export 'memory' not found: {}", e)))?;
 */
+        // Exports analysieren/demangling
+        println!("Scanning exports...");
+
+        let mut symtab = HashMap::new();
+        for (name, export) in instance.exports.iter() {
+            let kind = match export {
+                wasmer::Extern::Function(_) => "function",
+                wasmer::Extern::Global(_) => "global",
+                wasmer::Extern::Memory(_) => "memory",
+                wasmer::Extern::Table(_) => "table",
+            };
+
+            let category = if name.starts_with("__wbindgen_") {
+                "JS Binding"
+            } else if name.starts_with("_emscripten_") {
+                "Emscripten"
+            } else if name.starts_with("__wbg_") {
+                "WebGL/WebGPU Binding"
+            } else {
+                "Export"
+            };
+
+            let pretty_name = Self::demangle_symbol(name);
+            println!("   {} ({}, {})", pretty_name, kind, category);
+            symtab.insert(name.to_string(), format!("{} ({})", pretty_name, category));
+        }
+
+        self.symbol_table.replace(symtab);
+
+        // Auch DWARF-Variablen hinzufügen
+        if let Some(ref dwarf) = self.dwarf {
+            for (var, addr) in dwarf.vars.borrow().iter() {
+                self.symbol_table.borrow_mut()
+                    .insert(var.clone(), format!("DWARF var @0x{:x}", addr));
+            }
+        }
+
         // 👉 Versuch: zuerst nach "memory" suchen
         let memory = instance
             .exports
@@ -152,6 +192,7 @@ impl<'a> WasmRuntime<'a> {
             exported_memories,
             fake_pc: 0,
             dwarf,
+            symbol_table: RefCell::new(HashMap::new()),
         })
     }
 
@@ -169,6 +210,13 @@ impl<'a> WasmRuntime<'a> {
         }
         
         Ok(())
+    }
+
+    fn demangle_symbol(name: &str) -> String {
+        match rustc_demangle::try_demangle(name) {
+            Ok(d) => d.to_string(),
+            Err(_) => name.to_string(),
+        }
     }
 
     // Führt einen einzelnen Schritt in der WASM-Instanz aus.
