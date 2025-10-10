@@ -1,0 +1,578 @@
+// wasm_debugger/wasm_debugger.hpp
+#pragma once
+#include <cstdint>
+#include <functional>
+#include <string>
+#include <vector>
+#include <wasmtime.h>
+
+struct DebugEvent {
+	uint32_t pc;
+	std::string label;
+};
+
+class WasmDebugger {
+public:
+	using TraceCallback = std::function<void(const DebugEvent&)>;
+	// lädt .wasm, bereitet Import "__trace(i32)" vor
+	bool load(const std::string& path, std::string* err);
+
+	// setz/fall Breakpoint
+	void addBreakpoint(uint32_t pc_or_hash);
+	void clearBreakpoint(uint32_t pc_or_hash);
+
+	// run/step
+	bool run(const std::string& entry_func, std::string* err);
+	bool step(std::string* err);
+
+	// memory
+	bool readMemory(uint32_t offset, uint32_t size, std::vector<uint8_t>& out);
+	// trace callback
+	void onTrace(TraceCallback cb) { trace_cb_ = std::move(cb); }
+	
+	// friend um handleTrace benutzen zu können
+	friend wasm_trap_t* host_trace(void*, wasmtime_caller_t*,
+                                   const wasmtime_val_t*, size_t,
+                                   wasmtime_val_t*, size_t);
+
+private:
+	void handleTrace(uint32_t pc);
+	TraceCallback trace_cb_;
+	std::vector<uint32_t> breakpoints_;
+
+	// Wasmtime handles
+	struct Impl;
+	Impl* impl_ = nullptr;
+};
+
+
+// wasm_debugger/wasm_debugger.cpp
+#include "wasm_debugger.hpp"
+//#include <wasmtime.h>
+#include <cstring>
+#include <unordered_set>
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+
+struct WasmDebugger::Impl {
+	wasm_engine_t* engine = nullptr;
+	wasmtime_store_t* store = nullptr;
+	wasmtime_context_t* ctx = nullptr;
+	wasmtime_module_t* module = nullptr;
+	wasmtime_instance_t instance;
+	wasmtime_memory_t memory{};
+	bool has_mem = false;
+
+	// Hostfunktion für "__trace(i32)"
+	WasmDebugger* self = nullptr;
+};
+
+wasm_trap_t* host_trace(void* env, wasmtime_caller_t* caller, const wasmtime_val_t* args, size_t nargs, wasmtime_val_t* results, size_t nresults) {
+	(void)caller; (void)results; (void)nresults;
+	auto* self = reinterpret_cast<WasmDebugger*>(env);
+	if (nargs >= 1 && args[0].kind == WASMTIME_I32) {
+		uint32_t pc = args[0].of.i32;
+		self->onTrace([&](const DebugEvent&){});
+		self->handleTrace(pc);
+	}
+	return nullptr;
+}
+
+bool WasmDebugger::load(const std::string& path, std::string* err) {
+	impl_ = new Impl();
+	impl_->self = this;
+	// Engine/Store anlegen (Wasmtime-API)
+	impl_->engine = wasm_engine_new();
+	impl_->store = wasmtime_store_new(impl_->engine, nullptr, nullptr);
+	impl_->ctx = wasmtime_store_context(impl_->store);
+
+	// module
+	std::ifstream ifs(path, std::ios::binary);
+	if (!ifs) { if (err) *err = "open wasm failed"; return false; }
+	std::vector<uint8_t> bytes((std::istreambuf_iterator<char>(ifs)), {});
+	wasmtime_error_t* werr = wasmtime_module_new(impl_->engine, bytes.data(), bytes.size(), &impl_->module);
+	if (werr) { if (err) *err = "compile failed"; wasmtime_error_delete(werr); return false; }
+
+	// linker + import "__trace(i32)"(direkt über define_func)
+	wasmtime_linker_t* linker = wasmtime_linker_new(impl_->engine);
+	wasm_functype_t* fty = wasm_functype_new_1_0(wasm_valtype_new_i32());
+	 // define_func übernimmt ownership NICHT; wir löschen fty später manuell.
+	 wasmtime_error_t* derr = wasmtime_linker_define_func(linker,
+	 			"env", 3, "__trace", 7, fty /*Signatur (i32) -> ()*/, host_trace, this, nullptr);
+	 wasm_functype_delete(fty);
+	 if (derr) {
+	 	if (err) *err = "define __trace failed";
+	 	wasmtime_error_delete(derr);
+	 	wasmtime_linker_delete(linker);
+	 	return false;
+	}
+	// Instanz erzeugen
+	wasm_trap_t* trap = nullptr;
+	wasmtime_error_t* err2 = wasmtime_linker_instantiate(linker, impl_->ctx, impl_->module, &impl_->instance, &trap /*statt nullptr*/);
+	//wasmtime_linker_delete(linker);
+	if (err2) { /*if (err) *err = "instantiate failed"; 		wasmtime_error_delete(err2); std::cout << "Inside err2\n"; wasmtime_linker_delete(linker);*/
+		wasm_name_t msg;
+    		wasmtime_error_message(err2, &msg);
+    		if (err) {
+        		*err = std::string("instantiate failed: ") +
+               		std::string(msg.data, msg.size);
+    		}
+		wasm_name_delete(&msg);
+		wasmtime_error_delete(err2);
+		return false; 
+	}
+	if (trap) {
+    		if (err) *err = "trap occurred during instantiation";
+    		wasm_trap_delete(trap);
+    		return false;
+	}
+
+	// memory (nehme 0 an)
+	wasmtime_extern_t item;
+	bool ok = wasmtime_instance_export_get(impl_->ctx, &impl_->instance, "memory", 6, &item);
+	if (ok && item.kind == WASMTIME_EXTERN_MEMORY) {
+		impl_->memory = item.of.memory;
+		impl_->has_mem = true;
+	}
+	return true;
+}
+
+void WasmDebugger::addBreakpoint(uint32_t pc) {
+	if (std::find(breakpoints_.begin(), breakpoints_.end(), pc) == breakpoints_.end())
+		breakpoints_.push_back(pc);
+}
+void WasmDebugger::clearBreakpoint(uint32_t pc) {
+	breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), pc), breakpoints_.end());
+}
+
+void WasmDebugger::handleTrace(uint32_t pc) {
+	if (trace_cb_) trace_cb_({pc, ""});
+	// "Step" endet am nächsten Trace; „Run“ bricht hier ab, wenn BP getroffen:
+    // (Die Kontrolle bleibt beim Host, weil das Callback im Host läuft.)
+    (void)pc;
+}
+
+bool WasmDebugger::run(const std::string& entry_func, std::string* err) {
+	wasmtime_extern_t ext;
+	bool ok = wasmtime_instance_export_get(impl_->ctx, &impl_->instance, entry_func.c_str(), entry_func.size(), &ext);
+	if (!ok || ext.kind != WASMTIME_EXTERN_FUNC) { if (err) *err = "export not found"; return false; }
+	wasmtime_val_t results[1];
+	wasmtime_val_t params[0];
+	wasm_trap_t* trap = nullptr;
+	wasmtime_error_t* e = wasmtime_func_call(impl_->ctx, &ext.of.func, params, 0, results, 0, &trap);
+	if (trap) { wasm_trap_delete(trap); if (err) *err = "trap"; return false; }
+	if (e) { wasmtime_error_delete(e); if (err) *err = "call failed"; return false; }
+	return true;
+}
+
+bool WasmDebugger::step(std::string* /*err*/) {
+    // "step" ist modelliert als: rufe eine Exportfunktion auf, die genau einen __trace auslöst.
+    // In der Praxis: Gestaltet man entry_func so, dass sie pro Call nur einen Block ausführt.
+    return true;
+}
+
+bool WasmDebugger::readMemory(uint32_t offset, uint32_t size, std::vector<uint8_t>& out) {
+	if (!impl_->has_mem) return false;
+	size_t len;
+	uint8_t* data = wasmtime_memory_data(impl_->ctx, &impl_->memory);
+	len = wasmtime_memory_data_size(impl_->ctx, &impl_->memory);
+	if (offset + size > len) return false;
+	out.assign(data + offset, data + offset + size);
+	return true;
+}
+
+int main() {
+    WasmDebugger dbg;
+    std::string err;
+    if (!dbg.load("./samples/wasm_trace_demo.wasm", &err)) { std::cerr << err << "\n"; return 1; }
+    dbg.onTrace([](const DebugEvent& e){ std::cout << "trace pc=" << e.pc << "\n"; });
+
+    if (!dbg.run("main", &err)) { std::cerr << err << "\n"; return 1; }
+
+    std::vector<uint8_t> buf;
+    if (dbg.readMemory(0, 64, buf)) {
+        for (auto b: buf) std::printf("%02X ", b);
+        std::puts("");
+    }
+    return 0;
+}
+
+
+// dwarf_dump/dwarf_dump.cpp
+// tools/dwarf_dump/dwarf_dump.cpp
+
+#include <llvm/Object/ObjectFile.h>
+#include <llvm/Object/Wasm.h>
+#include <llvm/DebugInfo/DWARF/DWARFContext.h>
+#include <llvm/DebugInfo/DWARF/DWARFDie.h>
+#include <llvm/DebugInfo/DWARF/DWARFExpression.h>
+#include <llvm/DebugInfo/DWARF/DWARFUnit.h>
+#include <llvm/DebugInfo/DWARF/DWARFDebugLoc.h>
+#include <llvm/DebugInfo/DWARF/DWARFFormValue.h>
+#include <llvm/Support/MemoryBuffer.h>
+#include <llvm/Support/Error.h>
+#include <llvm/Support/raw_ostream.h>
+
+#include "./external/json/single_include/nlohmann/json.hpp"
+#include <fstream>
+#include <string>
+#include <optional>
+
+using json = nlohmann::json;
+using namespace llvm;
+using namespace llvm::object;
+
+static std::optional<std::string> getName(const DWARFDie& die) {
+	if (auto attr = die.find(llvm::dwarf::DW_AT_name)) {
+		if (auto s = attr->getAsCString()) return std::string(*s);
+	}
+	return std::nullopt;
+}
+
+static std::optional<uint64_t> getUData(const DWARFDie& die, dwarf::Attribute A) {
+	if (auto attr = die.find(A)) {
+		if (auto v = attr->getAsUnsignedConstant()) return *v;
+	}
+	return std::nullopt;
+}
+
+static std::string resolveTypeName(DWARFDie die) {
+	// Rekursiv DW_AT_type folgen bis Namen vorhanden
+	for (int  depth = 0; depth < 32 && die; ++depth) {
+		if (auto n = getName(die)) return *n;
+		if (auto attr = die.find(llvm::dwarf::DW_AT_type)) {
+			if (auto ref = attr->getAsReference()) {
+				die = die.getDwarfUnit()->getDIEForOffset(ref.value());
+				continue;
+			}
+		}
+		break;
+	}
+	return "<unknown>";
+}
+
+int main(int argc, char** argv) {
+	if (argc < 3) {
+		errs() << "usage: dwarf_dump <input.wasm> <out.json>\n";
+		return 1;
+	}
+	std::string in = argv[1], out = argv[2];
+
+	auto bufOrErr = MemoryBuffer::getFile(in);
+	if (!bufOrErr) { errs() << "open failed\n"; return 1; }
+	auto objOrErr = ObjectFile::createObjectFile(bufOrErr->get()->getMemBufferRef());
+	if (!bufOrErr) { errs() << "not an object\n"; return 1; }
+
+	auto& obj = **objOrErr; // kann WasmObjectFile sein
+	auto ctx = DWARFContext::create(obj);
+
+	json registry = { {"types", json::object()}, {"variables", json::array()} };
+
+	const DWARFUnitIndex &CUIndex = ctx->getCUIndex();
+	const DWARFObject &dwarfObj = ctx->getDWARFObj();
+	bool isLittleEndian = ctx->isLittleEndian();
+	
+	//for (const auto &Entry : CUIndex.getRows()) {
+		//if (Entry.empty()) continue;
+	for (auto& cu : ctx->compile_units()) {
+		//DWARFUnit *cu = ctx->getUnitForIndexEntry(Entry);
+		//ctx->forEachCU([&](DWARFUnit* cu) {
+		DWARFDie cuDie = cu->getUnitDIE();
+		uint8_t addressSize = cu->getAddressByteSize();
+		for (DWARFDie die = cuDie.getFirstChild(); die; die = die.getSibling()) {
+			auto locAttr = die.find(dwarf::DW_AT_location);
+			if (locAttr) {
+				if (auto secOff = locAttr->getAsSectionOffset()) {
+				
+					/*Mein: um getLocationTable(DDE data) aufzurufen
+					 * DDE DWARFUnit::getDebugInfoExtractor() const
+					 * DWARFDataExtractor(const DWARFObject &Obj, const DWARFSection &Section,
+                     bool IsLittleEndian, uint8_t AddressSize)
+*/
+					
+					// Entscheiden, ob DWARF v5 (locLists) oder älter (loc)
+					//if (cu->getVersion() >= 5) {
+						const DWARFSection& locListsSection = dwarfObj.getLoclistsSection();
+						DWARFDataExtractor dataExtr(dwarfObj, locListsSection, isLittleEndian, addressSize);
+						//Location-Liste mit DWARFDebugLoclists parsen
+						DWARFDebugLoclists debugLocLists(dataExtr, cu->getVersion());
+						uint64_t offset = *secOff;
+						// KORREKTUR: visitLocationList statt getLocationListAtOffset
+						std::vector<DWARFLocationEntry> entries;
+						auto callback = [&](const DWARFLocationEntry& entry) -> bool {
+							entries.push_back(entry);
+							return true; // Fortsetzen
+						};
+						if (auto err = debugLocLists.visitLocationList(&offset, callback)) {
+							llvm::consumeError(std::move(err));
+						} else {
+							for (const auto& entry : entries) {
+
+    					
+					//const auto locTable = std::make_unique<OptLocTable;
+								ArrayRef<uint8_t> locData(entry.Loc.data(), entry.Loc.size());
+								DWARFDataExtractor locDataExtractor(locData, isLittleEndian, addressSize);
+								DWARFExpression expr(locDataExtractor, /*cu->getVersion(),*/ addressSize);
+								outs() << "Valid for PC range: [0x"
+                   							<< Twine::utohexstr(entry.Value0)
+                   							<< ", 0x" << Twine::utohexstr(entry.Value1) << ")\n";
+            							for (auto &op : expr) {
+                							if (op.getCode() == dwarf::DW_OP_addr) {
+                    								auto addr = op.getRawOperand(0);
+                    								outs() << "  -> address 0x" << Twine::utohexstr(addr) << "\n";
+                							}
+            							}
+        						}
+        					}
+        				/*} else {
+						//DWARF v4 .debug_loc
+						const DWARFSection& locSection = dwarfObj.getLocSection();
+						DWARFDataExtractor dataExtr(dwarfObj, locSection, isLittleEndian, addressSize);
+						// Location-Liste mit DWARFDebugLoc parsen
+						DWARFDebugLoc debugLoc(dataExtr);
+						uint64_t offset = *secOff;
+						std::vector<DWARFLocationEntry> entries;
+						auto callback = [&](const DWARFLocationEntry& entry) -> bool {
+							entries.push_back(entry);
+							return true;
+						};
+						if (auto err = debugLoc.visitLocationList(&offset, callback)) {
+							llvm::consumeError(std::move(err));
+						} else {
+						//if (auto locationList = debugLoc.getLocationListAtOffset(*secOff)) {
+							for (const auto& entry : entries) {*/
+								//DWARFExpression expr(entry.Loc, /*cu->getVersion(),*/ cu->getAddressByteSize());
+		                                                /*outs() << "Valid for PC range: [0x"
+		                                                        << Twine::utohexstr(entry.Value0)
+		                                                        << ", 0x" << Twine::utohexstr(entry.Value1) << ")\n";
+		                                                for (auto &op : expr) {
+		                                                        if (op.getCode() == dwarf::DW_OP_addr) {
+
+										auto addr = op.getRawOperand(0);
+
+										outs() << "  -> address 0x" << Twine::utohexstr(addr) << "\n";
+                                                                        }
+                                                                }
+							}
+    						} 
+					} */
+				} else if (auto exprLoc = locAttr->getAsBlock()) { //if (auto secOff
+					// Direkt eingebettete Location-Expression (DW_FORM_exprloc)
+					// Korrektur: DataExtractor als Block erstellen
+					DWARFDataExtractor dataExtr(
+						ArrayRef<uint8_t>(exprLoc->data(), exprLoc->size()),
+						isLittleEndian,
+						addressSize
+					);
+					// Expression parsen
+					DWARFExpression expr(dataExtr, addressSize);
+					for (const auto &op : expr) {
+						if (op.getCode() == dwarf::DW_OP_addr) {
+							auto addr = op.getRawOperand(0);
+							outs() << "  -> address (exprLoc) 0x" << Twine::utohexstr(addr) << "\n";
+						}
+					}
+				}
+			}		
+			// Tiefensuche über alle DIEs:
+			std::function<void(DWARFDie)> dfs = [&](DWARFDie d) {
+				auto tag = d.getTag();
+				if (tag == dwarf::DW_TAG_structure_type) {
+					auto name = getName(d).value_or("<anon>");
+					auto size = getUData(d, dwarf::DW_AT_byte_size).value_or(0);
+					json fields = json::array();
+					
+					for (DWARFDie ch = d.getFirstChild(); ch; ch = ch.getSibling()) {
+						if(ch.getTag() == dwarf::DW_TAG_member) {
+							auto fname = getName(ch).value_or("<field>");
+							auto foff = getUData(ch, dwarf::DW_AT_data_member_location).value_or(0);
+							//Feldtyp auflösen
+							std::string ftype = "<unknown>";
+							if (auto attr = ch.find(dwarf::DW_AT_type)) {
+								if(auto ref = attr->getAsReference()) {
+									DWARFDie tdie = ch.getDwarfUnit()->getDIEForOffset(ref.value());
+									ftype = resolveTypeName(tdie);
+								}
+							}
+							fields.push_back({{"name", fname}, {"offset", foff}, {"type", ftype}});
+						}
+					}
+					registry["types"][name] = { {"size", size}, {"fields", fields} };
+				}
+				else if (tag == dwarf::DW_TAG_variable) {
+					auto vname = getName(d).value_or("<var>");
+					// Sehr vereinfacht
+					auto addr = getUData(d, dwarf::DW_AT_location).value_or(0);
+					registry["variables"].push_back({{"name", vname}, {"address", addr}, {"type", "<unknown>"}});
+				}
+				// Rekursion
+				for (DWARFDie ch = d.getFirstChild(); ch; ch = ch.getSibling()) dfs(ch);
+			};
+			dfs(die);
+		}
+	}
+
+	std::ofstream os(out);
+	os << registry.dump(2);
+	return 0;
+}
+
+
+// wat_tools/wat_tools.cpp
+#include "wabt/binary-reader-ir.h"
+#include "wabt/binary-writer.h"
+#include "wabt/feature.h"
+#include "wabt/ir.h"
+#include "wabt/stream.h"
+#include "wabt/validator.h"
+#include "wabt/wast-parser.h"
+#include "wabt/wat-writer.h"
+#include "wabt/error-formatter.h"
+//#include "wabt/wasm2wat.h"
+
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <memory>
+#include <cstring>
+#include <cstdio>
+
+using namespace wabt;
+
+static bool HasErrors(const Errors& errors) {
+  for (const Error& error : errors) {
+    if (error.error_level == ErrorLevel::Error) {
+      return true;
+    }
+  }
+  return false;
+}
+
+static std::string DefaultOutputName(const std::string& input, const std::string& extension) {
+	size_t last_dot = input.find_last_of('.');
+	if (last_dot == std::string::npos) {
+		return input + extension;
+	}
+	return input.substr(0, last_dot) + extension;
+}
+
+// Options for wat2wasm command
+struct Wat2WasmOptions {
+	std::string input_filename;
+	std::string output_filename;
+	Features features;
+	bool debug_parser = false;
+	bool dump_module = false;
+	bool relocatable = false;
+	bool no_canonicalize_lebs = false;
+	bool debug_names = false;
+	bool no_check = false;
+	int verbose = 0;
+};
+
+static int wat2wasm(const std::string& in, const std::string& out) {
+	// Lies Quelltext ein
+	std::ifstream ifs(in);
+	if (!ifs) {
+	fprintf(stderr, "Konnte Datei %s nicht öffnen\n", in.c_str());
+	return 1;
+	}
+	std::string source((std::istreambuf_iterator<char>(ifs)),
+		        std::istreambuf_iterator<char>());
+
+	Features features;
+	features.EnableAll();
+
+	Errors errors;
+	std::unique_ptr<Module> module;
+
+	// WAT parsen: Lexer erzeugen
+	auto lexer = WastLexer::CreateBufferLexer(
+		in, source.data(), source.size(), &errors
+	);
+	// Parser erstellen mit Optionen
+	WastParseOptions parse_opts(features);
+	WastParser parser(lexer.get(), &errors, &parse_opts);
+	
+	if (Failed(parser.ParseModule(&module))) {
+		FormatErrorsToFile(errors, Location::Type::Text);
+		return 2;
+	}
+	
+	// Modul Validieren
+	if (Failed(ValidateModule(module.get(), &errors, features))) {
+		FormatErrorsToFile(errors, Location::Type::Text);
+		return 3;
+	}
+
+	// Binär ausgeben
+	//OutputBuffer outbuf;
+	MemoryStream outbuf;
+	//Optionen setzen
+	WriteBinaryOptions write_opts(features,
+			true, // canonicalize_lebs
+			false, // relocatable
+			true); // wrie_debug_names
+	// Schreiben
+	if (Failed(WriteBinaryModule(&outbuf, module.get(), write_opts))) {
+		fprintf(stderr, "Fehler beim Schreiben des Binärmoduls\n");
+		return 4;
+	}
+
+	outbuf.output_buffer().WriteToFile(out);
+	//std::ofstream ofs(out, std::ios::binary);
+	//ofs.write(reinterpret_cast<const char*>(outbuf.data.data()), outbuf.data.size());
+
+	return 0;
+}
+
+static int wasm2wat(const std::string& in, const std::string& out) {
+	Errors errors;
+	std::ifstream ifs(in, std::ios::binary);
+	if (!ifs) {
+		std::cerr << "Error: cannot open input file " << in << std::endl;
+		return 1;
+	}
+	std::vector<uint8_t> bin((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+	
+	Module module;
+	ReadBinaryOptions read_options;
+	read_options.features = Features();
+	read_options.read_debug_names = true;
+	
+	ReadBinaryIr(in.c_str(), bin.data(), bin.size(), read_options, &errors, &module);
+	if(!errors.empty()) {
+		std::cerr << FormatErrorsToString(errors, wabt::Location::Type::Binary);
+		return 1;
+	}
+	
+	MemoryStream stream;
+	WriteWatOptions write_options;
+	WriteWat(&stream, &module, write_options);
+	
+	std::ofstream ofs(out);
+	if (!ofs) {
+		std::cerr << "Error: cannot open output file " << out << std::endl;
+		return 1;
+	}
+	ofs.write(reinterpret_cast<const char*>(stream.output_buffer().data.data()), stream.output_buffer().data.size());
+	
+	return 0;
+}
+
+int main(int argc, char** argv) {
+	if (argc < 4) { std::cerr << "usage: wat_tools (wat2wasm|wasm2wat) <in> <out>\n"; return 1; }
+	std::string cmd = argv[1], in = argv[2], out = argv[3];
+	if (cmd == "wat2wasm") { return wat2wasm(in, out); }
+	else if (cmd == "wasm2wat") { return wasm2wat(in, out); }
+	else {
+		std::cerr << "Unknown command: " << cmd << "\n";
+		return 1;
+	}
+
+}
+
+

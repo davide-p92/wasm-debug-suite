@@ -1,0 +1,848 @@
+[
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/apply-names.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/apply-names.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/apply-names.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/apply-names.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binary-reader-ir.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-ir.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-ir.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binary-reader-ir.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binary-reader-logging.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-logging.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-logging.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binary-reader-logging.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binary-reader.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binary-reader.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binary-writer-spec.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer-spec.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer-spec.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binary-writer-spec.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binary-writer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binary-writer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binary.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binary.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/binding-hash.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binding-hash.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binding-hash.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/binding-hash.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/color.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/color.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/color.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/color.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/common.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/common.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/common.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/common.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/config.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/config.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/config.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/config.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/decompiler.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/decompiler.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/decompiler.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/decompiler.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/error-formatter.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/error-formatter.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/error-formatter.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/error-formatter.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/expr-visitor.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/expr-visitor.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/expr-visitor.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/expr-visitor.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/feature.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/feature.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/feature.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/feature.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/filenames.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/filenames.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/filenames.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/filenames.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/generate-names.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/generate-names.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/generate-names.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/generate-names.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/ir-util.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir-util.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir-util.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/ir-util.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/ir.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/ir.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/leb128.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/leb128.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/leb128.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/leb128.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/lexer-source-line-finder.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source-line-finder.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source-line-finder.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/lexer-source-line-finder.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/lexer-source.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/lexer-source.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/literal.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/literal.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/literal.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/literal.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/opcode-code-table.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode-code-table.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode-code-table.c",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/opcode-code-table.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/opcode.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/opcode.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/option-parser.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/option-parser.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/option-parser.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/option-parser.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/resolve-names.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/resolve-names.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/resolve-names.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/resolve-names.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/sha256.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/sha256.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/sha256.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/sha256.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/shared-validator.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/shared-validator.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/shared-validator.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/shared-validator.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/stream.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/stream.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/stream.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/stream.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/token.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/token.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/token.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/token.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/tracing.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tracing.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tracing.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/tracing.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/type-checker.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/type-checker.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/type-checker.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/type-checker.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/utf8.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/utf8.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/utf8.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/utf8.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/validator.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/validator.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/validator.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/validator.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/wast-lexer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-lexer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-lexer.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/wast-lexer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/wast-parser.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-parser.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-parser.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/wast-parser.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/wat-writer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wat-writer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wat-writer.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/wat-writer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/c-writer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/c-writer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/c-writer.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/c-writer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/prebuilt/wasm2c_header_top.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_top.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_top.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/prebuilt/wasm2c_header_top.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/prebuilt/wasm2c_header_bottom.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_bottom.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_bottom.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/prebuilt/wasm2c_header_bottom.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/prebuilt/wasm2c_source_includes.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_includes.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_includes.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/prebuilt/wasm2c_source_includes.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/prebuilt/wasm2c_source_declarations.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_declarations.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_declarations.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/prebuilt/wasm2c_source_declarations.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/prebuilt/wasm2c_simd_source_declarations.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/prebuilt/wasm2c_simd_source_declarations.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/interp/binary-reader-interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/binary-reader-interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/binary-reader-interp.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/interp/binary-reader-interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/interp/interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/interp/interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/interp/interp-util.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp-util.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp-util.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/interp/interp-util.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt.dir/src/interp/istream.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/istream.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/istream.cc",
+  "output": "wabt_build/CMakeFiles/wabt.dir/src/interp/istream.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wat2wasm.dir/src/tools/wat2wasm.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wat2wasm.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wat2wasm.cc",
+  "output": "wabt_build/CMakeFiles/wat2wasm.dir/src/tools/wat2wasm.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wast2json.dir/src/tools/wast2json.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wast2json.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wast2json.cc",
+  "output": "wabt_build/CMakeFiles/wast2json.dir/src/tools/wast2json.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm2wat.dir/src/tools/wasm2wat.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm2wat.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm2wat.cc",
+  "output": "wabt_build/CMakeFiles/wasm2wat.dir/src/tools/wasm2wat.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm2c.dir/src/tools/wasm2c.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm2c.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm2c.cc",
+  "output": "wabt_build/CMakeFiles/wasm2c.dir/src/tools/wasm2c.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-stats.dir/src/tools/wasm-stats.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-stats.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-stats.cc",
+  "output": "wabt_build/CMakeFiles/wasm-stats.dir/src/tools/wasm-stats.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-stats.dir/src/binary-reader-stats.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-stats.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-stats.cc",
+  "output": "wabt_build/CMakeFiles/wasm-stats.dir/src/binary-reader-stats.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-objdump.dir/src/tools/wasm-objdump.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-objdump.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-objdump.cc",
+  "output": "wabt_build/CMakeFiles/wasm-objdump.dir/src/tools/wasm-objdump.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-objdump.dir/src/binary-reader-objdump.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-objdump.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-objdump.cc",
+  "output": "wabt_build/CMakeFiles/wasm-objdump.dir/src/binary-reader-objdump.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-interp.dir/src/tools/wasm-interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-interp.cc",
+  "output": "wabt_build/CMakeFiles/wasm-interp.dir/src/tools/wasm-interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/spectest-interp.dir/src/tools/spectest-interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/spectest-interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/spectest-interp.cc",
+  "output": "wabt_build/CMakeFiles/spectest-interp.dir/src/tools/spectest-interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wat-desugar.dir/src/tools/wat-desugar.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wat-desugar.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wat-desugar.cc",
+  "output": "wabt_build/CMakeFiles/wat-desugar.dir/src/tools/wat-desugar.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-validate.dir/src/tools/wasm-validate.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-validate.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-validate.cc",
+  "output": "wabt_build/CMakeFiles/wasm-validate.dir/src/tools/wasm-validate.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-strip.dir/src/tools/wasm-strip.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-strip.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-strip.cc",
+  "output": "wabt_build/CMakeFiles/wasm-strip.dir/src/tools/wasm-strip.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-decompile.dir/src/tools/wasm-decompile.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-decompile.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tools/wasm-decompile.cc",
+  "output": "wabt_build/CMakeFiles/wasm-decompile.dir/src/tools/wasm-decompile.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-maybe-uninitialized -o CMakeFiles/gtest.dir/third_party/gtest/googletest/src/gtest-all.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/src/gtest-all.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/src/gtest-all.cc",
+  "output": "wabt_build/CMakeFiles/gtest.dir/third_party/gtest/googletest/src/gtest-all.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/gtest_main.dir/third_party/gtest/googletest/src/gtest_main.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/src/gtest_main.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/src/gtest_main.cc",
+  "output": "wabt_build/CMakeFiles/gtest_main.dir/third_party/gtest/googletest/src/gtest_main.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/hexfloat_test.dir/src/literal.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/literal.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/literal.cc",
+  "output": "wabt_build/CMakeFiles/hexfloat_test.dir/src/literal.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/hexfloat_test.dir/src/test-hexfloat.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-hexfloat.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-hexfloat.cc",
+  "output": "wabt_build/CMakeFiles/hexfloat_test.dir/src/test-hexfloat.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-binary-reader.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-binary-reader.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-binary-reader.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-binary-reader.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-interp.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-intrusive-list.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-intrusive-list.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-intrusive-list.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-intrusive-list.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-literal.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-literal.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-literal.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-literal.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-option-parser.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-option-parser.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-option-parser.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-option-parser.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-filenames.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-filenames.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-filenames.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-filenames.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-utf8.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-utf8.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-utf8.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-utf8.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wabt-unittests.dir/src/test-wast-parser.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-wast-parser.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/test-wast-parser.cc",
+  "output": "wabt_build/CMakeFiles/wabt-unittests.dir/src/test-wast-parser.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-rt-impl.dir/wasm2c/wasm-rt-impl.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/wasm2c/wasm-rt-impl.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/wasm2c/wasm-rt-impl.c",
+  "output": "wabt_build/CMakeFiles/wasm-rt-impl.dir/wasm2c/wasm-rt-impl.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-rt-impl.dir/wasm2c/wasm-rt-exceptions-impl.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/wasm2c/wasm-rt-exceptions-impl.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/wasm2c/wasm-rt-exceptions-impl.c",
+  "output": "wabt_build/CMakeFiles/wasm-rt-impl.dir/wasm2c/wasm-rt-exceptions-impl.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm-rt-impl.dir/wasm2c/wasm-rt-mem-impl.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/wasm2c/wasm-rt-mem-impl.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/wasm2c/wasm-rt-mem-impl.c",
+  "output": "wabt_build/CMakeFiles/wasm-rt-impl.dir/wasm2c/wasm-rt-mem-impl.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/apply-names.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/apply-names.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/apply-names.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/apply-names.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binary-reader-ir.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-ir.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-ir.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binary-reader-ir.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binary-reader-logging.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-logging.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader-logging.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binary-reader-logging.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binary-reader.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-reader.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binary-reader.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binary-writer-spec.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer-spec.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer-spec.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binary-writer-spec.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binary-writer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary-writer.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binary-writer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binary.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binary.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binary.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/binding-hash.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binding-hash.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/binding-hash.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/binding-hash.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/color.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/color.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/color.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/color.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/common.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/common.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/common.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/common.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/config.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/config.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/config.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/config.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/decompiler.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/decompiler.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/decompiler.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/decompiler.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/error-formatter.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/error-formatter.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/error-formatter.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/error-formatter.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/expr-visitor.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/expr-visitor.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/expr-visitor.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/expr-visitor.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/feature.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/feature.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/feature.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/feature.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/filenames.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/filenames.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/filenames.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/filenames.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/generate-names.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/generate-names.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/generate-names.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/generate-names.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/ir-util.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir-util.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir-util.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/ir-util.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/ir.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/ir.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/ir.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/leb128.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/leb128.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/leb128.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/leb128.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/lexer-source-line-finder.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source-line-finder.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source-line-finder.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/lexer-source-line-finder.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/lexer-source.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/lexer-source.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/lexer-source.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/literal.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/literal.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/literal.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/literal.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include -fPIC   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -o CMakeFiles/wasm.dir/src/opcode-code-table.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode-code-table.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode-code-table.c",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/opcode-code-table.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/opcode.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/opcode.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/opcode.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/option-parser.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/option-parser.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/option-parser.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/option-parser.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/resolve-names.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/resolve-names.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/resolve-names.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/resolve-names.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/sha256.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/sha256.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/sha256.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/sha256.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/shared-validator.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/shared-validator.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/shared-validator.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/shared-validator.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/stream.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/stream.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/stream.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/stream.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/token.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/token.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/token.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/token.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/tracing.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tracing.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/tracing.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/tracing.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/type-checker.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/type-checker.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/type-checker.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/type-checker.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/utf8.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/utf8.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/utf8.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/utf8.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/validator.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/validator.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/validator.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/validator.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/wast-lexer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-lexer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-lexer.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/wast-lexer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/wast-parser.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-parser.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wast-parser.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/wast-parser.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/wat-writer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wat-writer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/wat-writer.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/wat-writer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/c-writer.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/c-writer.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/c-writer.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/c-writer.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/prebuilt/wasm2c_header_top.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_top.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_top.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/prebuilt/wasm2c_header_top.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/prebuilt/wasm2c_header_bottom.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_bottom.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_header_bottom.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/prebuilt/wasm2c_header_bottom.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/prebuilt/wasm2c_source_includes.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_includes.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_includes.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/prebuilt/wasm2c_source_includes.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/prebuilt/wasm2c_source_declarations.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_declarations.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_source_declarations.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/prebuilt/wasm2c_source_declarations.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/prebuilt/wasm2c_simd_source_declarations.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/prebuilt/wasm2c_simd_source_declarations.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/interp/binary-reader-interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/binary-reader-interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/binary-reader-interp.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/interp/binary-reader-interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/interp/interp.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/interp/interp.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/interp/interp-util.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp-util.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp-util.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/interp/interp-util.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/interp/istream.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/istream.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/istream.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/interp/istream.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/c++ -DWASM_API_EXTERN=\"__attribute__((visibility(\\\"default\\\")))\" -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -Dwasm_EXPORTS -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include  -Wold-style-cast -fno-exceptions -std=c++17 -fPIC -fvisibility=hidden   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -Wno-old-style-cast -o CMakeFiles/wasm.dir/src/interp/interp-wasm-c-api.cc.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp-wasm-c-api.cc",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/src/interp/interp-wasm-c-api.cc",
+  "output": "wabt_build/CMakeFiles/wasm.dir/src/interp/interp-wasm-c-api.cc.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-callback.dir/third_party/wasm-c-api/example/callback.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/callback.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/callback.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-callback.dir/third_party/wasm-c-api/example/callback.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-finalize.dir/third_party/wasm-c-api/example/finalize.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/finalize.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/finalize.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-finalize.dir/third_party/wasm-c-api/example/finalize.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-global.dir/third_party/wasm-c-api/example/global.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/global.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/global.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-global.dir/third_party/wasm-c-api/example/global.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-hello.dir/third_party/wasm-c-api/example/hello.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/hello.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/hello.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-hello.dir/third_party/wasm-c-api/example/hello.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-hostref.dir/third_party/wasm-c-api/example/hostref.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/hostref.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/hostref.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-hostref.dir/third_party/wasm-c-api/example/hostref.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-multi.dir/third_party/wasm-c-api/example/multi.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/multi.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/multi.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-multi.dir/third_party/wasm-c-api/example/multi.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-memory.dir/third_party/wasm-c-api/example/memory.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/memory.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/memory.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-memory.dir/third_party/wasm-c-api/example/memory.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-reflect.dir/third_party/wasm-c-api/example/reflect.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/reflect.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/reflect.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-reflect.dir/third_party/wasm-c-api/example/reflect.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-serialize.dir/third_party/wasm-c-api/example/serialize.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/serialize.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/serialize.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-serialize.dir/third_party/wasm-c-api/example/serialize.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-start.dir/third_party/wasm-c-api/example/start.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/start.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/start.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-start.dir/third_party/wasm-c-api/example/start.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-table.dir/third_party/wasm-c-api/example/table.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/table.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/table.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-table.dir/third_party/wasm-c-api/example/table.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-trap.dir/third_party/wasm-c-api/example/trap.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/trap.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/trap.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-trap.dir/third_party/wasm-c-api/example/trap.c.o"
+},
+{
+  "directory": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build",
+  "command": "/usr/bin/cc -D__STDC_FORMAT_MACROS=1 -D__STDC_LIMIT_MACROS=1 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/picosha2 -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/gtest/googletest/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/include -I/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build/include   -Wall -Wextra -Wno-unused-parameter -Wpointer-arith -Wuninitialized -Wimplicit-fallthrough -Wno-clobbered -std=gnu11 -Wno-pointer-to-int-cast -o CMakeFiles/wasm-c-api-threads.dir/third_party/wasm-c-api/example/threads.c.o -c /home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/threads.c",
+  "file": "/home/davide/Downloads/proj_javescript/wasm-debug-suite/wabt/third_party/wasm-c-api/example/threads.c",
+  "output": "wabt_build/CMakeFiles/wasm-c-api-threads.dir/third_party/wasm-c-api/example/threads.c.o"
+}
+]

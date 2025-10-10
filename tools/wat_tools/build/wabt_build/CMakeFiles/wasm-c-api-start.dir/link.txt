@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wold-style-cast -fno-exceptions "CMakeFiles/wasm-c-api-start.dir/third_party/wasm-c-api/example/start.c.o" -o wasm-c-api-start  -Wl,-rpath,/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build libwasm.so libwabt.a 

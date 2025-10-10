@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wold-style-cast -fno-exceptions "CMakeFiles/wasm-stats.dir/src/tools/wasm-stats.cc.o" "CMakeFiles/wasm-stats.dir/src/binary-reader-stats.cc.o" -o wasm-stats  libwabt.a 

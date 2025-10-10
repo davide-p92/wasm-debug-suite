@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/wat_tools.dir/wat_tools.cpp.o -o wat_tools  /usr/local/lib/libwabt.a 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wold-style-cast -fno-exceptions "CMakeFiles/wasm-c-api-serialize.dir/third_party/wasm-c-api/example/serialize.c.o" -o wasm-c-api-serialize  -Wl,-rpath,/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/wabt_build libwasm.so libwabt.a 

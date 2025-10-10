@@ -1,0 +1,3 @@
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/CMakeFiles/wat_tools.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/CMakeFiles/edit_cache.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/wat_tools/build/CMakeFiles/rebuild_cache.dir

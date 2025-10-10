@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+fe82e941035ab56b2e27677da2cffc15 wabt_build/gen-wasm2c-prebuilt

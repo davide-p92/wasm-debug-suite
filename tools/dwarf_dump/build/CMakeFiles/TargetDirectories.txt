@@ -1,0 +1,7 @@
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/intrinsics_gen.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/omp_gen.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/acc_gen.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/RISCVTargetParserTableGen.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/dwarf_dump.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/edit_cache.dir
+/home/davide/Downloads/proj_javescript/wasm-debug-suite/tools/dwarf_dump/build/CMakeFiles/rebuild_cache.dir
