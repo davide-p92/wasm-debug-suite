@@ -1,0 +1,13 @@
+[package]
+name = "wasmtest"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.dev]
+opt-level = 0
+debug = true

@@ -1,0 +1,48 @@
+[package]
+name = "memlayout"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["dwarf", "runtime"] # Standardmäßig beides aktiv
+# Enable DWARF parsing and Wasm runtime pieces when ready
+dwarf = ["gimli"]
+runtime = ["wasmer"]
+gimli = ["dep:gimli"]
+
+# Backend-Auswahl: nur genau eins aktivieren
+cranelift = ["wasmer/cranelift", "wasmer-compiler-cranelift"]
+singlepass = ["wasmer/singlepass", "wasmer-compiler-singlepass"]
+llvm = ["wasmer/llvm", "wasmer-compiler-llvm"]
+
+[dependencies]
+anyhow = "1.0"
+byteorder = "1.5"
+gimli = { version = "0.32", optional = true }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+wasmer = { version = "6.0", optional = true }# features = ["cranelift"] }
+wasmparser = "0.205"
+
+# [dependencies.wasmer-compiler-cranelift]
+# version = "6.0"
+# features = ["disable-probestack"]
+
+#[target.'cfg(feature = "runtime")'.dependencies]
+# Add Wasmer only when the `runtime` feature is enabled
+# wasmer = { version = "6.0", features = ["cranelift"] }
+#wasmer-compiler-cranelift = { version = "6.0", optional = true}
+#wasmer-compiler-singlepass = { version = "6.0", optional = true}
+#wasmer-compiler-llvm = { version = "6.0", optional = true }
+wasmer-types = "6.0.1"
+#wasmer-engine-universal = "6.0"
+
+[profile.dev]
+debug = true
+opt-level = 0
+split-debuginfo = "packed"
+
+[profile.release]
+opt-level = 3
+debug = true

@@ -1,0 +1,739 @@
+   Compiling memlayout v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout)
+error: expected one of `.`, `;`, `?`, `}`, or an operator, found `=>`
+  --> src/wasmrt.rs:52:45
+   |
+52 |                 wasmer::Extern::Global(global) => {
+   |                                                ^^ expected one of `.`, `;`, `?`, `}`, or an operator
+   |
+help: you might have meant to write a "greater than or equal to" comparison
+   |
+52 -                 wasmer::Extern::Global(global) => {
+52 +                 wasmer::Extern::Global(global) >= {
+   |
+
+error: non-item in item list
+   --> src/wasmrt.rs:193:5
+    |
+20  | impl WasmRuntime {
+    |                  - item list starts here
+...
+193 |     / Memories (zusätzliche Memories)
+    |     ^ non-item starts here
+...
+240 | }
+    | - item list ends here
+
+error[E0432]: unresolved import `crate::types`
+ --> src/memlayout.rs:8:12
+  |
+8 | use crate::types::{TypeInfo, TypeKind, PrimitiveKind, TypedValue};
+  |            ^^^^^ could not find `types` in the crate root
+
+error[E0432]: unresolved import `crate::memsegments`
+ --> src/memlayout.rs:9:12
+  |
+9 | use crate::memsegments::MemorySegment;
+  |            ^^^^^^^^^^^ could not find `memsegments` in the crate root
+
+error[E0432]: unresolved import `wasmer::ImportObject`
+ --> src/wasmrt.rs:1:39
+  |
+1 | use wasmer::{Store, Module, Instance, ImportObject, Memory, MemoryType, TypedFunction, Table, Global};
+  |                                       ^^^^^^^^^^^^ no `ImportObject` in the root
+
+error[E0432]: unresolved import `wasmer::types`
+ --> src/wasmrt.rs:2:13
+  |
+2 | use wasmer::types::Type;
+  |             ^^^^^ could not find `types` in `wasmer`
+
+error[E0432]: unresolved import `crate::Types`
+ --> src/wasmrt.rs:8:12
+  |
+8 | use crate::Types::VariableValue;
+  |            ^^^^^ could not find `Types` in the crate root
+
+error[E0412]: cannot find type `VariableValue` in this scope
+  --> src/memlayout.rs:41:55
+   |
+41 |     pub fn read_variable(&self, name: &str) -> Result<VariableValue, MemoryError> {
+   |                                                       ^^^^^^^^^^^^^ not found in this scope
+   |
+help: you might be missing a type parameter
+   |
+18 | impl<VariableValue> MemoryLayout {
+   |     +++++++++++++++
+
+error[E0422]: cannot find struct, variant or union type `VariableValue` in this scope
+  --> src/memlayout.rs:54:12
+   |
+54 |         Ok(VariableValue {
+   |            ^^^^^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `FieldInfo` in this scope
+   --> src/memlayout.rs:104:34
+    |
+104 |         fields: &HashMap<String, FieldInfo>,
+    |                                  ^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+18  | impl<FieldInfo> MemoryLayout {
+    |     +++++++++++
+
+error[E0425]: cannot find value `addess` in this scope
+   --> src/memlayout.rs:153:43
+    |
+153 |                 let value = self.read_int(addess, size_usize, *signed)?;
+    |                                           ^^^^^^ help: a local variable with a similar name exists: `address`
+
+error[E0412]: cannot find type `Visualization` in this scope
+   --> src/memlayout.rs:213:45
+    |
+213 |     pub fn generate_visualization(&self) -> Visualization {
+    |                                             ^^^^^^^^^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `VisualizationSegment` in this scope
+   --> src/memlayout.rs:227:27
+    |
+227 |             segments.push(VisualizationSegment {
+    |                           ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Visualization` in this scope
+   --> src/memlayout.rs:239:9
+    |
+239 |         Visualization {
+    |         ^^^^^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `TypeInfo` in this scope
+ --> src/dwarfparser.rs:9:32
+  |
+9 |     pub types: HashMap<String, TypeInfo>,
+  |                                ^^^^^^^^ not found in this scope
+  |
+help: you might be missing a type parameter
+  |
+7 | pub struct DwarfData<TypeInfo> {
+  |                     ++++++++++
+
+error[E0412]: cannot find type `E` in this scope
+  --> src/dwarfparser.rs:25:59
+   |
+25 |     pub fn from_wasm(wasm_bytes: &'a[u8]) -> Result<Self, E> {
+   |                                                           ^
+  --> /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library/core/src/cmp.rs:336:1
+   |
+   = note: similarly named trait `Eq` defined here
+   |
+help: a trait with a similar name exists
+   |
+25 |     pub fn from_wasm(wasm_bytes: &'a[u8]) -> Result<Self, Eq> {
+   |                                                            +
+help: you might be missing a type parameter
+   |
+24 | impl<'a, E> DwarfParser<'a> {
+   |        +++
+
+error[E0412]: cannot find type `TypeInfo` in this scope
+  --> src/dwarfparser.rs:62:37
+   |
+62 |         types: &mut HashMap<String, TypeInfo>,
+   |                                     ^^^^^^^^ not found in this scope
+   |
+help: you might be missing a type parameter
+   |
+24 | impl<'a, TypeInfo> DwarfParser<'a> {
+   |        ++++++++++
+
+error[E0412]: cannot find type `RefCell` in this scope
+  --> src/wasmrt.rs:11:12
+   |
+11 |     store: RefCell<Store>,
+   |            ^^^^^^^ not found in this scope
+   |
+help: consider importing this struct
+   |
+1  + use std::cell::RefCell;
+   |
+
+warning: unused import: `thiserror::Error`
+ --> src/memlayout.rs:2:5
+  |
+2 | use thiserror::Error;
+  |     ^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> src/memlayout.rs:4:13
+  |
+4 | use serde::{Serialize, Deserialize};
+  |             ^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused import: `std::error::Error`
+ --> src/memlayout.rs:5:5
+  |
+5 | use std::error::Error;
+  |     ^^^^^^^^^^^^^^^^^
+
+warning: unused import: `read::CfaRule`
+ --> src/dwarfparser.rs:1:96
+  |
+1 | use gimli::{Dwarf, EndianSlice, LittleEndian, Unit, DebuggingInformationEntry, AttributeValue, read::CfaRule};
+  |                                                                                                ^^^^^^^^^^^^^
+
+warning: unused imports: `DwarfError` and `MemoryError`
+ --> src/main.rs:6:14
+  |
+6 | use errors::{DwarfError, MemoryError};
+  |              ^^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused import: `MemoryType`
+ --> src/wasmrt.rs:1:61
+  |
+1 | use wasmer::{Store, Module, Instance, ImportObject, Memory, MemoryType, TypedFunction, Table, Global};
+  |                                                             ^^^^^^^^^^
+
+error[E0609]: no field `type_info` on type `&VariableInfo`
+  --> src/memlayout.rs:27:27
+   |
+27 |                 size: var.type_info.size,
+   |                           ^^^^^^^^^ unknown field
+   |
+   = note: available fields are: `name`, `address`, `type_name`, `size`
+
+error[E0433]: failed to resolve: use of undeclared type `SegmentType`
+  --> src/memlayout.rs:29:31
+   |
+29 |                 segment_type: SegmentType::GlobalVariable,
+   |                               ^^^^^^^^^^^ use of undeclared type `SegmentType`
+
+error[E0599]: no method named `get_variable` found for reference `&MemoryLayout` in the current scope
+  --> src/memlayout.rs:42:29
+   |
+42 |         let var_info = self.get_variable(name)?;
+   |                             ^^^^^^^^^^^^
+   |
+help: there is a method `read_variable` with a similar name
+   |
+42 -         let var_info = self.get_variable(name)?;
+42 +         let var_info = self.read_variable(name)?;
+   |
+
+error[E0559]: variant `errors::MemoryError::InvalidAccess` has no field named `addr`
+  --> src/memlayout.rs:71:53
+   |
+71 |             return Err(MemoryError::InvalidAccess { addr: addr as usize });
+   |                                                     ^^^^ `errors::MemoryError::InvalidAccess` does not have this field
+   |
+   = note: available fields are: `address`
+
+error[E0061]: this method takes 1 argument but 3 arguments were supplied
+   --> src/memlayout.rs:153:34
+    |
+153 |                 let value = self.read_int(addess, size_usize, *signed)?;
+    |                                  ^^^^^^^^         ----------  ------- unexpected argument #3
+    |                                                   |
+    |                                                   unexpected argument #2 of type `usize`
+    |
+note: method defined here
+   --> src/memlayout.rs:64:12
+    |
+64  |     pub fn read_int(&self, segment: &MemorySegment) -> Result<i64, MemoryError> {
+    |            ^^^^^^^^
+help: remove the extra arguments
+    |
+153 -                 let value = self.read_int(addess, size_usize, *signed)?;
+153 +                 let value = self.read_int(addess)?;
+    |
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_json`
+   --> src/memlayout.rs:249:9
+    |
+249 |         serde_json::to_string_pretty(&visualization).unwrap_or_else(|_| "{}".to_string())
+    |         ^^^^^^^^^^ use of unresolved module or unlinked crate `serde_json`
+    |
+    = help: if you wanted to use a crate named `serde_json`, use `cargo add serde_json` to add it to your `Cargo.toml`
+
+error[E0277]: the trait bound `VariableInfo: Clone` is not satisfied
+ --> src/dwarfparser.rs:8:5
+  |
+6 | #[derive(Clone)]
+  |          ----- in this derive macro expansion
+7 | pub struct DwarfData {
+8 |     pub variables: Vec<VariableInfo>,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `VariableInfo`
+  |
+  = note: required for `Vec<VariableInfo>` to implement `Clone`
+help: consider annotating `VariableInfo` with `#[derive(Clone)]`
+  |
+13+ #[derive(Clone)]
+14| pub struct VariableInfo {
+  |
+
+error[E0425]: cannot find function `parse_dwarf_sections` in this scope
+  --> src/dwarfparser.rs:26:24
+   |
+26 |         let sections = parse_dwarf_sections(wasm_bytes)
+   |                        ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0599]: no variant or associated item named `MissingSectionId` found for enum `gimli::Error` in the current scope
+  --> src/dwarfparser.rs:33:34
+   |
+33 |             .ok_or(gimli::Error::MissingSectionId(id))?;
+   |                                  ^^^^^^^^^^^^^^^^ variant or associated item not found in `gimli::Error`
+
+error[E0308]: mismatched types
+  --> src/dwarfparser.rs:30:38
+   |
+30 |           let dwarf = Dwarf::load(|id| {
+   |  ______________________________________^
+31 | |             sections.get(id)
+32 | |             .map(|s| EndianSlice::new(s, LittleEndian))
+33 | |             .ok_or(gimli::Error::MissingSectionId(id))?;
+34 | |         }).map_err(DwarfError::GimliError)?;
+   | |_________^ expected `Result<_, _>`, found `()`
+   |
+   = note:   expected enum `Result<_, _>`
+           found unit type `()`
+
+error[E0277]: the `?` operator can only be used in a method that returns `Result` or `Option` (or another type that implements `FromResidual`)
+  --> src/dwarfparser.rs:45:44
+   |
+39 |     pub fn extract_memory_layout(&self) -> MemoryLayout {
+   |     --------------------------------------------------- this function should return `Result` or `Option` to accept `?`
+...
+45 |         while let Some(unit) = units.next()? {
+   |                                            ^ cannot use the `?` operator in a method that returns `MemoryLayout`
+
+error[E0061]: this method takes 1 argument but 0 arguments were supplied
+   --> src/dwarfparser.rs:46:36
+    |
+46  |             let mut entries = unit.entries();
+    |                                    ^^^^^^^-- argument #1 of type `&Abbreviations` is missing
+    |
+note: method defined here
+   --> /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gimli-0.32.0/src/read/unit.rs:489:12
+    |
+489 |     pub fn entries<'me, 'abbrev>(
+    |            ^^^^^^^
+help: provide the argument
+    |
+46  |             let mut entries = unit.entries(/* &Abbreviations */);
+    |                                            ++++++++++++++++++++
+
+error[E0277]: the `?` operator can only be used in a method that returns `Result` or `Option` (or another type that implements `FromResidual`)
+  --> src/dwarfparser.rs:49:64
+   |
+39 |     pub fn extract_memory_layout(&self) -> MemoryLayout {
+   |     --------------------------------------------------- this function should return `Result` or `Option` to accept `?`
+...
+49 |             while let Some((depth, entry)) = entries.next_dfs()? {
+   |                                                                ^ cannot use the `?` operator in a method that returns `MemoryLayout`
+
+error[E0308]: arguments to this method are incorrect
+  --> src/dwarfparser.rs:50:22
+   |
+50 |                 self.process_die(entry, &unit, &mut variables, &mut type_registry)?;
+   |                      ^^^^^^^^^^^
+   |
+note: expected `DebuggingInformationEntry<'_, '_, ..., usize>`, found `&...`
+  --> src/dwarfparser.rs:50:34
+   |
+50 |                 self.process_die(entry, &unit, &mut variables, &mut type_registry)?;
+   |                                  ^^^^^
+   = note: expected struct `gimli::DebuggingInformationEntry<'_, '_, EndianSlice<'_, _>, _>`
+           found reference `&gimli::DebuggingInformationEntry<'_, '_, EndianSlice<'_, _>, _>`
+note: expected `&Unit<EndianSlice<'_, ...>, usize>`, found `&UnitHeader<EndianSlice<'_, ...>, usize>`
+  --> src/dwarfparser.rs:50:41
+   |
+50 |                 self.process_die(entry, &unit, &mut variables, &mut type_registry)?;
+   |                                         ^^^^^
+   = note: expected reference `&gimli::Unit<EndianSlice<'_, gimli::LittleEndian>, usize>`
+              found reference `&UnitHeader<EndianSlice<'_, gimli::LittleEndian>, usize>`
+note: method defined here
+  --> src/dwarfparser.rs:57:8
+   |
+57 |     fn process_die(
+   |        ^^^^^^^^^^^
+58 |         &self,
+59 |         die: DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+   |         ---------------------------------------------------------
+60 |         unit: &Unit<EndianSlice<LittleEndian>>,
+   |         --------------------------------------
+
+error[E0277]: the `?` operator can only be used in a method that returns `Result` or `Option` (or another type that implements `FromResidual`)
+  --> src/dwarfparser.rs:50:83
+   |
+39 |     pub fn extract_memory_layout(&self) -> MemoryLayout {
+   |     --------------------------------------------------- this function should return `Result` or `Option` to accept `?`
+...
+50 |                 self.process_die(entry, &unit, &mut variables, &mut type_registry)?;
+   |                                                                                   ^ cannot use the `?` operator in a method that returns `MemoryLayout`
+
+error[E0308]: mismatched types
+  --> src/dwarfparser.rs:54:35
+   |
+54 |         Ok(MemoryLayout::new(&[], DwarfData { variables, types: type_registry }));
+   |            -----------------      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `&DwarfData`, found `DwarfData`
+   |            |
+   |            arguments to this function are incorrect
+   |
+note: associated function defined here
+  --> src/memlayout.rs:19:12
+   |
+19 |     pub fn new(
+   |            ^^^
+20 |         wasm_memory: &[u8],
+21 |         dwarf_data: &DwarfData
+   |         ----------------------
+help: consider borrowing here
+   |
+54 |         Ok(MemoryLayout::new(&[], &DwarfData { variables, types: type_registry }));
+   |                                   +
+
+error[E0308]: mismatched types
+  --> src/dwarfparser.rs:39:44
+   |
+39 |     pub fn extract_memory_layout(&self) -> MemoryLayout {
+   |            ---------------------           ^^^^^^^^^^^^ expected `MemoryLayout`, found `()`
+   |            |
+   |            implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0599]: no method named `process_struct` found for reference `&DwarfParser<'a>` in the current scope
+  --> src/dwarfparser.rs:66:50
+   |
+66 |             gimli::DW_TAG_structure_type => self.process_struct(die, unit, types)?,
+   |                                                  ^^^^^^^^^^^^^^ method not found in `&DwarfParser<'a>`
+
+error[E0599]: no method named `process_base_type` found for reference `&DwarfParser<'a>` in the current scope
+  --> src/dwarfparser.rs:67:45
+   |
+67 |             gimli::DW_TAG_base_type => self.process_base_type(die, unit, types)?,
+   |                                             ^^^^^^^^^^^^^^^^^
+   |
+help: there is a method `process_die` with a similar name, but with different arguments
+  --> src/dwarfparser.rs:57:5
+   |
+57 | /     fn process_die(
+58 | |         &self,
+59 | |         die: DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+60 | |         unit: &Unit<EndianSlice<LittleEndian>>,
+61 | |         variables: &mut Vec<VariableInfo>,
+62 | |         types: &mut HashMap<String, TypeInfo>,
+63 | |     ) -> Result<(), DwarfError> {
+   | |_______________________________^
+
+error[E0277]: the `?` operator can only be used on `Result`s, not `Option`s, in a method that returns `Result`
+  --> src/dwarfparser.rs:84:53
+   |
+76 | /     fn process_variable(
+77 | |         &self, 
+78 | |         die: DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+79 | |         unit: &Unit<EndianSlice<LittleEndian>>,
+80 | |         variables: &mut Vec<VariableInfo>,
+81 | |     ) -> Result<(), DwarfError> {
+   | |_______________________________- this function returns a `Result`
+...
+84 |               name.string_value(&self.dwarf.debug_str)?.to_string()?
+   |                                                       ^ use `.ok_or(...)?` to provide an error compatible with `Result<(), DwarfError>`
+
+error[E0599]: no variant or associated item named `ExprLoc` found for enum `gimli::AttributeValue` in the current scope
+  --> src/dwarfparser.rs:91:51
+   |
+91 |         let address = if let Some(AttributeValue::ExprLoc(expr)) = die.attr(gimli::DW_AT_location)?.map(|a| a.value()) {
+   |                                                   ^^^^^^^ variant or associated item not found in `gimli::AttributeValue<_, _>`
+   |
+help: there is a variant with a similar name
+   |
+91 -         let address = if let Some(AttributeValue::ExprLoc(expr)) = die.attr(gimli::DW_AT_location)?.map(|a| a.value()) {
+91 +         let address = if let Some(AttributeValue::Exprloc(expr)) = die.attr(gimli::DW_AT_location)?.map(|a| a.value()) {
+   |
+
+error[E0308]: mismatched types
+   --> src/dwarfparser.rs:105:13
+    |
+105 |             name,
+    |             ^^^^ expected `String`, found `&str`
+    |
+help: try using a conversion method
+    |
+105 |             name: name.to_string(),
+    |             +++++     ++++++++++++
+
+error[E0599]: no method named `next` found for struct `Evaluation` in the current scope
+   --> src/dwarfparser.rs:122:42
+    |
+122 |         while let Some(operation) = eval.next()? {
+    |                                          ^^^^ method not found in `Evaluation<EndianSlice<'_, gimli::LittleEndian>>`
+
+error[E0277]: the `?` operator can only be used in a closure that returns `Result` or `Option` (or another type that implements `FromResidual`)
+   --> src/dwarfparser.rs:150:39
+    |
+150 |                 .map(|s| s.to_string()?)
+    |                      ---              ^ cannot use the `?` operator in a closure that returns `&str`
+    |                      |
+    |                      this function should return `Result` or `Option` to accept `?`
+
+error[E0308]: mismatched types
+   --> src/dwarfparser.rs:151:36
+    |
+151 |                 .unwrap_or_else(|| "<unnamed>".to_string());
+    |                                    ^^^^^^^^^^^^^^^^^^^^^^^ expected `&str`, found `String`
+    |
+help: try removing the method call
+    |
+151 -                 .unwrap_or_else(|| "<unnamed>".to_string());
+151 +                 .unwrap_or_else(|| "<unnamed>");
+    |
+
+error[E0308]: mismatched types
+   --> src/dwarfparser.rs:157:17
+    |
+157 |             Ok((name, size))
+    |                 ^^^^- help: try using a conversion method: `.to_string()`
+    |                 |
+    |                 expected `String`, found `&str`
+
+error[E0308]: mismatched types
+   --> src/dwarfparser.rs:159:17
+    |
+159 |             Err(DwarfError::TypeResolutionFailed)
+    |             --- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `DwarfError`, found enum constructor
+    |             |
+    |             arguments to this enum variant are incorrect
+    |
+   ::: src/errors.rs:23:5
+    |
+23  |     TypeResolutionFailed(String),
+    |     -------------------- `TypeResolutionFailed` defines an enum variant constructor here, which should be called
+    |
+    = note:          expected enum `DwarfError`
+            found enum constructor `fn(std::string::String) -> DwarfError {DwarfError::TypeResolutionFailed}`
+help: the type constructed contains `fn(std::string::String) -> DwarfError {DwarfError::TypeResolutionFailed}` due to the type of the argument passed
+   --> src/dwarfparser.rs:159:13
+    |
+159 |             Err(DwarfError::TypeResolutionFailed)
+    |             ^^^^--------------------------------^
+    |                 |
+    |                 this argument influences the type of `Err`
+note: tuple variant defined here
+   --> /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library/core/src/result.rs:557:5
+help: use parentheses to construct this tuple variant
+    |
+159 |             Err(DwarfError::TypeResolutionFailed(/* std::string::String */))
+    |                                                 +++++++++++++++++++++++++++
+
+error[E0277]: the trait bound `Cranelift: Into<Box<dyn CompilerConfig>>` is not satisfied
+  --> src/wasmrt.rs:24:37
+   |
+24 |         let engine = Universal::new(compiler).engine();
+   |                      -------------- ^^^^^^^^ the trait `wasmer_compiler::compiler::CompilerConfig` is not implemented for `wasmer_compiler_cranelift::Cranelift`
+   |                      |
+   |                      required by a bound introduced by this call
+   |
+note: there are multiple different versions of crate `wasmer_compiler` in the dependency graph
+  --> /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmer-compiler-2.3.0/src/compiler.rs:20:1
+   |
+20 | pub trait CompilerConfig {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^ this is the required trait
+   |
+  ::: src/wasmrt.rs:1:5
+   |
+1  | use wasmer::{Store, Module, Instance, ImportObject, Memory, MemoryType, TypedFunction, Table, Global};
+   |     ------ one version of crate `wasmer_compiler` used here, as a dependency of crate `wasmer`
+...
+4  | use wasmer_engine_universal::Universal;
+   |     ----------------------- one version of crate `wasmer_compiler` used here, as a dependency of crate `wasmer_engine_universal`
+   |
+  ::: /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmer-compiler-cranelift-6.0.1/src/config.rs:33:1
+   |
+33 | pub struct Cranelift {
+   | -------------------- this type doesn't implement the required trait
+   |
+  ::: /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmer-compiler-6.0.1/src/engine/tunables.rs:16:1
+   |
+16 | pub trait Tunables {
+   | ------------------ this is the found trait
+   = help: you can use `cargo tree` to explore your dependency tree
+   = note: required for `Box<(dyn wasmer_compiler::compiler::CompilerConfig + 'static)>` to implement `From<wasmer_compiler_cranelift::Cranelift>`
+   = note: required for `wasmer_compiler_cranelift::Cranelift` to implement `Into<Box<(dyn wasmer_compiler::compiler::CompilerConfig + 'static)>>`
+note: required by a bound in `Universal::new`
+  --> /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmer-engine-universal-2.3.0/src/builder.rs:16:12
+   |
+14 |     pub fn new<T>(compiler_config: T) -> Self
+   |            --- required by a bound in this associated function
+15 |     where
+16 |         T: Into<Box<dyn CompilerConfig>>,
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `Universal::new`
+   = note: the full name for the type has been written to '/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/memlayout-5932dfe833ace7fd.long-type-8744899333130670769.txt'
+   = note: consider using `--verbose` to print the full type name to the console
+
+error[E0308]: mismatched types
+  --> src/wasmrt.rs:69:13
+   |
+69 |             memory,
+   |             ^^^^^^ expected `Memory`, found `&Memory`
+   |
+help: consider using clone here
+   |
+69 |             memory: memory.clone(),
+   |                   ++++++++++++++++
+
+error[E0061]: this method takes 2 arguments but 1 argument was supplied
+   --> src/wasmrt.rs:83:28
+    |
+83  |                 match self.call_function(*func_name) {
+    |                            ^^^^^^^^^^^^^------------ argument #2 of type `&[wasmer::Value]` is missing
+    |
+note: method defined here
+   --> src/wasmrt.rs:149:12
+    |
+149 |     pub fn call_function(&mut self, name: &str, params: &[wasmer::Value]) -> Result<wasmer::Value, RuntimeError> {
+    |            ^^^^^^^^^^^^^                        ------------------------
+help: provide the argument
+    |
+83  |                 match self.call_function(*func_name, /* &[wasmer::Value] */) {
+    |                                                    ++++++++++++++++++++++++
+
+error[E0599]: no method named `len` found for struct `MemoryView` in the current scope
+  --> src/wasmrt.rs:95:24
+   |
+95 |         let len = view.len();
+   |                        ^^^ method not found in `MemoryView<'_>`
+
+error[E0599]: no method named `get` found for struct `MemoryView` in the current scope
+   --> src/wasmrt.rs:100:38
+    |
+100 |             if let Some(cell) = view.get(i) {
+    |                                      ^^^ method not found in `MemoryView<'_>`
+
+error[E0599]: no method named `len` found for struct `MemoryView` in the current scope
+   --> src/wasmrt.rs:113:32
+    |
+113 |         let memory_size = view.len();
+    |                                ^^^ method not found in `MemoryView<'_>`
+
+error[E0599]: no method named `get` found for struct `MemoryView` in the current scope
+   --> src/wasmrt.rs:121:29
+    |
+121 |             let cell = view.get(i)
+    |                             ^^^ method not found in `MemoryView<'_>`
+
+error[E0599]: no method named `len` found for struct `MemoryView` in the current scope
+   --> src/wasmrt.rs:134:32
+    |
+134 |         let memory_size = view.len();
+    |                                ^^^ method not found in `MemoryView<'_>`
+
+error[E0599]: no method named `unchecked_write` found for struct `MemoryView` in the current scope
+   --> src/wasmrt.rs:142:18
+    |
+142 |             view.unchecked_write(addr, data)
+    |                  ^^^^^^^^^^^^^^^ method not found in `MemoryView<'_>`
+
+error[E0308]: mismatched types
+   --> src/wasmrt.rs:153:9
+    |
+149 |       pub fn call_function(&mut self, name: &str, params: &[wasmer::Value]) -> Result<wasmer::Value, RuntimeError> {
+    |                                                                                ----------------------------------- expected `Result<wasmer::Value, wasmrt::RuntimeError>` because of return type
+...
+153 | /         func.call(&mut self.store)
+154 | |             .map_err(|e| RuntimeError::FunctionCall(name.to_string(), e.to_string()))
+    | |_____________________________________________________________________________________^ expected `Result<Value, RuntimeError>`, found `Result<(), RuntimeError>`
+    |
+    = note: expected enum `Result<wasmer::Value, _>`
+               found enum `Result<(), _>`
+
+error[E0599]: no variant or associated item named `GlobalNotFound` found for enum `wasmrt::RuntimeError` in the current scope
+   --> src/wasmrt.rs:160:42
+    |
+160 |             .ok_or_else(|| RuntimeError::GlobalNotFound(name.to_string()))?;
+    |                                          ^^^^^^^^^^^^^^ variant or associated item not found in `wasmrt::RuntimeError`
+...
+243 | pub enum RuntimeError {
+    | --------------------- variant or associated item `GlobalNotFound` not found for this enum
+
+error[E0599]: no variant or associated item named `GlobalNotFound` found for enum `wasmrt::RuntimeError` in the current scope
+   --> src/wasmrt.rs:170:42
+    |
+170 |             .ok_or_else(|| RuntimeError::GlobalNotFound(name.to_string()))?;
+    |                                          ^^^^^^^^^^^^^^ variant or associated item not found in `wasmrt::RuntimeError`
+...
+243 | pub enum RuntimeError {
+    | --------------------- variant or associated item `GlobalNotFound` not found for this enum
+
+error[E0599]: no variant or associated item named `GlobalSetFailed` found for enum `wasmrt::RuntimeError` in the current scope
+   --> src/wasmrt.rs:174:40
+    |
+174 |             .map_err(|e| RuntimeError::GlobalSetFailed(name.to_string(), e.to_string()))
+    |                                        ^^^^^^^^^^^^^^^ variant or associated item not found in `wasmrt::RuntimeError`
+...
+243 | pub enum RuntimeError {
+    | --------------------- variant or associated item `GlobalSetFailed` not found for this enum
+
+error[E0599]: no variant or associated item named `TableNotFound` found for enum `wasmrt::RuntimeError` in the current scope
+   --> src/wasmrt.rs:180:42
+    |
+180 |             .ok_or_else(|| RuntimeError::TableNotFound(name.to_string()))?;
+    |                                          ^^^^^^^^^^^^^ variant or associated item not found in `wasmrt::RuntimeError`
+...
+243 | pub enum RuntimeError {
+    | --------------------- variant or associated item `TableNotFound` not found for this enum
+
+error[E0599]: no variant or associated item named `TableNotFound` found for enum `wasmrt::RuntimeError` in the current scope
+   --> src/wasmrt.rs:187:42
+    |
+187 |             .ok_or_else(|| RuntimeError::TableNotFound(name.to_string()))?;
+    |                                          ^^^^^^^^^^^^^ variant or associated item not found in `wasmrt::RuntimeError`
+...
+243 | pub enum RuntimeError {
+    | --------------------- variant or associated item `TableNotFound` not found for this enum
+
+error[E0599]: no variant or associated item named `TableAccessFailed` found for enum `wasmrt::RuntimeError` in the current scope
+   --> src/wasmrt.rs:190:40
+    |
+190 |             .map_err(|e| RuntimeError::TableAccessFailed(name.to_string(), e.to_string()))
+    |                                        ^^^^^^^^^^^^^^^^^ variant or associated item not found in `wasmrt::RuntimeError`
+...
+243 | pub enum RuntimeError {
+    | --------------------- variant or associated item `TableAccessFailed` not found for this enum
+
+error[E0616]: field `dwarf_data` of struct `MemoryLayout` is private
+   --> src/wasmrt.rs:277:60
+    |
+277 |     let current_layout = MemoryLayout::new(&memory, layout.dwarf_data.clone());
+    |                                                            ^^^^^^^^^^ private field
+
+error[E0599]: no method named `get_global_as_i32` found for struct `WasmRuntime` in the current scope
+  --> src/main.rs:23:32
+   |
+23 |     let global_value = runtime.get_global_as_i32("my_global")?;
+   |                                ^^^^^^^^^^^^^^^^^ method not found in `WasmRuntime`
+   |
+  ::: src/wasmrt.rs:10:1
+   |
+10 | pub struct WasmRuntime {
+   | ---------------------- method `get_global_as_i32` not found for this struct
+
+error[E0599]: no method named `get_additional_memory` found for struct `WasmRuntime` in the current scope
+   --> src/main.rs:42:37
+    |
+42  |     let additional_memory = runtime.get_additional_memory("extra_memory")?;
+    |                                     ^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: src/wasmrt.rs:10:1
+    |
+10  | pub struct WasmRuntime {
+    | ---------------------- method `get_additional_memory` not found for this struct
+    |
+help: there is a method `read_memory` with a similar name, but with different arguments
+   --> src/wasmrt.rs:107:5
+    |
+107 |     pub fn read_memory(&self, address: u64, length: usize) -> Result<Vec<u8>, RuntimeError> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some errors have detailed explanations: E0061, E0277, E0308, E0412, E0422, E0425, E0432, E0433, E0559...
+For more information about an error, try `rustc --explain E0061`.
+warning: `memlayout` (bin "memlayout") generated 6 warnings
+error: could not compile `memlayout` (bin "memlayout") due to 64 previous errors; 6 warnings emitted

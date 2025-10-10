@@ -1,0 +1,2357 @@
+// memsegments.rs
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MemorySegment {
+    pub start: u64,
+    pub size: u64,
+    pub name: String,
+    pub segment_type: SegmentType,
+    pub signed: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum SegmentType {
+    GlobalVariable,
+    StackFrame,
+    HeapAllocation,
+    StaticData,
+    Function,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Visualization {
+    pub segments: Vec<VisualizationSegment>,
+    pub total_size: usize,
+}
+
+impl Visualization {
+    pub fn render_html(&self) -> String {
+        let mut html = String::new();
+        html.push_str("<!DOCTYPE html>\n<html>\n<head>\n<title>Memory Visualization</title>\n");
+        html.push_str("<style>.segment { padding: 4px; color: #fff; }</style>\n");
+        html.push_str("</head>\n<body>\n");
+        html.push_str("<h1>Memory Visualization</h1>\n");
+        html.push_str(&format!("<p>Total Size: {} bytes</p>\n", self.total_size));
+        html.push_str("<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\">\n");
+        html.push_str("<tr><th>Name</th><th>Address</th><th>Size</th><th>Type</th></tr>\n");
+        for seg in &self.segments {
+            html.push_str(&format!(
+                "<tr class='segment' style='background-color:{}'><td>{}</td><td>0x{:X}</td><td>{} bytes</td><td>{}</td></tr>\n",
+                seg.color, seg.name, seg.address, seg.size, seg.segment_type
+            ));
+        }
+        html.push_str("</table>\n</body>\n</html>\n");
+        html
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct VisualizationSegment {
+    pub name: String,
+    pub address: u64,
+    pub size: u64,
+    pub segment_type: String,
+    pub color: String,
+}
+
+
+// dwarfparser.rs
+use gimli::{Dwarf, SectionId, EndianSlice, LittleEndian, Unit, DebuggingInformationEntry, AttributeValue, Expression, EvaluationResult, Location, ValueType, Value,};
+use std::collections::HashMap;
+use std::rc::Rc;
+use wasmparser::{Parser, Payload};
+use crate::memlayout::*;
+use crate::errors::*;
+use crate::types::*;
+use crate::wasmrt::WasmRuntime;
+
+pub struct DwarfParser<'a> {
+    dwarf: Dwarf<EndianSlice<'a, LittleEndian>>,
+    sections: std::rc::Rc<HashMap<gimli::SectionId, Vec<u8>>>, // Ownership für from_wasm Funktion behalten
+}
+
+impl<'a> DwarfParser<'a> {
+    pub fn from_wasm(wasm_bytes: &'a[u8]) -> Result<Self, DwarfError> {
+        let sections = Rc::new(Self::parse_dwarf_sections(wasm_bytes)?);
+            //.map_err(|e| DwarfError::ParseError(e.to_string()))?;
+        
+        // Wir müssen die sections in der Struct behalten, damit sie lange genug leben
+        //let sections_rc = std::rc::Rc::new(sections);
+        
+        let sections_clone = Rc::clone(&sections);
+        
+        // Dwarf-Instanz erstellen
+        let dwarf = Dwarf::load(move |id| {
+            //Ok(sections
+            if let Some(s) = sections_clone.get(&id) {
+		let leaked: &'static [u8] = Box::leak(s.clone().into_boxed_slice());
+		Ok(EndianSlice::new(leaked, LittleEndian))
+	    } else {
+	       // Err(gimli::Error::MissingUnitDie)
+	        // statt Error einfach leere Sektion zurückgeben
+                Ok(EndianSlice::new(&[], LittleEndian))
+            }
+                //.get(&id) // Ok(sections.get(id))
+                //.map(|s| EndianSlice::new(s, LittleEndian)))
+                //.ok_or(gimli::Error::MissingUnitDie)
+        }) // ? wandelt gimli::Error -> DwarfError
+        .map_err(DwarfError::GimliError)?;
+    
+        Ok(Self { 
+            dwarf, 
+            sections//: std::rc::Rc::try_unwrap(sections_rc).unwrap_or_else(|_| panic!("Failed to unwrap Rc"))
+            	//.into()
+        })
+    }
+
+    fn section_id_from_name(name: &str) -> Option<gimli::SectionId> {
+        match name {
+            ".debug_abbrev" => Some(gimli::SectionId::DebugAbbrev),
+            ".debug_info" => Some(gimli::SectionId::DebugInfo),
+            ".debug_str" => Some(gimli::SectionId::DebugStr),
+            ".debug_line" => Some(gimli::SectionId::DebugLine),
+            ".debug_loc" => Some(gimli::SectionId::DebugLoc),
+            ".debug_ranges" => Some(gimli::SectionId::DebugRanges),
+            ".debug_str_offsets" => Some(gimli::SectionId::DebugStrOffsets),
+            ".debug_types" => Some(gimli::SectionId::DebugTypes),
+            // nach Bedarf weitere Sektionen hinzufügen
+            _ => None,
+        }
+    }
+
+    fn parse_dwarf_sections(wasm_bytes: &[u8]) -> Result<HashMap<SectionId, Vec<u8>>, DwarfError> {
+        let mut sections = HashMap::new();
+
+        let parser = Parser::new(0);
+        for payload in parser.parse_all(wasm_bytes) {
+        let payload = payload?;//.map_err(|e| DwarfError::ParseError(e.to_string()))?;
+            match payload {
+                Payload::CustomSection(section) => {
+                    let name = section.name();
+
+                    // Wir wollen nur Debug-Sektionen
+                    if let Some(id) = Self::section_id_from_name(name) {
+                        sections.insert(id, section.data().to_vec());
+                    }
+                }
+                _ => {}
+            }
+        }
+
+        Ok(sections)
+    }
+
+    pub fn get_source_location(&self, addr: u64) -> Option<(String, u64)> {
+        let dwarf = &self.dwarf;
+
+        // DWARF Line Section laden
+        let mut iter = dwarf.units();
+        while let Some(header) = iter.next().ok()? {
+            let unit = dwarf.unit(header).ok()?;
+            
+            let line_program = unit.line_program.as_ref()?;
+            let (program, sequences) = line_program.clone().sequences().ok()?;
+
+            for seq in &sequences {
+                // Prüfen, ob Adresse in diesem Line-Sequence liegt
+                if addr < seq.start || addr >= seq.end {
+                    continue;
+                }
+                // Durch Line Rows iterieren
+                let mut rows = program.resume_from(seq);
+                while let Ok(Some((header, row))) = rows.next_row() {
+                    if row.address() == addr {
+                    	if let Some(file) = row.file(header) {
+                        // Datei ermitteln
+                        match file.path_name() {
+                            AttributeValue::String(ref s) => {
+                                let file_name = String::from_utf8_lossy(s.slice()).into_owned();
+                                println!("File: {}", file_name);
+                                
+                                // Optional: Verzeichnis ermitteln und voranstellen
+                                let full_path = if let Some(dir_attr) = file.directory(header) {
+                                    if let Ok(dir_bytes) = dwarf.attr_string(&unit, dir_attr) {
+                                        let dir = String::from_utf8_lossy(&dir_bytes).into_owned();
+                                        if dir.is_empty() {
+                                            file_name.clone()
+                                        } else {
+                                            format!("{}/{}", dir, file_name)
+                                        }
+                                    } else {
+                                        file_name.clone()
+                                    }
+                                } else {
+                                    file_name.clone()
+                                };
+
+                                let line = row.line().map(|l| l.get()).unwrap_or(0);
+                                return Some((file_name, line));
+                                
+                            }
+                            AttributeValue::DebugStrRef(offset) => {
+                                if let Ok(name) = dwarf.attr_string(&unit, gimli::AttributeValue::DebugStrRef(offset)) {
+                                    let file_name = name.to_string_lossy().into_owned();
+                                    println!("File (ref): {}", file_name);
+                                    let line = row.line().map(|l| l.get()).unwrap_or(0);
+                                    return Some((file_name, line));
+                                }
+                            }
+                            _ => {
+                                println!("Unknown file name format in DWARF info");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        }
+        None
+    }
+
+    pub fn extract_memory_layout(&self, runtime: &WasmRuntime) -> Result<DwarfData, DwarfError> { // Statt Result<MemoryLayout, DwarfError>
+        let mut variables = Vec::new();
+        let mut type_registry = HashMap::new();
+        // 1. Parse CUs
+        // Iteriere über alle CUs
+        let mut units = self.dwarf.units();
+        while let Some(unit_header) = units.next().map_err(DwarfError::GimliError)? {
+            // Unit aus UnitHeader erstellen
+            let unit = self.dwarf.unit(unit_header).map_err(DwarfError::GimliError)?;
+
+            // Abkürzungen für diese Unit laden
+            /*let abbrevs = unit.abbreviations(&self.dwarf.debug_abbrev)
+                .map_err(DwarfError::GimliError)?;*/
+
+            // Einträge mit den Abkürzungen laden
+            let mut entries = unit.entries();
+
+            // DFS durch alle Debug Informationen
+            while let Ok(Some((depth, entry))) = entries.next_dfs().map_err(DwarfError::GimliError) {
+                self.process_die(entry, runtime, &unit, &mut variables, &mut type_registry);
+            }
+        }
+        
+        Ok(DwarfData { 
+            variables, 
+            types: type_registry 
+        })
+    }
+    
+    fn process_die(
+        &self,
+        die: &DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+        runtime: &WasmRuntime,
+        unit: &Unit<EndianSlice<LittleEndian>>,
+        variables: &mut Vec<VariableInfo>,
+        types: &mut HashMap<String, TypeInfo>,
+    ) -> Result<(), DwarfError> {
+        match die.tag() {
+            gimli::DW_TAG_variable => self.process_variable(runtime, die, unit, variables)?,
+            gimli::DW_TAG_structure_type => self.process_struct(die, unit, types)?,
+            gimli::DW_TAG_base_type => self.process_base_type(die, unit, types)?,
+            // Weitere Tags verarbeiten (function, array, etc.)
+            // 
+            _ => {}
+
+        }
+        Ok(())
+    }
+
+    // 2. Extract vars & locs
+    fn process_variable(
+        &self,
+        runtime: &WasmRuntime,
+        die: &DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+        unit: &Unit<EndianSlice<LittleEndian>>,
+        variables: &mut Vec<VariableInfo>,
+    ) -> Result<(), DwarfError> {
+        let name_attr = die.attr(gimli::DW_AT_name)?;
+        let name = if let Some(name_attr) = name_attr { //attrs.find(gimli::DW_AT_name) {
+            //if let Some(name) = name_attr.string_value(&debug_str) {
+                //let name_str = String::from_utf8_lossy(name.slice()).to_string();
+                let name_str = name_attr.string_value(&self.dwarf.debug_str)
+                    .ok_or_else(|| DwarfError::MissingInfo("Name string value not found".to_string()))?;
+                /*let name = */name_str.to_string()
+                    .map_err(|e| DwarfError::ParseError(e.to_string()))?
+            } else {
+               return Ok(());
+            };
+        //}
+        //let name = Some(name) = name_attr {
+            //name.string_value(&self.dwarf.debug_str)?.to_string()?
+            /*let name_str = name.string_value(&self.dwarf.debug_str)
+                .ok_or_else(|| DwarfError::MissingInfo("Name string value not found".to_string()))?;
+            let name = name_str.to_string()
+                .map_err(|e| DwarfError::ParseError(e.to_string()))?;
+        } else {
+            return Ok(());
+        };*/
+
+        // 3. Map to mem segments
+        // Addresse aus Location-Expression extrahieren
+        let address = match die.attr(gimli::DW_AT_location)? {
+            Some(attr) => { 
+                if let AttributeValue::Exprloc(expr) = attr.value() {
+                    self.evaluate_location(runtime, &expr, unit.encoding())?
+                } else {
+                    0
+                }
+            }
+            None => 0,
+        };
+
+        // Typinformation extrahieren
+        let (type_name, size) = if let Some(type_ref) = die.attr(gimli::DW_AT_type)? {
+            self.resolve_type(type_ref.value(), unit)?
+        } else {
+            ("<unknown>".to_string(), 0)
+        };
+
+        variables.push(VariableInfo {
+            name: name.to_string(),
+            address: address,
+            type_name: type_name,
+            size: size,
+        });
+
+        Ok(())
+    }
+
+    fn process_struct(
+        &self,
+        die: &DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+        unit: &Unit<EndianSlice<LittleEndian>>,
+        types: &mut HashMap<String, TypeInfo>,
+    ) -> Result<(), DwarfError> {
+        // Implementierung für Strukturtypen
+        // Namen der Struktur extrahieren
+        let name_attr = die.attr(gimli::DW_AT_name)?
+            .ok_or_else(|| DwarfError::MissingInfo("Struct name not found".to_string()))?;
+        
+        let name_str = name_attr.string_value(&self.dwarf.debug_str)
+            .ok_or_else(|| DwarfError::MissingInfo("Name string value not found".to_string()))?;
+        let name = name_str.to_string()
+            .map_err(|e| DwarfError::ParseError(e.to_string()))?;
+
+        // Größe der Struktur extrahieren
+        let size = die.attr(gimli::DW_AT_byte_size)?
+            .and_then(|attr| attr.udata_value())
+            .unwrap_or(0);
+
+        // Felder der Struktur sammeln
+        let mut fields = HashMap::new();
+        //let mut entries = die.units().next()
+        let mut units = self.dwarf.units();
+
+        while let Some(unit_header) = units.next().map_err(DwarfError::GimliError)? {
+
+            //.expect("Soll zumindest eine CU haben")
+            //.expect("And soll es ok parsen");
+            let unit = self.dwarf.unit(unit_header)
+            	.map_err(DwarfError::GimliError)?;
+
+	    /*let abbrevs = unit.abbreviations(&self.dwarf.debug_abbrev)
+	        .map_err(DwarfError::GimliError)?;*/
+
+	    // Hole die erste Entry aus der CU
+	    let mut cursor = unit.entries();
+	    if let Some((_, entry)) = cursor.next_dfs()
+	        .map_err(DwarfError::GimliError)? {
+
+	        let mut attrs = entry.attrs();
+	    
+	        while let Some(attr) = attrs.next().unwrap() {
+	            if entry.tag() == gimli::DW_TAG_member {
+	                let field_name_attr = entry.attr(gimli::DW_AT_name)?;
+	                let field_name = if let Some(name) = field_name_attr {
+	                    let name_str = name.string_value(&self.dwarf.debug_str)
+	                        .ok_or_else(|| DwarfError::MissingInfo("String value not found".to_string()))?;
+	                    name_str.to_string()
+	                        .map_err(|e| DwarfError::ParseError(e.to_string()))?
+	                } else {
+	                    continue; // Überspringen von Feldern ohne Namen
+	                };
+
+	                // Feld-Offset extrahieren
+	                let offset = entry.attr(gimli::DW_AT_data_member_location)?
+	                    .and_then(|attr| attr.udata_value())
+	                    .unwrap_or(0);
+
+	                // Feld-Typ extrahieren
+	                let (type_name, field_size) = if let Some(type_ref) = entry.attr(gimli::DW_AT_type)? {
+	                    self.resolve_type(type_ref.value(), &unit)?
+	                } else {
+	                    ("<unknown>".to_string(), 0)
+	                };
+
+	                // FieldInfo erstellen und hinzufügen
+	                let field_info = FieldInfo {
+	                    name: field_name.to_string(),
+	                    offset,
+	                    type_info: types.get(&type_name).cloned().unwrap_or(TypeInfo::Unknown),
+	                };
+
+	                fields.insert(field_info.name.clone(), field_info);
+	            }
+	        }
+	    }
+        }
+        // TypeInfo für die Struktur erstellen und zur Registry hinzufügen
+        let type_info = TypeInfo::Struct {
+            size: size,
+            fields: fields,
+            name: name.to_string().clone(),
+        };
+
+        types.insert(name.to_string(), type_info);
+
+        Ok(())
+
+    }
+
+    fn process_base_type(
+        &self,
+        die: &DebuggingInformationEntry<EndianSlice<LittleEndian>>,
+        unit: &Unit<EndianSlice<LittleEndian>>,
+        types: &mut HashMap<String, TypeInfo>,
+    ) -> Result<(), DwarfError> {
+        // Implementierung für Basistypen
+        // Namen des Basistyps extrahieren
+        let name_attr = die.attr(gimli::DW_AT_name)?
+            .ok_or_else(|| DwarfError::MissingInfo("Base type name not found".to_string()))?;
+        
+        let name = name_attr
+       	    .string_value(&self.dwarf.debug_str)
+       	    .ok_or_else(|| DwarfError::MissingInfo("Name string value not found".to_string()))?
+       	    .to_string()
+       	    .map_err(|e| DwarfError::ParseError(e.to_string()))?;
+        
+        let name_str = match name_attr.string_value(&self.dwarf.debug_str) {
+            Some(s) => s.to_string()
+                .map_err(|e| DwarfError::ParseError(e.to_string()))?,
+            None => return Ok(()),
+        };
+
+        // Größe des Basistyps extrahieren
+        let size = die.attr(gimli::DW_AT_byte_size)?
+            .and_then(|attr| attr.udata_value())
+            .unwrap_or(0);
+
+        // Encoding (Vorzeichenbehaftet/Vorzeichenlos) extrahieren
+        let encoding = die.attr(gimli::DW_AT_encoding)?
+            .and_then(|attr| attr.udata_value())
+            .map(|val| gimli::DwAte(val as u8))
+            .unwrap_or(gimli::DW_ATE_signed); // Fallback
+
+        // Art des primitiven Typs bestimmen
+        let kind = match encoding {
+            gimli::DW_ATE_signed | gimli::DW_ATE_signed_char => PrimitiveKind::Int { signed: true },
+            gimli::DW_ATE_unsigned | gimli::DW_ATE_unsigned_char => PrimitiveKind::Int { signed: false },
+            gimli::DW_ATE_float => PrimitiveKind::Float,
+            gimli::DW_ATE_boolean => PrimitiveKind::Bool,
+            _ => PrimitiveKind::Int { signed: true }, // Default
+        };
+
+        // TypeInfo für den Basistyp erstellen und zur Registry hinzufügen
+        let type_info = TypeInfo::Primitive { size, kind };
+        types.insert(name.to_string().clone(), type_info);
+
+        Ok(())
+    }
+
+    fn evaluate_location(
+        &self,
+        runtime: &WasmRuntime,
+        expr: &gimli::Expression<EndianSlice<LittleEndian>>,
+        encoding: gimli::Encoding
+    ) -> Result<u64, DwarfError> {
+        let mut eval = expr.evaluation(encoding);
+        let mut result = eval.evaluate().map_err(DwarfError::GimliError)?;
+
+        //while let Some(operation) = eval.next()? {
+        // Evaluation fortsetzen, bis sie abgeschlossen ist
+        loop {
+            match result {
+                gimli::EvaluationResult::Complete => break,
+                gimli::EvaluationResult::RequiresRegister { register, base_type } => {
+                    // Registerwert aus dem Ausführungskontext holen
+                    let register_value = self.get_register_value(runtime, register, base_type)
+                        .map_err(|e| DwarfError::RegisterUnavailable(register, e.to_string()))?;
+                    result = eval.resume_with_register(gimli::Value::Generic(register_value))
+                        .map_err(DwarfError::GimliError)?; 
+                }
+                gimli::EvaluationResult::RequiresFrameBase => {
+                    // Frame-Base-Adresse aus dem Ausführungskontext holen
+                    let frame_base = self.get_frame_base(runtime)
+                        .map_err(|e| DwarfError::FrameBaseUnavailable(e.to_string()))?;
+                    result = eval.resume_with_frame_base(frame_base)
+                        .map_err(DwarfError::GimliError)?;
+                }
+                gimli::EvaluationResult::RequiresRelocatedAddress(offset) => {
+                    // Relozierte Adresse berechnen
+                    let relocated_address = self.relocate_address(runtime, offset)
+                        .map_err(|e| DwarfError::RelocationError(offset, e.to_string()))?;
+                    result = eval.resume_with_relocated_address(relocated_address)
+                        .map_err(DwarfError::GimliError)?;
+                }
+                
+                gimli::EvaluationResult::RequiresMemory { address, size, .. } => {
+                    // Speicherinhalt lesen
+                    let start = address as usize;
+                    let end = start + size as usize;
+                    let memory_contents = self.read_memory(runtime, address, size as u64)?;
+                    if end > memory_contents.len() {
+                        return Err(DwarfError::MemoryReadError(address, size.into(), "out of bounds".to_string()));
+                    }
+                    let bytes = &memory_contents[start..end];
+
+                    // Die gelesenen Bytes in u64 packen
+                    let mut buf = [0u8; 8];
+                    buf[..bytes.len()].copy_from_slice(bytes);
+
+                    // Wert bauen (DWARF behandelt das als generischen Wert)
+                    let value = Value::Generic(u64::from_le_bytes(buf));
+
+                    // Evaluation mit dem gelesenen Wert fortsetzen
+                    result = eval.resume_with_memory(value)?;
+
+                    /*let memory_contents = self.read_memory(address, size as u64)
+                        .map_err(|e| DwarfError::MemoryReadError(address, size.into(), e.to_string()))?;
+                    result = eval.resume_with_memory(memory_contents)
+                        .map_err(DwarfError::GimliError)?;*/
+                }
+                
+                gimli::EvaluationResult::RequiresEntryValue (value_type) => {
+                    // Benötigten Wert beschaffen, eine Referenz auf die Expression Übergeben
+                    let value = self.evaluate_entry_value(&value_type)
+                        .map_err(|e| DwarfError::EntryValueEvaluationError(e.to_string()))?;
+                    result = eval.resume_with_entry_value(gimli::Value::Generic(value))
+                        .map_err(DwarfError::GimliError)?;
+                }
+                
+                gimli::EvaluationResult::RequiresTls(_) => {
+                    // TLS-Wert beschaffen
+                    let tls_value = self.get_tls_value(runtime)
+                        .map_err(|e| DwarfError::TlsUnavailable(e.to_string()))?;
+                    result = eval.resume_with_tls(tls_value)
+                        .map_err(DwarfError::GimliError)?;
+                }            
+                    // Weitere Fälle nach Bedarf behandeln
+                other => {
+                    return Err(DwarfError::UnsupportedExpression(
+                        format!("Unsupported evaluation result: {:?}", other)
+                    ));
+                }
+            }
+        }
+        // Ergebnis auswerten
+        let pieces = eval.result();
+        for piece in pieces {
+            /*let addr = */if let gimli::read::Location::Address { address } = piece.location { 
+                return Ok(address);
+            } else {
+                return Err(DwarfError::UnsupportedLocation(format!("Unsupported location: {:?}", piece.location)));
+            };
+        }
+        Err(DwarfError::InvalidLocation)
+    }
+
+    fn evaluate_entry_value(&self, expr: &gimli::Expression<EndianSlice<LittleEndian>>) -> Result<u64, Box<dyn std::error::Error>> {
+        // Implementierung zur Auswertung des DWARF-Ausdrucks
+        // am Einstiegspunkt der aktuellen Funktion
+        // Dies erfordert Zugriff auf Registerwerte, Speicherinhalt, etc.
+        unimplemented!()
+    }
+
+
+
+    fn resolve_type(
+        &self,
+        attr_value: AttributeValue<EndianSlice<LittleEndian>>,
+        unit: &Unit<EndianSlice<LittleEndian>>,
+    ) -> Result<(String, u64), DwarfError> {
+        if let AttributeValue::UnitRef(offset) = attr_value {
+            let type_die = unit.entry(offset)?;
+            let name = type_die.attr(gimli::DW_AT_name)?
+                .and_then(|attr| attr.string_value(&self.dwarf.debug_str))
+                .map(|s| s.to_string().unwrap_or_else(|_| "<unnamed>"))
+                .unwrap_or_else(|| "<unnamed>");
+            
+            let size = type_die.attr(gimli::DW_AT_byte_size)?
+                .and_then(|attr| attr.udata_value())
+                .unwrap_or(0);
+
+            Ok((name.to_string(), size))
+        } else {
+            Err(DwarfError::TypeResolutionFailed(format!(
+                        "Expected UnitRef attribute value, got {:?}",
+                        attr_value)))
+        }
+    }
+
+    // Hilfsmethoden, die Sie implementieren müssten
+
+    fn get_register_value(&self, runtime: &WasmRuntime, register: gimli::Register, base_type: gimli::UnitOffset) -> Result<u64, Box<dyn std::error::Error>> {
+        // Registerwert aus dem Ausführungskontext holen
+        // Diese Implementierung hängt von Ihrer spezifischen Laufzeitumgebung ab
+        // Wasmer kennt keine CPU-Register, deshalb Dummy-Wert.
+        // Später könntest du hier Debug-Infos oder spezielle globale Variablen abfragen.
+        Ok(0)
+    }
+
+    fn get_frame_base(&self, runtime: &WasmRuntime,) -> Result<u64, Box<dyn std::error::Error>> {
+        // Frame-Base-Adresse berechnen
+        // In WebAssembly gibt es keinen klassischen Stack-Frame wie in nativen Prozessen.
+        // Du kannst hier ggf. 0 oder die Basis einer globalen Variable zurückgeben.
+        Ok(0)
+    }
+
+    fn relocate_address(&self, runtime: &WasmRuntime, offset: u64) -> Result<u64, Box<dyn std::error::Error>> {
+        // Adresse relozieren
+        // Falls du ein Mapping von DWARF-Adressen → Wasm-Memory brauchst, kannst du das hier implementieren.
+        Ok(offset)
+    }
+
+    fn read_memory(
+    	&self, 
+    	runtime: &WasmRuntime, 
+    	address: u64, 
+    	size: u64
+    ) -> Result<Vec<u8>, DwarfError> {
+        // Speicherinhalt lesen
+        let bytes = runtime.read_memory(address, size as usize)?;
+        Ok(bytes)
+    }
+
+    fn get_value(&self, value_type: gimli::ValueType) -> Result<u64, Box<dyn std::error::Error>> {
+        // Benötigten Wert beschaffen
+        Ok(0)
+    }
+
+    fn get_tls_value(&self, runtime: &WasmRuntime) -> Result<u64, Box<dyn std::error::Error>> {
+        // TLS-Wert beschaffen
+        // WebAssembly kennt standardmäßig kein TLS.
+        Ok(0)
+    }
+}
+
+
+// disasm.rs
+// new file: src/disasm.rs
+// src/disasm.rs
+use std::collections::HashMap;
+use wasmparser::{Parser, Payload, Operator};
+use anyhow::Result;
+
+pub type Instr = (usize, String);
+
+#[derive(Debug)]
+pub struct FunctionDisasm {
+    pub func_index: u32,
+    pub instrs: Vec<Instr>, // (offset, textual op)
+}
+
+#[derive(Debug)]
+pub struct ModuleDisasm {
+    pub functions: Vec<FunctionDisasm>,
+}
+
+impl ModuleDisasm {
+    pub fn from_wasm(bytes: &[u8]) -> Result<Self> {
+        let mut parser = Parser::new(0);
+        let mut functions = Vec::new();
+        let mut func_index: u32 = 0;
+        let mut function_imports: u32 = 0;
+
+        while let Ok(payload) = parser.parse(bytes, true) {
+            match payload {
+                wasmparser::Chunk::NeedMoreData(_) => break,
+                wasmparser::Chunk::Parsed { payload, .. } => match payload {
+                    Payload::ImportSection(imports) => {
+                        for import in imports {
+                            let imp = import?;
+                            if let wasmparser::TypeRef::Func(_) = imp.ty {
+                                function_imports += 1;
+                                println!(
+                                    "Imported function: {}::{}",
+                                    imp.module, imp.name
+                                );
+                            }
+                        }
+                    }
+                    Payload::CodeSectionEntry(body) => {
+                        let idx = function_imports + func_index;
+                        let mut reader = body.get_operators_reader()?;
+                        let mut instrs = Vec::new();
+                        while !reader.eof() {
+                            let pos = reader.original_position();
+                            let op = reader.read()?;
+                            instrs.push((pos, format!("{:?}", op)));
+                        }
+                        functions.push(FunctionDisasm { func_index: idx, instrs });
+                        func_index += 1;
+                    }
+                    Payload::End(_) => break,
+                    _ => {}
+                },
+            }
+        }
+
+        Ok(Self { functions })
+    }
+
+    pub fn get_instr(&self, func_index: u32, instr_idx: usize) -> Option<(usize, String)> {
+        self.functions
+            .get(func_index as usize)?
+            .instrs
+            .get(instr_idx)
+            .cloned()
+    }
+
+    pub fn func_len(&self, func_index: u32) -> Option<usize> {
+        self.functions
+            .get(func_index as usize)
+            .map(|f| f.instrs.len())
+    }
+}
+
+
+
+// disasmOLD.rs
+// new file: src/disasm.rs
+use std::collections::HashMap;
+use wasmparser::{Operator, Parser, Payload, Chunk, TypeRef, FuncValidator, Validator, WasmFeatures};
+use anyhow::Result;
+
+pub type Instr = (usize, wasmparser::Operator<'static>); // offset in function, operator (owned)
+
+pub struct FunctionDisasm {
+    pub func_index: u32,
+    pub instrs: Vec<Instr>, // (offset_in_func, operator)
+}
+
+pub struct ModuleDisasm {
+    pub functions: Vec<Vec<(usize, String)>>, // func_index -> disasm
+}
+
+impl ModuleDisasm {
+    pub fn from_wasm(bytes: &[u8]) -> anyhow::Result<Self> {
+        let mut parser = Parser::new(0);
+        let mut func_bodies = Vec::new();
+        let mut func_index = 0u32;
+        let mut function_imports = 0u32;
+
+        // first pass: count imports to map code section function indices
+        //for payload in parser.parse_all(bytes) {
+        loop {
+            match parser.parse(bytes, true)? {
+                Chunk::NeedMoreData(_) => break,
+                Chunk::Parsed(payload) => match payload {
+                    Payload::ImportSection(s) => {
+                        for import in s {
+                            let imp = import?;
+                            if matches!(imp.ty, TypeRef::Func(_)) {
+                                function_imports += 1;
+                                println!("Imported function: {}::{:?}", imp.module, imp.name);
+                            }
+                        }
+                    }
+                    Payload::CodeSectionEntry(body) => {
+                        let mut reader = body.get_operators_reader()?;
+                        let mut instrs = Vec::new();
+                        while !reader.eof() {
+                            let pos = reader.original_position();
+                            let op = reader.read()?;
+                            instrs.push((pos, format!("{:?}", op)));
+                        }
+                        functions.push(instrs);
+                    }
+                    Payload::End(_) => break,
+                    _ => continue,
+                },
+            }
+        }
+
+        // second pass: parse code section
+        let mut parser = Parser::new(0);
+        let mut module_disasm = ModuleDisasm { functions: Vec::new() };
+        while let wasmparser::Chunk::Parsed { consumed: _, payload: _ } = parser.parse(bytes, true)? {
+            match payload {
+                Payload::CodeSectionStart { count, .. } => {
+                    // reader through payloads
+                }
+                Payload::CodeSectionEntry(body) => {
+                    // body is FunctionBody
+                    let idx = function_imports + func_index;
+                    let mut reader = body.get_operators_reader()?;
+                    let mut instrs = Vec::new();
+                    while !reader.eof() {
+                        let pos = reader.original_position();
+                        let op = reader.read()?;
+                        // To store operator, we must convert to owned — easiest: format to string for display,
+                        // but here we keep operator by mapping to a string. (Operators are not 'static)
+                        // We'll store text representation plus offset
+                        instrs.push((pos, format!("{:?}", op)));
+                    }
+                    module_disasm.functions.insert(idx.try_into().unwrap(), FunctionDisasm { func_index: idx, instrs });
+                    func_index += 1;
+                }
+                Payload::End(_) => break,
+                _ => continue,
+            }
+        }
+        Ok(module_disasm)
+    }
+
+    pub fn get_instr(&self, func_index: u32, instr_idx: usize) -> Option<(usize, String)> {
+        self.functions
+            .get(func_index as usize)?
+            .get(instr_idx)
+            .cloned()
+    }
+
+    pub fn func_len(&self, func_index: u32) -> Option<usize> {
+        self.functions.get(func_index as usize).map(|f| f.instrs.len())
+    }
+}
+
+
+
+// wasmrt.rs
+use wasmer::{Store, Module, Engine, Instance, Memory, MemoryType, Table, Global};//, Universal};
+                                          
+use wasmer_compiler::EngineBuilder;
+
+//use wasmer::compiler::{Singlepass, Cranelift, LLVM};
+//use wasmer_engine_universal::Universal;
+//use wasmer::engine::Universal;
+use wasmer_types::Type;
+//use wasmer::CompilerConfig;
+
+#[cfg(feature = "cranelift")]
+use wasmer_compiler_cranelift::Cranelift;
+#[cfg(feature = "singlepass")]
+use wasmer_compiler_singlepass::Singlepass;
+#[cfg(feature = "llvm")]
+use wasmer_compiler_llvm::LLVM;
+
+//use wasmer::sys::Cranelift;
+use std::collections::HashMap;
+use wasmer_types::lib::std::cell::RefCell;
+use crate::MemoryLayout;
+use crate::types::VariableValue;
+use crate::errors::*;
+
+pub struct WasmRuntime {
+    store: RefCell<Store>,
+    instance: Instance,
+    memory: Memory,
+    exported_functions: HashMap<String, wasmer::Function>,
+    exported_globals: HashMap<String, Global>,
+    exported_tables: HashMap<String, Table>,
+    exported_memories: HashMap<String, Memory>,
+}
+
+impl WasmRuntime {
+    fn make_engine() -> Engine {
+        #[cfg(feature = "cranelift")]
+        {
+            let compiler = Cranelift::default();
+            let raw_engine = EngineBuilder::new(compiler).engine();
+            return Engine::from(raw_engine);
+        }
+
+        #[cfg(feature = "singlepass")]
+        {
+            let compiler = Singlepass::default();
+            let raw_engine = EngineBuilder::new(compiler).engine();
+            return Engine::from(raw_engine);
+        }
+
+        // Fallback: wenn kein Feature gesetzt → Cranelift
+        #[cfg(feature = "llvm")]
+        {
+            let compiler = LLVM::default();
+            let raw_engine = EngineBuilder::new(compiler).engine();
+            return Engine::from(raw_engine);
+        }
+        panic!("Kein Backend aktiviert — benutze --features cranelift | singlepass | llvm");
+    }
+
+    pub fn init_store() -> Store {
+        let engine = Self::make_engine();
+        Store::new(engine)
+    }
+
+    pub fn new(wasm_bytes: &[u8]) -> Result<Self, anyhow::Error> {
+        // Store mit Cranelift Compiler erstellen
+        //let engine = Universal::new(compiler).engine();
+        let mut store = Self::init_store();// statt Store::default();
+
+        // Modul aus Bytes erstellen
+        let module = Module::new(&store, wasm_bytes)
+            .map_err(|e| RuntimeError::InstanceCreation(e.to_string()))?;
+
+        // Importe definieren
+        let import_object = wasmer::imports! {};
+
+        let instance = Instance::new(&mut store, &module, &import_object)
+            .map_err(|e| RuntimeError::InstanceCreation(e.to_string()))?;
+        let memory = instance.exports.get_memory("memory")
+            .map_err(|e| RuntimeError::MemoryNotFound(format!("export 'memory' not found: {}", e)))?;
+
+        // Exportierte Funktionen sammlen
+        let mut exported_functions = HashMap::new();
+        let mut exported_globals = HashMap::new();
+        let mut exported_tables = HashMap::new();
+        let mut exported_memories = HashMap::new();
+        let mut default_memory: Option<wasmer::Memory> = None;
+
+        for (name, export) in instance.exports.iter() {
+            match export {
+                wasmer::Extern::Function(func) => {
+                    exported_functions.insert(name.to_string(), func.clone());
+                }
+                //wasmer::Extern::Function(func) => {
+	        // Vereinfacht: Wir nehmen an, dass alle Funktionen () -> () sind
+	            //if let Ok(typed_func) = func.typed::<(), ()>(&store) {
+	                 //exported_functions.insert(name.to_string(), typed_func);
+	         
+                wasmer::Extern::Global(global) => {
+                     exported_globals.insert(name.to_string(), global.clone());
+                }
+                wasmer::Extern::Table(table) => {
+                     exported_tables.insert(name.to_string(), table.clone());
+                }
+                wasmer::Extern::Memory(mem) => {
+                     if default_memory.is_none() {
+                         default_memory = Some(mem.clone());
+                     }
+                     exported_memories.insert(name.to_string(), mem.clone());
+                }
+                wasmer::Extern::Tag(_) => {
+                    eprintln!("Tag export '{}' not supported yet!", name);
+                }
+            	
+            }
+
+        }
+    
+        let memory = default_memory.ok_or_else(|| RuntimeError::MemoryNotFound("default memory".to_string()))?;
+
+        Ok(Self { 
+            store: store.into(), 
+            instance, 
+            memory: memory.clone(),
+            exported_functions,
+            exported_globals,
+            exported_tables,
+            exported_memories,
+        })
+    }
+
+    pub fn call_init_functions(&mut self) -> Result<(), RuntimeError> {
+        // Versuche, bekannte Initialisierungsfunktionen aufzurufen
+        let init_functions = ["_start", "__wasm_call_ctors", "init", "initialize"];
+
+        for func_name in init_functions.iter() {
+            if self.exported_functions.contains_key(*func_name) {
+                match self.call_function(*func_name, &[]) {
+                    Ok(_) => println!("Successfully called init function: {}", func_name),
+                    Err(e) => eprintln!("Failed to call init function {}: {}", func_name, e),
+                }
+            }
+        }
+        
+        Ok(())
+    }
+
+    // Führt einen einzelnen Schritt in der WASM-Instanz aus.
+    // Sucht nach einer Funktion `_step`, `step`, oder `main`
+    // und führt sie aus, falls vorhanden.
+    pub fn step_instruction(&mut self) -> anyhow::Result<()> {
+        // Versuche, Instanz und Store zu bekommen
+        let mut store_ref = self.store.borrow_mut();
+        let instance = &self.instance;
+
+        // Liste möglicher "step"-Funktionen (z. B. Debug-/Main-Einstiegspunkte)
+        let candidates = ["_step", "step", "main"];
+
+        let mut found = false;
+
+        for name in candidates {
+            if let Ok(export) = instance.exports.get_function(name) {
+                //if let Some(func) = export.into_function() {
+                println!(">> Stepping into function '{}'", name);
+                // Kein Argument, kein Rückgabewert – universell sicher
+                match export.call(&mut *store_ref, &[]) {
+                    Ok(results) => {
+                        println!("✅ Executed '{}' ({} results)", name, results.len());
+                    }
+                    Err(e) => {
+                        println!("⚠️ Error executing '{}': {}", name, e);
+                    }
+                }
+                found = true;
+                break;
+            } else {
+                println!("⚠️ Export '{}' exists but is not callable", name);
+            }
+        }
+
+        if !found {
+            println!("(no step-like function found - running placeholder)");
+            // Optional: du kannst hier eine „simulierte“ CPU-Instruktion anzeigen
+            println!("> Simulated step executed at fake PC=0x{:x}", 1);
+        }
+
+        Ok(())
+    }
+
+    pub fn get_memory_snapshot(&self) -> Vec<u8> {
+        let store_ref = self.store.borrow();
+        match self.memory.view(&*store_ref).copy_to_vec() {
+            Ok(vec) => vec,
+            Err(_) => vec![],
+        }
+        /*let view = self.memory.view(&self.store);
+        let len = view.size().0 * 65536;
+        let mut snapshot = Vec::with_capacity(len);
+
+        // Verwendung des get() anstelle des Indexoperators
+        for i in 0..len {
+            if let Some(cell) = view.get(i) {
+                snapshot.push(cell.get());
+            }
+        }
+
+        snapshot*/
+    }
+    pub fn read_memory(&self, address: u64, length: usize) -> Result<Vec<u8>, RuntimeError> {
+        //let addr = address as usize;
+        //let end = addr + length;
+       
+        let store_ref = self.store.borrow();
+        // Größe des Speichers über den View ermitteln
+        let view = self.memory.view(&*store_ref);
+        //let memory_size = view.size().0 * 65536;
+        let mut buffer = vec![0; length];
+        view.read(address, &mut buffer)
+            .map_err(|_| RuntimeError::InvalidMemoryAccess);
+        Ok(buffer)
+        /*if end > memory_size {
+            return Err(RuntimeError::InvalidMemoryAccess);
+        }
+        
+        let mut result = Vec::with_capacity(length);
+        
+        for i in addr..end {
+            let cell = view.get(i)
+                .ok_or(RuntimeError::InvalidMemoryAccess)?;
+            result.push(cell.get());
+        }
+        
+        Ok(result)*/
+    }
+    
+    pub fn write_memory(&mut self, address: u64, data: &[u8]) -> Result<(), RuntimeError> {
+        //let addr = address as usize;
+        //let end = addr + data.len();
+       
+        let store_ref = self.store.borrow();
+        let view = self.memory.view(&*store_ref);
+        //let memory_size = view.size().0 * 65536;
+
+        view.write(address, data)
+            .map_err(|_| RuntimeError::InvalidMemoryAccess);
+        //if end > memory_size {
+            //return Err(RuntimeError::InvalidMemoryAccess);
+        //}
+
+        // Effizienteres Schreiben mit write
+        /*unsafe {
+            view.unchecked_write(addr, data)
+                .map_err(|_| RuntimeError::InvalidMemoryAccess)?;
+        } */
+
+        Ok(())
+    }
+    
+    pub fn call_function(&mut self, name: &str, params: &[wasmer::Value]) -> Result<Box<[wasmer::Value]>, RuntimeError> {
+        let func = self.exported_functions.get(name)
+            .ok_or_else(|| RuntimeError::FunctionNotFound(name.to_string()))?;
+
+        let mut store_ref = self.store.borrow_mut();
+        func.call(&mut *store_ref, &params)
+            .map_err(|e| RuntimeError::FunctionCall(name.to_string(), e.to_string()))
+    }
+
+    // Globals
+    pub fn get_global_value(&mut self, name: &str) -> Result<wasmer::Value, RuntimeError> {
+        let global = self.exported_globals.get(name)
+            .ok_or_else(|| RuntimeError::GlobalNotFound(name.to_string()))?;
+        
+        //global.set(&mut self.store, value)
+            //.map_err(|e| RuntimeError::GlobalSetFailed(name.to_string(), e.to_string()))
+        let mut store_ref = self.store.borrow_mut();
+        Ok(global.get(&mut *store_ref))
+    }
+
+    pub fn set_global_value(&self, name: &str, value: wasmer::Value) -> Result<(), RuntimeError> {
+        let global = self.exported_globals.get(name)
+            .ok_or_else(|| RuntimeError::GlobalNotFound(name.to_string()))?;
+
+        let mut store_ref = self.store.borrow_mut();
+        global.set(&mut *store_ref, value)
+            .map_err(|e| RuntimeError::GlobalSetFailed(name.to_string(), e.to_string()))
+    }
+
+    // Tables
+    pub fn get_table_size(&self, name: &str) -> Result<u32, RuntimeError> {
+        let table = self.exported_tables.get(name)
+            .ok_or_else(|| RuntimeError::TableNotFound(name.to_string()))?;
+    
+        let store_ref = self.store.borrow();
+        Ok(table.size(&*store_ref))
+    }
+
+    pub fn get_table_element(&self, name: &str, index: u32) -> Result<Option<wasmer::Value>, RuntimeError> {
+        let table = self.exported_tables.get(name)
+            .ok_or_else(|| RuntimeError::TableNotFound(name.to_string()))?;
+
+        // wasmer-API erwartet &mut impl AsStoreMut
+        let mut store_ref = self.store.borrow_mut();
+        Ok(table.get(&mut *store_ref, index))
+        /*table.get(&self.store, index)
+            .ok_or_else(|| RuntimeError::TableAccessFailed(
+                 name.to_string(), 
+                 format!("Element at index {} not found!", index)
+            ))*/
+    }
+
+    // Memories (zusätzliche Memories)
+    pub fn get_additional_memory(&self, name: &str) -> Result<&Memory, RuntimeError> {
+        self.exported_memories.get(name)
+            .ok_or_else(|| RuntimeError::MemoryNotFound(name.to_string()))
+    }
+
+    // Hilfsmethoden für häufige Operationen
+    pub fn get_global_as_i32(&mut self, name: &str) -> Result<i32, RuntimeError> {
+        let value = self.get_global_value(name)?;
+        if let wasmer::Value::I32(val) = value {
+            Ok(val)
+        } else {
+            Err(RuntimeError::TypeMismatch {
+                expected: "i32".to_string(),
+                found: format!("{:?}", value),
+            })
+        }
+    }
+
+    pub fn get_global_as_i64(&mut self, name: &str) -> Result<i64, RuntimeError> {
+        let value = self.get_global_value(name)?;
+        if let wasmer::Value::I64(val) = value {
+            Ok(val)
+        } else {
+            Err(RuntimeError::TypeMismatch {
+                expected: "i64".to_string(),
+                found: format!("{:?}", value),
+            })
+        }
+    }
+    
+/*    pub fn get_global_value(&self, name: &str) -> Option<i32> {
+        // Vereinfachte Implementierung für Globals
+        // In einer echten Implementierung müssten Sie den Typ des Globals berücksichtigen
+        self.instance.exports.get_global(name)
+            .ok()
+            .and_then(|global| {
+                let mut store = self.store.borrow_mut(); // Mutable borrow
+                let value = global.get(&mut *store);
+                if let wasmer::Value::I32(val) = value {
+                    Some(val)
+                } else {
+                    None
+                }
+            })
+        }
+    }*/
+}
+/*
+#[derive(Error, Debug)]
+pub enum RuntimeError {
+    #[error("Failed to create WASM instance: {0}")]
+    InstanceCreation(String),
+
+    #[error("Memory not found in WASM module")]
+    MemoryNotFound,
+
+    #[error("Function '{0}' not found")]
+    FunctionNotFound(String),
+
+    #[error("Failed to call function '{0}': {1}")]
+    FunctionCall(String, String),
+
+    #[error("Invalid memory access")]
+    InvalidMemoryAccess,
+
+    #[error("I/O error: {0}")]
+    IoError(#[from] std::io::Error),
+
+    #[error("Unknown runtime error: {0}")]
+    Unknown(String),
+}
+*/
+
+
+fn inspect_variable(
+    runtime: &WasmRuntime,
+    layout: &MemoryLayout,
+    var_name: &str,
+) -> Result<VariableValue, anyhow::Error> {
+    let var_info = layout.read_variable(var_name)?;
+    let memory = runtime.get_memory_snapshot();
+
+    // Aktualisiertes Layout mit aktuellen Speicherdaten
+    let current_layout = MemoryLayout::new(&memory, &layout.dwarf_data.clone());
+
+    Ok(current_layout.read_variable(var_name)?)
+}
+
+
+
+
+// integration.rs
+// src/integration.rs
+use crate::dwarfparser::DwarfParser;
+use crate::wasmrt::WasmRuntime;
+use crate::memory::MemoryLayout;
+use crate::errors::RuntimeError;
+use std::collections::HashMap;
+
+pub struct Debugger {
+    runtime: WasmRuntime,
+    dwarf_parser: Option<DwarfParser>,
+    memory_layout: Option<MemoryLayout>,
+    symbol_table: HashMap<String, SymbolInfo>,
+}
+
+#[derive(Debug, Clone)]
+pub struct SymbolInfo {
+    pub name: String,
+    pub address: u64,
+    pub size: u64,
+    pub symbol_type: SymbolType,
+    pub dwarf_info: Option<DwarfSymbolInfo>,
+}
+
+#[derive(Debug, Clone)]
+pub struct DwarfSymbolInfo {
+    pub file: String,
+    pub line: u32,
+    pub type_name: String,
+}
+
+#[derive(Debug, Clone)]
+pub enum SymbolType {
+    Function,
+    Global,
+    Table,
+    Memory,
+}
+
+impl Debugger {
+    pub fn new(wasm_bytes: &[u8]) -> Result<Self, RuntimeError> {
+        let runtime = WasmRuntime::new(wasm_bytes)?;
+        
+        // Versuche, DWARF-Informationen zu extrahieren
+        let dwarf_parser = DwarfParser::from_wasm(wasm_bytes).ok();
+        
+        // Erstelle initiale Symboltabelle aus Exporten
+        let symbol_table = Self::build_symbol_table(&runtime);
+        
+        Ok(Self {
+            runtime,
+            dwarf_parser,
+            memory_layout: None,
+            symbol_table,
+        })
+    }
+    
+    fn build_symbol_table(runtime: &WasmRuntime) -> HashMap<String, SymbolInfo> {
+        let mut symbols = HashMap::new();
+        
+        // Funktionen zur Symboltabelle hinzufügen
+        for (name, func) in &runtime.exported_functions {
+            symbols.insert(name.clone(), SymbolInfo {
+                name: name.clone(),
+                address: 0, // Wird später mit DWARF-Info gefüllt
+                size: 0,
+                symbol_type: SymbolType::Function,
+                dwarf_info: None,
+            });
+        }
+        
+        // Globals zur Symboltabelle hinzufügen
+        for (name, global) in &runtime.exported_globals {
+            symbols.insert(name.clone(), SymbolInfo {
+                name: name.clone(),
+                address: 0,
+                size: 0,
+                symbol_type: SymbolType::Global,
+                dwarf_info: None,
+            });
+        }
+        
+        // Weitere Exporttypen hinzufügen...
+        
+        symbols
+    }
+    
+    pub fn load_dwarf_info(&mut self) -> Result<(), RuntimeError> {
+        if let Some(parser) = &self.dwarf_parser {
+            // DWARF-Informationen extrahieren
+            let dwarf_data = parser.extract_memory_layout()?;
+            
+            // Symboltabelle mit DWARF-Informationen anreichern
+            for variable in &dwarf_data.variables {
+                if let Some(symbol) = self.symbol_table.get_mut(&variable.name) {
+                    symbol.address = variable.address;
+                    symbol.size = variable.size;
+                    // Weitere DWARF-Informationen hinzufügen
+                }
+            }
+            
+            // MemoryLayout erstellen
+            let memory_snapshot = self.runtime.get_memory_snapshot();
+            self.memory_layout = Some(MemoryLayout::new(&memory_snapshot, dwarf_data));
+            
+            Ok(())
+        } else {
+            Err(RuntimeError::DwarfInfoUnavailable)
+        }
+    }
+    
+    pub fn get_symbol_info(&self, name: &str) -> Option<&SymbolInfo> {
+        self.symbol_table.get(name)
+    }
+    
+    pub fn resolve_address(&self, address: u64) -> Option<&SymbolInfo> {
+        self.symbol_table.values().find(|symbol| {
+            symbol.address <= address && address < symbol.address + symbol.size
+        })
+    }
+    
+    pub fn call_function(&mut self, name: &str, args: &[i32]) -> Result<Vec<i32>, RuntimeError> {
+        // Konvertiere i32-Argumente zu wasmer::Value
+        let wasmer_args: Vec<wasmer::Value> = args.iter()
+            .map(|&arg| wasmer::Value::I32(arg))
+            .collect();
+        
+        self.runtime.call_function(name, &wasmer_args)
+            .map(|results| {
+                results.into_iter()
+                    .filter_map(|val| if let wasmer::Value::I32(i) = val { Some(i) } else { None })
+                    .collect()
+            })
+    }
+    
+    pub fn read_global(&mut self, name: &str) -> Result<i32, RuntimeError> {
+        self.runtime.get_global_as_i32(name)
+    }
+    
+    pub fn set_global(&mut self, name: &str, value: i32) -> Result<(), RuntimeError> {
+        self.runtime.set_global_value(name, wasmer::Value::I32(value))
+    }
+    
+    pub fn read_memory(&self, address: u64, size: usize) -> Result<Vec<u8>, RuntimeError> {
+        if let Some(layout) = &self.memory_layout {
+            layout.read_bytes(address, size)
+        } else {
+            self.runtime.read_memory(address, size)
+        }
+    }
+    
+    pub fn write_memory(&mut self, address: u64, data: &[u8]) -> Result<(), RuntimeError> {
+        self.runtime.write_memory(address, data)
+    }
+}
+
+
+// main.rs
+mod memlayout;
+use memlayout::{MemoryLayout};//, MemoryError};
+mod dwarfparser;
+use dwarfparser::DwarfParser;
+mod errors;
+use errors::{DwarfError, MemoryError};
+mod wasmrt;
+use wasmrt::WasmRuntime;
+mod types;
+mod memsegments;
+mod debugger;
+use crate::debugger::WasmDebugger;
+mod disasm;
+use disasm::ModuleDisasm;
+
+fn main() -> Result<(), anyhow::Error> {
+    // 1. WASM-Datei laden
+    let wasm_bytes = std::fs::read("app.wasm")?;
+
+    // 2. DWARF-Daten extrahieren
+    let mut runtime = WasmRuntime::new(&wasm_bytes)?;
+
+    let dwarf_parser = DwarfParser::from_wasm(&wasm_bytes)
+        .map_err(|e| anyhow::anyhow!("DWARF parsing failed: {}", e))?;
+    let dwarf_data = dwarf_parser.extract_memory_layout(&runtime)
+        .map_err(|e| anyhow::anyhow!("Memory layout extraction failed: {}", e))?;
+
+    // 3. Disassembler initialisieren
+    let disasm = ModuleDisasm::from_wasm(&wasm_bytes)?;
+    println!(
+        "Disassembled {} functions",
+        disasm.functions.len()
+    );
+
+/*
+    // 3. WASM-Instanz erstelle    
+    runtime.call_init_functions()?;
+    let global_value = runtime.get_global_as_i32("GLOBAL_COUNTER")?;
+    println!("Global value: {}", global_value);
+
+    // Globale Variable setzen
+    runtime.set_global_value("GLOBAL_COUNTER", wasmer::Value::I32(42))?;
+
+    //Funktion aufrufen
+    let results = runtime.call_function("add", &[wasmer::Value::I32(10)])?;
+    println!("Function results: {:?}", results);
+
+    // Tabellengröße abfragen
+    let table_size = runtime.get_table_size("my_table")?;
+    println!("Table size: {}", table_size);
+
+    // Tabellenelement abrufen
+    let element = runtime.get_table_element("my_table", 0)?;
+    println!("Table element: {:?}", element);
+
+    // Auf zusätzlichen Speicher zugreifen
+    let additional_memory = runtime.get_additional_memory("extra_memory")?;
+    //println!("Additional memory size: {} B", additional_memory.len());
+
+    // 4. Speicherabbild erfassen
+
+    let memory = runtime.get_memory_snapshot();
+
+    // 5. Memory-Layout erstellen
+    let layout = MemoryLayout::new(&memory, &dwarf_data);
+
+    // 6. Variable inspizieren
+    let counter_value = layout.read_variable("global_counter")?;
+    println!("Counter value: {:?}", counter_value);
+
+    // 7. Visuelle Darstellung generieren
+    let visualization = layout.generate_visualization();
+    std::fs::write("memory.html", visualization.render_html())?;
+
+    println!("Hello, world!");
+*/
+
+    // 5. Debugger starten
+    let mut dbg = WasmDebugger::new(runtime, dwarf_parser, disasm);
+    dbg.repl()?;
+
+    Ok(())
+}
+
+
+// types.rs
+use std::collections::HashMap;
+use serde::{Serialize, Deserialize};
+
+// Data structs
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct VariableInfo {
+    pub name: String,
+    pub address: u64,
+    pub type_name: String,
+    pub size: u64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum TypedValue {
+    Int(i64),
+    Float(f64),
+    Bool(bool),
+    Char(char),
+    String(String),
+    Struct(HashMap<String, TypedValue>),
+    Array(Vec<TypedValue>),
+    Pointer(u64),
+    Void,
+    Unknown,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct VariableValue {
+    pub name: String,
+    pub address: u64,
+    pub type_name: String,
+    pub value: TypedValue,
+    pub size: u64,
+    pub raw_bytes: Vec<u8>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct DwarfData {
+    pub variables: Vec<VariableInfo>,
+    pub types: HashMap<String, TypeInfo>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum TypeInfo {
+    Primitive {
+        size: u64,
+        kind: PrimitiveKind,
+    },
+    Struct {
+        size: u64,
+        fields: HashMap<String, FieldInfo>,
+        name: String,
+    },
+    Array {
+        element_type: Box<TypeInfo>,
+        count: u32,
+        size: u64,
+    },
+    Pointer {
+        pointed_type: Box<TypeInfo>,
+        size: u64,
+    },
+    Union {
+        size: u64,
+        variants: HashMap<String, TypeInfo>,
+        name: String,
+    },
+    Enum {
+        size: u64,
+        base_type: Box<TypeInfo>,
+        values: HashMap<String, i64>,
+        name: String,
+    },
+    Function {
+        return_type: Box<TypeInfo>,
+        parameters: Vec<TypeInfo>,
+    },
+    Void,
+    Unknown,
+}
+
+// Hilfsfunktionen für TypeInfo
+impl TypeInfo {
+    pub fn new_primitive(size: u64, kind: PrimitiveKind) -> Self {
+        TypeInfo::Primitive { size, kind }
+    }
+    
+    pub fn new_struct(name: String, size: u64, fields: HashMap<String, FieldInfo>) -> Self {
+        TypeInfo::Struct { name, size, fields }
+    }
+    
+    pub fn is_primitive(&self) -> bool {
+        matches!(self, TypeInfo::Primitive { .. })
+    }
+    
+    pub fn is_struct(&self) -> bool {
+        matches!(self, TypeInfo::Struct { .. })
+    }
+    
+    pub fn get_size(&self) -> u64 {
+        match self {
+            TypeInfo::Primitive { size, .. } => *size,
+            TypeInfo::Struct { size, .. } => *size,
+            TypeInfo::Array { size, .. } => *size,
+            TypeInfo::Pointer { size, .. } => *size,
+            TypeInfo::Union { size, .. } => *size,
+            TypeInfo::Enum { size, .. } => *size,
+            TypeInfo::Void => 0,
+            TypeInfo::Unknown => 0,
+            TypeInfo::Function { .. } => 0,  // Funktionen haben keine Größe im Speicher
+        }
+    }
+
+    pub fn get_kind(&self) -> TypeKind {
+        match self {
+            TypeInfo::Primitive { kind, .. } => TypeKind::Primitive(kind.clone()),
+            TypeInfo::Struct { .. } => TypeKind::Struct,
+            TypeInfo::Array { .. } => TypeKind::Array,
+            TypeInfo::Pointer { .. } => TypeKind::Pointer,
+            TypeInfo::Union { .. } => TypeKind::Union,
+            TypeInfo::Enum { .. } => TypeKind::Enum,
+            TypeInfo::Function { .. } => TypeKind::Function,
+            TypeInfo::Void => TypeKind::Void,
+            TypeInfo::Unknown => TypeKind::Unknown,
+        }
+    }
+
+    // Vordefinierte primitive Typen
+    pub fn int8() -> Self {
+        TypeInfo::new_primitive(1, PrimitiveKind::Int { signed: true })
+    }
+    
+    pub fn uint8() -> Self {
+        TypeInfo::new_primitive(1, PrimitiveKind::Int { signed: false })
+    }
+    
+    pub fn int16() -> Self {
+        TypeInfo::new_primitive(2, PrimitiveKind::Int { signed: true })
+    }
+    
+    pub fn uint16() -> Self {
+        TypeInfo::new_primitive(2, PrimitiveKind::Int { signed: false })
+    }
+    
+    pub fn int32() -> Self {
+        TypeInfo::new_primitive(4, PrimitiveKind::Int { signed: true })
+    }
+    
+    pub fn uint32() -> Self {
+        TypeInfo::new_primitive(4, PrimitiveKind::Int { signed: false })
+    }
+    
+    pub fn int64() -> Self {
+        TypeInfo::new_primitive(8, PrimitiveKind::Int { signed: true })
+    }
+    
+    pub fn uint64() -> Self {
+        TypeInfo::new_primitive(8, PrimitiveKind::Int { signed: false })
+    }
+    
+    pub fn float() -> Self {
+        TypeInfo::new_primitive(4, PrimitiveKind::Float)
+    }
+    
+    pub fn double() -> Self {
+        TypeInfo::new_primitive(8, PrimitiveKind::Double)
+    }
+    
+    pub fn bool() -> Self {
+        TypeInfo::new_primitive(1, PrimitiveKind::Bool)
+    }
+    
+    pub fn char() -> Self {
+        TypeInfo::new_primitive(1, PrimitiveKind::Char)
+    }
+    
+    pub fn void() -> Self {
+        TypeInfo::Void
+    }
+    
+    pub fn pointer_to(pointed_type: TypeInfo) -> Self {
+        // Pointer-Größe ist architekturabhängig, hier angenommen 4 oder 8 Bytes
+        let pointer_size = if cfg!(target_pointer_width = "64") { 8 } else { 4 };
+        TypeInfo::Pointer {
+            pointed_type: Box::new(pointed_type),
+            size: pointer_size,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct FieldInfo {
+    pub name: String,
+    pub offset: u64,
+    pub type_info: TypeInfo,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum PrimitiveKind {
+    Int { signed: bool },
+    Char,
+    Bool,
+    // Gleitkommatypen
+    Float,
+    Double,
+
+    Void,
+    Address, //Für Zeiger
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum TypeKind {
+    Primitive(PrimitiveKind),
+    Struct,
+    Array,
+    Pointer,
+    Union,
+    Enum,
+    Function,
+    Void,
+    Unknown,
+}
+
+
+// errors.rs
+use thiserror::Error;
+use gimli;
+use std::io;
+
+#[derive(Error, Debug)]
+pub enum DwarfError {
+    #[error("Failed to parse DWARF information: {0}")]
+    ParseError(String),
+    
+    #[error("Invalid DWARF section: {0}")]
+    InvalidSection(String),
+    
+    #[error("Missing DWARF information: {0}")]
+    MissingInfo(String),
+    
+    #[error("Unsupported DWARF version: {0}")]
+    UnsupportedVersion(u16),
+
+    #[error("Register {0:?} unavailable: {1}")]
+    RegisterUnavailable(gimli::Register, String),
+
+    #[error("Frame base unavailable: {0}")]
+    FrameBaseUnavailable(String),
+
+    #[error("Relocation error at offset {0}: {1}")]
+    RelocationError(u64, String),
+
+    #[error("Unsupported expression: {0}")]
+    UnsupportedExpression(String),
+
+    #[error("Unsupported location: {0}")]
+    UnsupportedLocation(String),
+
+    #[error("Memory read error at location 0x{0:x} with size {1}: {2}")]
+    MemoryReadError(u64, u64, String), // Keine benannten Parameter!
+
+    #[error("TLS unavailable: {0}")]
+    TlsUnavailable(String),
+
+    #[error("Entry value unavailable: {0}")]
+    EntryValueEvaluationError(String),
+
+    #[error("Invalid location expression")]
+    InvalidLocation,
+    
+    #[error("Type resolution failed: {0}")]
+    TypeResolutionFailed(String),
+    
+    #[error("I/O error: {0}")]
+    IoError(#[from] io::Error),
+    
+    #[error("Gimli error: {0}")]
+    GimliError(#[from] gimli::Error),
+
+    #[error("Unknown DWARF error: {0}")]
+    Unknown(String),
+}
+
+#[derive(Error, Debug)]
+pub enum MemoryError {
+    #[error("Invalid memory access at address 0x{address:x}")]
+    InvalidAccess { address: u64 },
+    
+    #[error("Unsupported integer size: {size}")]
+    UnsupportedSize { size: usize },
+    
+    #[error("Variable '{0}' not found")]
+    VariableNotFound(String),
+    
+    #[error("Type mismatch: expected {expected}, found {found}")]
+    TypeMismatch { expected: String, found: String },
+    
+    #[error("Invalid type information for variable '{0}'")]
+    InvalidTypeInfo(String),
+    
+    #[error("Memory not initialized")]
+    MemoryNotInitialized,
+    
+    #[error("WASM runtime error: {0}")]
+    WasmRuntimeError(String),
+    
+    #[error("I/O error: {0}")]
+    IoError(#[from] io::Error),
+    
+    #[error("Unknown memory error: {0}")]
+    Unknown(String),
+
+    #[error("Unsupported type: {0}")]
+    UnsupportedType(String),
+
+    #[error("Failed to parse value: {0}")]
+    ParseError(String),
+}
+
+// Hilfsfunktionen für einfache Fehlerkonvertierung
+impl From<String> for DwarfError {
+    fn from(s: String) -> Self {
+        DwarfError::Unknown(s)
+    }
+}
+
+impl From<&str> for DwarfError {
+    fn from(s: &str) -> Self {
+        DwarfError::Unknown(s.to_string())
+    }
+}
+
+impl From<RuntimeError> for DwarfError {
+    fn from(err: RuntimeError) -> Self {
+        match err {
+            RuntimeError::InvalidMemoryAccess => {
+                DwarfError::MemoryReadError(0, 0, "Invalid memory access".to_string())
+            }
+            other => DwarfError::Unknown(format!("Runtime error: {}", other)),
+        }
+    }
+}
+
+impl From<wasmparser::BinaryReaderError> for DwarfError {
+    fn from(e: wasmparser::BinaryReaderError) -> Self {
+        DwarfError::ParseError(e.to_string())
+    }
+}
+
+/*
+impl From<DwarfError> for gimli::Error {
+    fn from(err:DwarfError) -> Self {
+        gimli::Error::Io(
+            std::io::Error::new(std::io::ErrorKind::Other, format!("{}", err)),
+        );
+    }
+}*/
+
+impl From<String> for MemoryError {
+    fn from(s: String) -> Self {
+        MemoryError::Unknown(s)
+    }
+}
+
+impl From<&str> for MemoryError {
+    fn from(s: &str) -> Self {
+        MemoryError::Unknown(s.to_string())
+    }
+}
+
+// Erweiterte Fehlerbehandlung
+#[derive(Debug, thiserror::Error)]
+pub enum RuntimeError {
+    #[error("Failed to create WASM instance: {0}")]
+    InstanceCreation(String),
+
+    #[error("Memory '{0}' not found")]
+    MemoryNotFound(String),
+
+    #[error("Function '{0}' not found")]
+    FunctionNotFound(String),
+
+    #[error("Failed to call function '{0}': {1}")]
+    FunctionCall(String, String),
+
+    #[error("Global '{0}' not found")]
+    GlobalNotFound(String),
+
+    #[error("Failed to set global '{0}': {1}")]
+    GlobalSetFailed(String, String),
+
+    #[error("Table '{0}' not found")]
+    TableNotFound(String),
+
+    #[error("Failed to access table '{0}': {1}")]
+    TableAccessFailed(String, String),
+
+    #[error("Type mismatch: expected {expected}, found {found}")]
+    TypeMismatch { expected: String, found: String },
+
+    #[error("I/O error: {0}")]
+    IoError(#[from] std::io::Error),
+
+    #[error("Invalid memory access")]
+    InvalidMemoryAccess,
+
+    #[error("Unknown runtime error: {0}")]
+    Unknown(String)
+}
+
+
+
+// memviz.rs
+impl MemoryLayout {
+    pub fn generate_visualization(&self) -> Visualization {
+        let mut blocks = Vec::new();
+        for segment in &self.segments {
+            blocks.push(MemoryBlock {
+                address_range: (segment.start, segment.start + segment.size),
+                label: segment.name.clone(),
+                color: match segment.segment_type {
+                    SegmentType::GlobalVariable => "#FF6B6B",
+                    // ..
+                },
+            });
+        }
+        Visualization { blocks }
+    }
+}
+
+
+// debugger.rs
+use std::collections::HashSet;
+use rustyline::{Editor, history::DefaultHistory};
+use crate::wasmrt::WasmRuntime;
+use crate::memlayout::MemoryLayout;
+use crate::dwarfparser::DwarfParser;
+use crate::disasm::ModuleDisasm;
+
+pub struct WasmDebugger<'a> {
+    runtime: WasmRuntime,
+    dwarf: DwarfParser<'a>,
+    layout: Option<MemoryLayout>,
+    disasm: ModuleDisasm,
+    breakpoints: HashSet<String>,
+    current_pc: u64, // Aktuelle Instruktionsadresse
+    current_func: u32,
+    current_instr: usize,
+    is_running: bool,
+}
+
+impl<'a> WasmDebugger<'a> {
+    pub fn new(runtime: WasmRuntime, dwarf: DwarfParser<'a>, disasm: ModuleDisasm) -> Self {
+        Self {
+            runtime,
+            dwarf,
+            layout: None,
+            disasm,
+            breakpoints: HashSet::new(),
+            current_pc: 0,
+            current_func: 0,
+            current_instr: 0,
+            is_running: false,
+        }
+    }
+
+    pub fn repl(&mut self) -> anyhow::Result<()> {
+        let mut rl: Editor::<(), DefaultHistory> = Editor::new()?;
+        // Optional: rl.load_history("debuggerhistory.txt").ok();
+        println!("/ Welcome to wasmdbg - your interactive WebAssembly Debugger!");
+        println!("Commands: break <func>, run, step, continue, print <var>, memdump, quit\n!");
+
+        use rustyline::{DefaultEditor, Cmd, Event, EventHandler};
+        let mut rl = DefaultEditor::new()?;
+        loop {
+            let line = rl.readline("(wasmdbg)> ")?;
+            let args: Vec<&str> = line.trim().split_whitespace().collect();
+            if args.is_empty() {
+                continue;
+            }
+
+            match args[0] {
+                "help" => {
+                    println!("Commands: step, continue, break <line>, quit");
+                }
+                "break"/* if args.len() > 1*/ => {
+                    if let Some(func) = args.get(1) {
+                        println!("Breakpoint set at function '{}'", func);
+                        self.breakpoints.insert(func.to_string());
+                    }
+                }
+                "run" => {
+                    println!("Running..");
+                    self.is_running = true;
+                    self.runtime.call_init_functions()?;
+                    println!("Execution started");
+                }
+                "step" => {
+                    println!(">> Stepping one instruction (simulated)");
+                    self.debugger_step()?;
+                    // TODO: später echte Instr-Steuerung via Wasmer-Interpreter
+                }
+                "continue" => {
+                    println!(">> Continuing execution..");
+                    self.is_running = true;
+                }
+                "print" if args.len() > 1 => {
+                    let var_name = args[1];
+                    match self.layout {
+                        Some(ref layout) => {
+                            match layout.read_variable(var_name) {
+                                Ok(val) => println!("{} = {:?}", var_name, val),
+                                Err(_) => println!("Variable '{}' not found.", var_name),
+                            }
+                        }
+                        None => println!("No memory layout loaded."),
+                    }
+                }
+                "memdump" => {
+                    println!("Memory snapshot: ");
+                    let memory = self.runtime.get_memory_snapshot();
+                    println!("{:02X?}", &memory[..std::cmp::min(memory.len(), 64)]); // Erste 64 B
+                }
+                "quit" | "exit" => {
+                    println!("Exiting wasmdbg.");
+                    break;
+                }
+                _ => {
+                    println!("Unknown command. Try: break, run, step, continue, print, memdump, quit");
+                }
+            }
+        }
+        // Optional: rl.save_history("debuggerhistory.txt").ok();
+        Ok(())
+    }
+
+    fn step(&mut self) -> anyhow::Result<()> {
+        // Pointer vorlegen
+        let func = self.current_func;
+        let instr_idx = self.current_instr;
+        if let Some((offset, op)) = self.disasm.get_instr(func, instr_idx) {
+            // Operatortext zeigen
+            println!(">> Step: func {} instr#{} @{} => {:?}", func, instr_idx, offset, op);
+            // Source Mapping zeigen, wenn möglich
+            // (Moduleniveau Code oder fiktive Adresse)
+            // 1. Aktuelle Position ermitteln (DWARF Line)
+            if let Some((file, line)) = self.dwarf.get_source_location(offset as u64) {
+                println!("At {}:{}", file, line);
+            }
+            self.current_instr += 1;
+        }else {
+            println!("End of function or unknown function. Trying to advance to next function.");
+            self.current_func += 1;
+            self.current_instr = 0;
+        }
+
+/*
+        // 2. Eine Instruktion ausführen
+        self.runtime.step_instruction()?;
+        self.current_pc += 1;
+
+        // 3. Neue Position anzeigen
+        if let Some((file, line)) = self.dwarf.get_source_location(self.current_pc) {
+            println!("> Stepped to {}: {}", file, line);
+        } else {
+            println!("> Stepped to unknown address {:#x}", self.current_pc);
+        }
+*/
+        Ok(())
+    }
+
+    pub fn show_current_location(&self, offset: u64) {
+        if let Some((file, line)) = self.dwarf.get_source_location(offset) {
+            println!("At {}:{} (offset 0x{:x})", file, line, offset);
+        } else {
+            println!("At unknown location (offset 0x{:x})", offset);
+        }
+    }
+
+    // Führt einen echten Schritt in der Laufzeit aus UND zeigt danach
+    // den aktuellen Quellcode-Ort + Instruktion an.
+    pub fn debugger_step(&mut self) -> anyhow::Result<()> {
+        println!(">> Executing one WASM instruction...");
+
+        // 1️⃣ Wirklich eine Instruktion in der Laufzeit ausführen
+        if let Err(e) = self.runtime.step_instruction() {
+            println!("Runtime step failed: {}", e);
+        }
+
+        // 2️⃣ Danach die aktuelle Disassemblierung / Source Map anzeigen
+        let func = self.current_func;
+        let instr_idx = self.current_instr;
+
+        if let Some((offset, op)) = self.disasm.get_instr(func, instr_idx) {
+            println!(">> Step: func {} instr#{} @0x{:x} => {:?}", func, instr_idx, offset, op);
+
+            // DWARF-Quelle ermitteln
+            if let Some((file, line)) = self.dwarf.get_source_location(offset as u64) {
+                println!("At {}:{}", file, line);
+            } else {
+                println!("(no DWARF source mapping for offset 0x{:x})", offset);
+            }
+
+            // Instruktionszeiger weiter
+            self.current_instr += 1;
+        } else {
+            println!("End of function or unknown instruction. Moving to next function...");
+            self.current_func += 1;
+            self.current_instr = 0;
+        }
+
+        // 3️⃣ Speicherzustand optional anzeigen
+        let snapshot = self.runtime.get_memory_snapshot();
+        println!(
+            "Memory (first 32 bytes): {:?}",
+            &snapshot[..snapshot.len().min(32)]
+        );
+
+        Ok(())
+    }
+
+    fn continue_exec(&mut self) -> anyhow::Result<()> {
+        println!("Running until breakpoint or end...");
+        Ok(())
+    }
+}
+
+
+
+// memlayout.rs
+use byteorder::{ByteOrder, LittleEndian};
+use std::collections::HashMap;
+use crate::types::{DwarfData, FieldInfo, PrimitiveKind, TypedValue, TypeInfo, VariableInfo, VariableValue};
+use crate::memsegments::*;
+use crate::errors::*;
+
+pub struct MemoryLayout {
+    segments: Vec<MemorySegment>,
+    memory: Vec<u8>,
+    type_registry: HashMap<String, TypeInfo>,
+    pub dwarf_data: DwarfData, // Neues Feld hinzugefügt
+}
+
+impl MemoryLayout {
+    pub fn new(
+        wasm_memory: &[u8],
+        dwarf_data: &DwarfData
+    ) -> Self {
+        // Transform DWARF into memory segments
+        let segments = dwarf_data.variables.iter().map(|var| {
+            MemorySegment {
+                start: var.address,
+                size: var.size,
+                name: var.name.clone(),
+                segment_type: SegmentType::GlobalVariable,
+                signed: false,
+            }
+        }).collect();
+
+        Self {
+            segments,
+            memory: wasm_memory.to_vec(),
+            type_registry: dwarf_data.types.clone(),
+            dwarf_data: dwarf_data.clone(), // Speichere die dwarf_data
+        }
+    }
+   
+    fn get_variable(&self, name: &str) -> Result<&VariableInfo, MemoryError> {
+        self
+            .dwarf_data
+            .variables
+            .iter()
+            .find(|v| v.name == name)
+            .ok_or_else(|| MemoryError::VariableNotFound(name.to_string()))
+    }
+
+    pub fn read_variable(&self, name: &str) -> Result<VariableValue, MemoryError> {
+        let var_info = self.get_variable(name)?;
+
+        // Typinformation aus der Registry holen
+        let type_info = self.dwarf_data.types.get(&var_info.type_name)
+            .ok_or_else(|| MemoryError::InvalidTypeInfo(var_info.type_name.clone()))?;
+
+        // Wert basierend auf dem Typ lesen
+        let value = self.read_typed_value(var_info.address, type_info)?;
+        
+        // Rohbytes lesen
+        let raw_bytes = self.read_bytes(var_info.address, var_info.size as usize)?;
+
+        Ok(VariableValue {
+            name: name.to_string(),
+            address: var_info.address,
+            type_name: var_info.type_name.clone(),
+            value,
+            size: var_info.size,
+            raw_bytes,
+        })
+    }
+
+    pub fn read_int(&self, addr: u64, size: u64, signed: bool) -> Result<i64, MemoryError> {
+        let end = addr + size;
+
+        if end > self.memory.len().try_into().unwrap() {
+            return Err(MemoryError::InvalidAccess { address: addr as u64 });
+        }
+
+        let bytes = &self.memory[addr as usize..end as usize];
+
+        match size {
+            1 => Ok(if signed {
+                bytes[0] as i8 as i64
+            } else {
+                bytes[0] as u64 as i64
+            }),
+            2 => Ok(if signed {
+                LittleEndian::read_i16(bytes) as i64
+            } else {
+                LittleEndian::read_u16(bytes) as i64
+            }),
+            4 => Ok(if signed {
+                LittleEndian::read_i32(bytes) as i64
+            } else {
+                LittleEndian::read_u32(bytes) as i64
+            }),
+            8 => Ok(if signed {
+                LittleEndian::read_i64(bytes) as i64
+            } else {
+                LittleEndian::read_u64(bytes) as i64
+            }),
+            _ => Err(MemoryError::UnsupportedSize { size: size.try_into().unwrap() }),
+        }
+    }
+
+    fn read_struct(
+        &self,
+        address: u64,
+        fields: &HashMap<String, FieldInfo>,
+    ) -> Result<TypedValue, MemoryError> {
+        let mut field_values = HashMap::new();
+
+        for(field_name, field_info) in fields {
+            let field_address = address + field_info.offset;
+            let field_value = self.read_typed_value(field_address, &field_info.type_info)?;
+            field_values.insert(field_name.clone(), field_value);
+        }
+
+        Ok(TypedValue::Struct(field_values))
+    }
+
+    pub fn read_typed_value(
+        &self, 
+        address: u64,
+        type_info: &TypeInfo,
+    ) -> Result<TypedValue, MemoryError> {
+        match type_info {
+            TypeInfo::Primitive { size, kind } => {
+                self.read_primitive(address, *size, kind)
+            }
+            TypeInfo::Struct { fields, .. } => {
+                self.read_struct(address, fields)
+            }
+            TypeInfo::Array { element_type, count, .. } => {
+                self.read_array(address, element_type, *count)
+            }
+            TypeInfo::Pointer { size, .. } => {
+                let pointer_value = self.read_int(address, *size, false)?;
+                Ok(TypedValue::Pointer(pointer_value as u64))
+            }
+            _ => Err(MemoryError::UnsupportedType(format!(
+                "Unsupported type: {:?}",
+                type_info
+            ))),
+        }
+    }
+
+    fn read_primitive(&self, address: u64, size: u64, kind: &PrimitiveKind) -> Result<TypedValue, MemoryError> {
+        let size_usize = size as usize;
+        
+        match kind {
+            PrimitiveKind::Int { signed } => {
+                let value = self.read_int(address, size, *signed)?;
+                Ok(TypedValue::Int(value))
+            }
+            PrimitiveKind::Float => {
+                if size == 4 {
+                    let bytes = self.read_bytes(address, 4)?;
+                    let value = f32::from_le_bytes(bytes.try_into().unwrap());
+                    Ok(TypedValue::Float(value as f64))
+                } else if size == 8 {
+                    let bytes = self.read_bytes(address, 8)?;
+                    let value = f64::from_le_bytes(bytes.try_into().unwrap());
+                    Ok(TypedValue::Float(value))
+                } else {
+                    Err(MemoryError::UnsupportedSize { size: size_usize })
+                }
+            }
+            PrimitiveKind::Double => {
+                let bytes = self.read_bytes(address, 8)?;
+                let value = f64::from_le_bytes(bytes.try_into().unwrap());
+                Ok(TypedValue::Float(value))
+            }
+            PrimitiveKind::Bool => {
+                let value = self.read_int(address, 1, false)?;
+                Ok(TypedValue::Bool(value != 0))
+            }
+            PrimitiveKind::Char => {
+                let value = self.read_int(address, 1, false)?;
+                Ok(TypedValue::Char(char::from_u32(value as u32).unwrap_or('\0')))
+            }
+            // Behandlung anderer primitiver Typen...
+            PrimitiveKind::Address => {
+                let value = self.read_int(address, size, false)?;
+                Ok(TypedValue::Pointer(value as u64))
+            }
+            PrimitiveKind::Void => {
+                Ok(TypedValue::Void)
+            }
+        }
+    }
+
+    fn read_array(
+        &self, 
+        address: u64,
+        element_type: &TypeInfo,
+        count: u32
+    ) -> Result<TypedValue, MemoryError> {
+        let element_size = element_type.get_size() as usize;
+        let mut elements = Vec::new();
+
+        for i in 0..count {
+            let element_address = address + (i as u64 * element_size as u64);
+            let element_value = self.read_typed_value(element_address, element_type)?;
+            elements.push(element_value);
+        }
+        Ok(TypedValue::Array(elements))
+    }
+
+    pub fn read_bytes(&self, address: u64, size: usize) -> Result<Vec<u8>, MemoryError> {
+        let addr = address as usize;
+        let end = addr + size;
+        
+        if end > self.memory.len() {
+            return Err(MemoryError::InvalidAccess { address });
+        }
+        
+        Ok(self.memory[addr..end].to_vec())
+    }
+
+    pub fn generate_visualization(&self) -> Visualization {
+        let mut segments = Vec::new();
+
+        // Variablen als Segmente hinzufügen
+        for var in &self.dwarf_data.variables {
+            let (segment_type, color) = match var.type_name.as_str() {
+                s if s.contains("int") => ("integer", "#FF6B6B"),
+                s if s.contains("float") => ("float", "#4ECDC4"),
+                s if s.contains("double") => ("double", "#45B7D1"),
+                s if s.contains("char") => ("char", "#96CEB4"),
+                s if s.contains("bool") => ("boolean", "#FECA57"),
+                _ => ("unknown", "#778CA3"),
+            };
+
+            segments.push(VisualizationSegment {
+                name: var.name.clone(),
+                address: var.address,
+                size: var.size,
+                segment_type: segment_type.to_string(),
+                color: color.to_string(),
+            });
+        }
+
+        // Gesamtgröße berechnen
+        let total_size = self.memory.len();
+
+        Visualization {
+            segments,
+            total_size,
+        }
+
+    }
+
+    // Hilfsmethode zur Ausgabe als JSON
+    pub fn generate_visualization_json(&self) -> String {
+        let visualization = self.generate_visualization();
+        serde_json::to_string_pretty(&visualization).unwrap_or_else(|_| "{}".to_string())
+    }
+}
+
+

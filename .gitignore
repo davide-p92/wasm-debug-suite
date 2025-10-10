@@ -48,3 +48,10 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Txt
+wasm-token.txt
+
+# Other
+third_party
+web/
+wabt/
