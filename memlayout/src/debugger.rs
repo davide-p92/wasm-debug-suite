@@ -95,29 +95,34 @@ impl<'a> WasmDebugger<'a> {
                     }
                 }
                 "memdump" => {
-                    if args.len() < 2 {
-                        println!("Usage: memdump <variable> [length]");
-                        continue;
-                    }
-                    let var = args[1];
-                    let len = if args.len() > 2 {
-                        args[2].parse::<usize>().unwrap_or(64)
-                    } else {
-                        64
-                    };
-                    
-                    match self.runtime.resolve_symbol_address(var) {
-                        Some(addr) => {
-                            println!("📍 {} @ 0x{:X}", var, addr);
-                            match self.runtime.dump_memory(addr as usize, len) {
-                                Ok(out) => println!("{}", out),
-                                Err(e) => println!("Error: {}", e),
+                    // Arg 1: Variable (optional)
+                    // Arg 2: Länge (optional)
+                    let var_opt = args.get(1).copied();
+                    let len = args
+                        .get(2)
+                        .and_then(|x| x.parse::<usize>().ok())
+                        .unwrap_or(64);
+
+                    let (addr, label) = if let Some(var) = var_opt {
+                    	match self.runtime.resolve_symbol_address(var) {
+                            Some(addr) => (addr as usize, var.to_string()),
+                            None => {
+                            	println!("Variable '{}' not found. Dumping from start (0x0)", var);
+                                (0usize, "<memory>".to_string())
                             }
                         }
-                        None => println!("Variable '{}' not found", var),
+                    } else {
+                        println!("📍 No variable specified. Dumping from start of memory (0x0).");
+                        (0usize, "<memory>".to_string())
+                    };
+
+                    println!("📍 {} @ 0x{:X}", label, addr);
+                    match self.runtime.dump_memory(addr as usize, len) {
+                        Ok(out) => println!("{}", out),
+                        Err(e) => println!("Error: {}", e),
                     }
                 }
-                "symbols" => {
+                "symbols" => {/*
                     let query = args.get(1).map(|s| s.to_lowercase());
                     println!("📜 Symbol Table: ");
                     let symtab = self.runtime.symbol_table.borrow();
@@ -125,11 +130,13 @@ impl<'a> WasmDebugger<'a> {
                         println!("(no symbols found)");
                     } else {
                         for (name, desc) in symtab.iter() {
-                            if query.as_ref().map_or(true, |q| name.to_lowercase().contains(1)) {
+                            if query.as_ref().map_or(true, |q| name.to_lowercase().contains(q)) {
                                 println!("   {:<30} {}", name, desc);
                             }
                         }
-                    }
+                    }*/
+                    self.runtime.populate_symbols();
+                    self.runtime.dump_symbols();
                 }
                 "quit" | "exit" => {
                     println!("Exiting wasmdbg.");

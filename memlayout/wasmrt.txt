@@ -531,7 +531,7 @@ impl<'a> WasmRuntime<'a> {
         // 1.Exportierte Funktionen
         for (name, func) in self.exported_functions.iter() {
             table.insert(
-                name.clone(),
+                name: name.clone(),
                 SymbolInfo {
                     name: name.clone(),
                     category: "export function".into(),
