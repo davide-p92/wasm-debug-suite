@@ -10,7 +10,7 @@ pub struct WasmDebugger<'a> {
     runtime: WasmRuntime<'a>,
     dwarf: Rc<DwarfParser<'a>>,
     pub layout: Option<MemoryLayout>,
-    disasm: ModuleDisasm,
+    disasm: ModuleDisasm<'a>,
     breakpoints: HashSet<String>,
     current_pc: u64, // Aktuelle Instruktionsadresse
     current_func: u32,
@@ -19,7 +19,7 @@ pub struct WasmDebugger<'a> {
 }
 
 impl<'a> WasmDebugger<'a> {
-    pub fn new(runtime: WasmRuntime<'a>, dwarf: Rc<DwarfParser<'a>>, disasm: ModuleDisasm) -> Self {
+    pub fn new(runtime: WasmRuntime<'a>, dwarf: Rc<DwarfParser<'a>>, disasm: ModuleDisasm<'a>) -> Self {
         Self {
             runtime,
             dwarf,
@@ -142,6 +142,26 @@ impl<'a> WasmDebugger<'a> {
                     println!("Exiting wasmdbg.");
                     break;
                 }
+                "disass" | "disassemble" => {
+                    // default: aktuelle Funktion, sonst args[1]
+                    let target = if args.len() > 1 {
+                        args[1]
+                    } else {
+                        // Fallback: versuche über aktuellen Funktionsindex den Namen zu holen
+                        let cur = self.current_func; // wo du ihn hältst
+                        if let Some(f) = self.disasm.functions.get(cur as usize) {
+                            &f.name
+                        } else {
+                            println!("Keine aktuelle Funktion bekannt. Syntax: disass <func_name|index>");
+                            continue;
+                        }
+                    };
+
+                    match self.disasm.print_function(target) {
+                        Ok(text) => println!("{}", text),
+                        Err(e) => println!("disass Fehler: {}", e),
+                    }
+                }
                 _ => {
                     println!("Unknown command. Try: break, run, step, continue, print, memdump, quit");
                 }
@@ -155,7 +175,7 @@ impl<'a> WasmDebugger<'a> {
         // Pointer vorlegen
         let func = self.current_func;
         let instr_idx = self.current_instr;
-        if let Some((offset, op)) = self.disasm.get_instr(func, instr_idx) {
+        if let Some((offset, op)) = self.disasm.get_instr(func.try_into().unwrap(), instr_idx) {
             // Operatortext zeigen
             println!(">> Step: func {} instr#{} @{} => {:?}", func, instr_idx, offset, op);
             // Source Mapping zeigen, wenn möglich
@@ -208,7 +228,7 @@ impl<'a> WasmDebugger<'a> {
         let func = self.current_func;
         let instr_idx = self.current_instr;
 
-        if let Some((offset, op)) = self.disasm.get_instr(func, instr_idx) {
+        if let Some((offset, op)) = self.disasm.get_instr(func.try_into().unwrap(), instr_idx) {
             println!(">> Step: func {} instr#{} @0x{:x} => {:?}", func, instr_idx, offset, op);
 
             // DWARF-Quelle ermitteln

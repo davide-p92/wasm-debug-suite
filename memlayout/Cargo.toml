@@ -1,50 +1,21 @@
+
 [package]
 name = "memlayout"
 version = "0.1.0"
 edition = "2021"
 
-[features]
-default = ["dwarf", "runtime"]
-
-# Feature-Schalter
-dwarf = ["gimli"]
-runtime = ["wasmer"]
-
-# Backend-Auswahl (jeweils genau eines aktivieren)
-cranelift = ["wasmer/cranelift", "wasmer-compiler-cranelift"]
-singlepass = ["wasmer/singlepass", "wasmer-compiler-singlepass"]
-llvm = ["wasmer/llvm", "wasmer-compiler-llvm"]
-
 [dependencies]
-anyhow = "1.0"
-byteorder = "1.5"
-gimli = { version = "0.32", optional = true }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-thiserror = "2.0"
-wasmer = { version = "6.0", optional = true }
-wasmparser = "0.205"
-wasmer-types = "6.0.1"
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rustyline = "12"
 
-# Compiler-Backends explizit hinzufügen
-wasmer-compiler = "6.0.1"
-wasmer-compiler-cranelift = { version = "6.0.1", optional = true} #, features = ["disable-probestack"] }
-wasmer-compiler-singlepass = { version = "6.0.1", optional = true} #, features = ["disable-probestack"] }
-wasmer-compiler-llvm = { version = "6.0.1", optional = true }
-rustyline = "17.0.2"
-rustc-demangle = "0.1.26"
+# Wasmer with LLVM backend
+wasmer = { version = "4", features = ["llvm"] }
+gimli = "0.32.3"
+wasmer-compiler = "6.1.0"
+byteorder = "1.5.0"
 
-
-
-[build-dependencies]
-cc = "1.0"
-
-[profile.dev]
-debug = true
-opt-level = 0
-split-debuginfo = "packed"
-
-[profile.release]
-opt-level = 3
-debug = true
+# Direct LLVM bindings for Wasmer compiler backend
+#llvm-sys = { version = "180.0.0", features = ["prefer-static"] }
 

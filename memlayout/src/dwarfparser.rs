@@ -1,13 +1,15 @@
-use gimli::{Dwarf, SectionId, EndianSlice, LittleEndian, Unit, DebuggingInformationEntry, AttributeValue, Expression, EvaluationResult, Location, ValueType, Value,};
+use gimli::{Dwarf, SectionId, EndianSlice, LittleEndian, Unit, DebuggingInformationEntry, AttributeValue, DebugStrOffset, Expression, EvaluationResult, Location, ValueType, Value,};
 use std::collections::HashMap;
 use std::rc::Rc;
 use std::cell::RefCell;
-use wasmparser::{Parser, Payload};
+use gimli::DW_TAG_subprogram;
+use ::wasmparser::{Parser, Payload};
 use crate::memlayout::*;
 use crate::errors::*;
 use crate::types::*;
 use crate::wasmrt::WasmRuntime;
 
+#[derive(Debug)]
 pub struct DwarfParser<'a> {
     dwarf: Dwarf<EndianSlice<'a, LittleEndian>>,
     sections: std::rc::Rc<HashMap<gimli::SectionId, Vec<u8>>>, // Ownership für from_wasm Funktion behalten
@@ -47,6 +49,46 @@ impl<'a> DwarfParser<'a> {
             vars: RefCell::new(HashMap::new()),
     })
 }
+
+    // Versucht, den Funktionsnamen für einen gegebenen Funktionsindex zu ermitteln.
+    pub fn get_function_name(&self, func_index: u32) -> Option<String> {
+        // Zugriff auf DWARF-Units
+        let mut units = self.dwarf.units();
+
+        while let Some(header) = units.next().ok()? {
+            let unit = self.dwarf.unit(header).ok()?;
+            let mut entries = unit.entries();
+
+            while let Some((_, entry)) = entries.next_dfs().ok()? {
+                if entry.tag() == gimli::DW_TAG_subprogram {
+                    // Prüfe, ob die DIE eine Adresse oder Index hat, der zum func_index passt
+                    if let Some(AttributeValue::Udata(idx)) = entry.attr_value(gimli::DW_AT_low_pc).ok()? {
+                        // (Optional) hier: Adresse prüfen, wenn du realen PC-Map hast
+                        if idx as u32 == func_index {
+                            if let Some(AttributeValue::DebugStrRef(name_ref)) =
+                                entry.attr_value(gimli::DW_AT_name).ok()?
+                            {
+                                if let Ok(name) = self.dwarf.attr_string(&unit, AttributeValue::DebugStrRef(name_ref)) {
+                                    return Some(name.to_string_lossy().into_owned());
+                                }
+                            }
+                        }
+                    }
+
+                    // Einfacher Fallback: Nur Namen nehmen (wenn keine Adresse angegeben)
+                    if let Some(AttributeValue::DebugStrRef(name_ref)) =
+                        entry.attr_value(gimli::DW_AT_name).ok()?
+                    {
+                        if let Ok(name) = self.dwarf.attr_string(&unit, AttributeValue::DebugStrRef(name_ref)) {
+                            return Some(name.to_string_lossy().into_owned());
+                        }
+                    }
+                }
+            }
+        }
+
+        None
+    }
 
 fn section_id_from_name(name: &str) -> Option<gimli::SectionId> {
     match name {

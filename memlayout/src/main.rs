@@ -30,7 +30,7 @@ fn main() -> Result<(), anyhow::Error> {
     let layout = MemoryLayout::new(&memory, &dwarf_data);
 
     // 3. Disassembler initialisieren
-    let disasm = ModuleDisasm::from_wasm(&wasm_bytes)?;
+    let disasm = ModuleDisasm::from_wasm(&wasm_bytes, Some(Rc::clone(&dwarf_parser)))?;
     println!(
         "Disassembled {} functions",
         disasm.functions.len()

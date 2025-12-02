@@ -27,6 +27,7 @@ use crate::MemoryLayout;
 use crate::DwarfParser;
 use crate::types::VariableValue;
 use crate::errors::*;
+use crate::disasm::ModuleDisasm;
 
 
 #[derive(Debug, Clone)]
@@ -47,6 +48,7 @@ pub struct WasmRuntime<'a> {
     exported_memories: HashMap<String, Memory>,
     fake_pc: usize,
     pub dwarf: Option<Rc<DwarfParser<'a>>>,
+    pub disasm: ModuleDisasm<'a>,
     pub symbol_table: RefCell<HashMap<String, SymbolInfo>>,
 }
 
@@ -86,7 +88,7 @@ impl<'a> WasmRuntime<'a> {
         // Store mit Cranelift Compiler erstellen
         //let engine = Universal::new(compiler).engine();
         let mut store = Self::init_store();// statt Store::default();
-
+        let disasm = ModuleDisasm::from_wasm(wasm_bytes, dwarf.clone())?;
         // Modul aus Bytes erstellen
         let module = Module::new(&store, wasm_bytes)
             .map_err(|e| RuntimeError::InstanceCreation(e.to_string()))?;
@@ -204,6 +206,7 @@ impl<'a> WasmRuntime<'a> {
             exported_memories,
             fake_pc: 0,
             dwarf,
+            disasm,
             symbol_table: RefCell::new(HashMap::new()),
         };
 
