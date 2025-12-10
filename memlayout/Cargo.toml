@@ -11,10 +11,11 @@ serde_json = "1"
 rustyline = "12"
 
 # Wasmer with LLVM backend
-wasmer = { version = "4", features = ["llvm"] }
+wasmer = { version = "6.1.0", features = ["llvm"] }
 gimli = "0.32.3"
-wasmer-compiler = "6.1.0"
+#wasmer-compiler = "6.1.0"
 byteorder = "1.5.0"
+wasmer-compiler = "6.1.0"
 
 # Direct LLVM bindings for Wasmer compiler backend
 #llvm-sys = { version = "180.0.0", features = ["prefer-static"] }
