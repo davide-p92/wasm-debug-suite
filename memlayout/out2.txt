@@ -1,0 +1,234 @@
+       Fresh unicode-ident v1.0.18
+       Fresh proc-macro2 v1.0.101
+       Fresh quote v1.0.40
+       Fresh shlex v1.3.0
+       Fresh syn v2.0.106
+       Fresh cc v1.2.34
+       Fresh synstructure v0.13.2
+       Fresh version_check v0.9.5
+       Fresh zerofrom-derive v0.1.6
+       Fresh zerofrom v0.1.6
+       Fresh yoke-derive v0.7.5
+       Fresh zerovec-derive v0.10.3
+       Fresh yoke v0.7.5
+       Fresh cfg-if v1.0.1
+       Fresh zerovec v0.10.4
+       Fresh displaydoc v0.2.5
+       Fresh autocfg v1.5.0
+       Fresh libc v0.2.175
+       Fresh syn v1.0.109
+       Fresh tinystr v0.7.6
+       Fresh litemap v0.7.5
+       Fresh writeable v0.5.5
+       Fresh icu_locid v1.5.0
+       Fresh icu_provider_macros v1.5.0
+       Fresh icu_provider v1.5.0
+       Fresh typenum v1.18.0
+       Fresh icu_locid_transform_data v1.5.1
+       Fresh crossbeam-utils v0.8.21
+       Fresh ptr_meta_derive v0.3.0
+       Fresh ident_case v1.0.1
+       Fresh hashbrown v0.15.5
+       Fresh equivalent v1.0.2
+       Fresh darling_core v0.21.2
+       Fresh indexmap v2.10.0
+       Fresh ptr_meta v0.3.0
+       Fresh generic-array v0.14.7
+       Fresh icu_locid_transform v1.5.0
+       Fresh icu_properties_data v1.5.1
+       Fresh icu_collections v1.5.0
+       Fresh simdutf8 v0.1.5
+       Fresh lazy_static v1.5.0
+       Fresh memchr v2.7.5
+       Fresh zeroize v1.8.1
+       Fresh regex-lite v0.1.7
+       Fresh rustls-pki-types v1.12.0
+       Fresh icu_properties v1.5.1
+       Fresh rancor v0.1.0
+       Fresh zerocopy v0.8.26
+       Fresh darling_macro v0.21.2
+       Fresh icu_normalizer_data v1.5.1
+       Fresh bytecheck_derive v0.8.1
+       Fresh utf16_iter v1.0.5
+       Fresh glob v0.3.3
+       Fresh write16 v1.0.0
+       Fresh utf8_iter v1.0.4
+       Fresh smallvec v1.15.1
+       Fresh icu_normalizer v1.5.0
+       Fresh bytecheck v0.8.1
+       Fresh darling v0.21.2
+       Fresh ahash v0.8.12
+       Fresh block-buffer v0.10.4
+       Fresh crypto-common v0.1.6
+       Fresh ptr_meta_derive v0.1.4
+       Fresh thiserror-impl v1.0.69
+       Fresh munge_macro v0.4.6
+       Fresh untrusted v0.9.0
+       Fresh bytes v1.10.1
+       Fresh scopeguard v1.2.0
+       Fresh bitflags v2.9.2
+       Fresh ring v0.17.14
+       Fresh munge v0.4.6
+       Fresh thiserror v1.0.69
+       Fresh digest v0.10.7
+       Fresh ptr_meta v0.1.4
+       Fresh hashbrown v0.14.5
+       Fresh enumset_derive v0.14.0
+       Fresh rend v0.5.2
+       Dirty llvm-sys v180.0.0: the file `/usr/lib/llvm-18` has changed (1763648768.225799541s, 14m 35s after last build at 1763647893.719038033s)
+   Compiling llvm-sys v180.0.0
+       Fresh idna_adapter v1.2.0
+       Fresh aho-corasick v1.1.3
+       Fresh bytecheck_derive v0.6.12
+       Fresh enum-iterator-derive v0.7.0
+     Running `/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-65dbfa830b0d7019/build-script-build`
+       Fresh rkyv_derive v0.8.11
+       Fresh static_assertions v1.1.0
+       Fresh percent-encoding v2.3.2
+       Fresh gimli v0.31.1
+       Fresh cpufeatures v0.2.17
+       Fresh rand_core v0.6.4
+       Fresh adler2 v2.0.1
+       Fresh regex-syntax v0.8.5
+       Fresh minimal-lexical v0.2.1
+       Fresh nom v7.1.3
+       Fresh regex-automata v0.4.9
+       Fresh miniz_oxide v0.8.9
+       Fresh rand v0.8.5
+       Fresh sha2 v0.10.9
+       Fresh addr2line v0.24.2
+       Fresh form_urlencoded v1.2.2
+       Fresh twox-hash v1.6.3
+       Fresh rkyv v0.8.11
+       Fresh enum-iterator v0.7.0
+       Fresh bytecheck v0.6.12
+       Fresh idna v1.1.0
+       Fresh enumset v1.1.10
+       Fresh lock_api v0.4.13
+       Fresh rustls-webpki v0.103.4
+       Fresh parking_lot_core v0.9.11
+       Fresh object v0.36.7
+       Fresh target-lexicon v0.12.16
+       Fresh webpki-roots v1.0.2
+       Fresh crossbeam-epoch v0.9.18
+       Fresh crc32fast v1.5.0
+       Fresh libloading v0.8.8
+       Fresh getrandom v0.2.16
+       Fresh derive_more v0.99.20
+       Fresh more-asserts v0.2.2
+       Fresh subtle v2.6.1
+       Fresh bitflags v1.3.2
+       Fresh xxhash-rust v0.8.15
+       Fresh rustc-demangle v0.1.26
+       Fresh hex v0.4.3
+       Fresh byteorder v1.5.0
+       Fresh once_cell v1.21.3
+       Fresh either v1.15.0
+       Fresh rustls v0.23.31
+       Fresh ruzstd v0.5.0
+       Fresh wasmer-types v6.0.1
+       Fresh backtrace v0.3.74
+       Fresh itertools v0.13.0
+       Fresh region v3.0.2
+       Fresh clang-sys v1.8.1
+       Fresh flate2 v1.1.2
+       Fresh crossbeam-deque v0.8.6
+       Fresh webpki-roots v0.26.11
+       Fresh dashmap v6.1.0
+       Fresh url v2.5.6
+       Fresh memoffset v0.9.1
+       Fresh corosensei v0.2.2
+       Fresh phf_generator v0.11.3
+       Fresh xattr v1.5.1
+       Fresh regex v1.11.1
+       Fresh cexpr v0.6.0
+       Fresh prettyplease v0.2.37
+       Fresh crossbeam-queue v0.3.12
+       Fresh filetime v0.2.26
+       Fresh memmap2 v0.6.2
+       Fresh rustc-hash v1.1.0
+       Fresh siphasher v1.0.1
+       Fresh fnv v1.0.7
+       Fresh log v0.4.27
+       Fresh libunwind v1.3.3
+       Fresh cfg_aliases v0.2.1
+       Fresh base64 v0.22.1
+       Fresh ureq v2.12.1
+       Fresh wasmer-vm v6.0.1
+       Fresh phf_shared v0.11.3
+       Fresh bindgen v0.70.1
+       Fresh shared-buffer v0.1.4
+       Fresh tar v0.4.44
+       Fresh phf_macros v0.11.3
+       Fresh rayon-core v1.13.0
+       Fresh object v0.32.2
+       Fresh wasmparser v0.224.1
+       Fresh tracing-core v0.1.34
+       Fresh tracing-attributes v0.1.30
+       Fresh cmake v0.1.54
+       Fresh inkwell_internals v0.10.0
+       Fresh proc-macro-error-attr2 v2.0.0
+       Fresh unicode-xid v0.2.6
+       Fresh linux-raw-sys v0.9.4
+       Fresh leb128 v0.2.5
+       Fresh self_cell v1.2.0
+       Fresh pin-project-lite v0.2.16
+       Fresh tracing v0.1.41
+       Fresh wasmer-compiler v6.0.1
+       Fresh rustix v1.0.8
+       Fresh derive_more-impl v1.0.0
+       Fresh proc-macro-error2 v2.0.1
+       Fresh rayon v1.11.0
+       Fresh phf v0.11.3
+       Fresh serde_core v1.0.225
+       Fresh itertools v0.10.5
+       Fresh nibble_vec v0.1.0
+       Fresh serde_derive v1.0.225
+       Fresh endian-type v0.1.2
+       Fresh radix_trie v0.2.1
+       Fresh serde v1.0.225
+       Fresh nix v0.30.1
+       Fresh wasmer-derive v6.0.1
+       Fresh derive_more v1.0.0
+       Fresh fd-lock v4.0.4
+       Fresh paste v1.0.15
+warning: unused import: `std::path::Path`
+ --> build.rs:2:5
+  |
+2 | use std::path::Path;
+  |     ^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `memlayout` (build script) generated 1 warning
+       Fresh semver v1.0.26
+       Fresh thiserror-impl v2.0.16
+       Fresh unicode-width v0.2.1
+       Fresh unicode-segmentation v1.12.0
+       Fresh fallible-iterator v0.3.0
+       Fresh home v0.5.11
+       Fresh ryu v1.0.20
+       Fresh stable_deref_trait v1.2.0
+       Fresh itoa v1.0.15
+       Fresh utf8parse v0.2.2
+       Fresh rustyline v17.0.2
+       Fresh serde_json v1.0.143
+       Fresh gimli v0.32.2
+       Fresh thiserror v2.0.16
+       Fresh wasmparser v0.205.0
+       Fresh anyhow v1.0.99
+       Dirty inkwell v0.5.0: the dependency build_script_build was rebuilt
+   Compiling inkwell v0.5.0
+     Running `/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/inkwell-193aa28e4caa9661/build-script-build`
+     Running `/home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name llvm_sys --edition=2015 /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/llvm-sys-180.0.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C embed-bitcode=no -C codegen-units=1 -C debuginfo=2 -C split-debuginfo=packed --cfg 'feature="prefer-static"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("clang-sys", "disable-alltargets-init", "force-dynamic", "force-static", "no-llvm-linking", "prefer-dynamic", "prefer-static", "strict-versioning", "tempfile"))' -C metadata=c034c93a7c0c48c0 -C extra-filename=-5837eea9de73e4bd --out-dir /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps -L dependency=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps --extern libc=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblibc-1f6eab4a252afeab.rmeta --cap-lints allow -L native=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-1b98b91458cb6d00/out -L native=/usr/lib/llvm-18/lib -l static=targetwrappers -l static=LLVMWindowsManifest -l static=LLVMXRay -l static=LLVMLibDriver -l static=LLVMDlltoolDriver -l static=LLVMTextAPIBinaryReader -l static=LLVMCoverage -l static=LLVMLineEditor -l static=LLVMXtensaDisassembler -l static=LLVMXtensaAsmParser -l static=LLVMXtensaCodeGen -l static=LLVMXtensaDesc -l static=LLVMXtensaInfo -l static=LLVMM68kDisassembler -l static=LLVMM68kAsmParser -l static=LLVMM68kCodeGen -l static=LLVMM68kDesc -l static=LLVMM68kInfo -l static=LLVMXCoreDisassembler -l static=LLVMXCoreCodeGen -l static=LLVMXCoreDesc -l static=LLVMXCoreInfo -l static=LLVMX86TargetMCA -l static=LLVMX86Disassembler -l static=LLVMX86AsmParser -l static=LLVMX86CodeGen -l static=LLVMX86Desc -l static=LLVMX86Info -l static=LLVMWebAssemblyDisassembler -l static=LLVMWebAssemblyAsmParser -l static=LLVMWebAssemblyCodeGen -l static=LLVMWebAssemblyUtils -l static=LLVMWebAssemblyDesc -l static=LLVMWebAssemblyInfo -l static=LLVMVEDisassembler -l static=LLVMVEAsmParser -l static=LLVMVECodeGen -l static=LLVMVEDesc -l static=LLVMVEInfo -l static=LLVMSystemZDisassembler -l static=LLVMSystemZAsmParser -l static=LLVMSystemZCodeGen -l static=LLVMSystemZDesc -l static=LLVMSystemZInfo -l static=LLVMSparcDisassembler -l static=LLVMSparcAsmParser -l static=LLVMSparcCodeGen -l static=LLVMSparcDesc -l static=LLVMSparcInfo -l static=LLVMRISCVTargetMCA -l static=LLVMRISCVDisassembler -l static=LLVMRISCVAsmParser -l static=LLVMRISCVCodeGen -l static=LLVMRISCVDesc -l static=LLVMRISCVInfo -l static=LLVMPowerPCDisassembler -l static=LLVMPowerPCAsmParser -l static=LLVMPowerPCCodeGen -l static=LLVMPowerPCDesc -l static=LLVMPowerPCInfo -l static=LLVMNVPTXCodeGen -l static=LLVMNVPTXDesc -l static=LLVMNVPTXInfo -l static=LLVMMSP430Disassembler -l static=LLVMMSP430AsmParser -l static=LLVMMSP430CodeGen -l static=LLVMMSP430Desc -l static=LLVMMSP430Info -l static=LLVMMipsDisassembler -l static=LLVMMipsAsmParser -l static=LLVMMipsCodeGen -l static=LLVMMipsDesc -l static=LLVMMipsInfo -l static=LLVMLoongArchDisassembler -l static=LLVMLoongArchAsmParser -l static=LLVMLoongArchCodeGen -l static=LLVMLoongArchDesc -l static=LLVMLoongArchInfo -l static=LLVMLanaiDisassembler -l static=LLVMLanaiCodeGen -l static=LLVMLanaiAsmParser -l static=LLVMLanaiDesc -l static=LLVMLanaiInfo -l static=LLVMHexagonDisassembler -l static=LLVMHexagonCodeGen -l static=LLVMHexagonAsmParser -l static=LLVMHexagonDesc -l static=LLVMHexagonInfo -l static=LLVMBPFDisassembler -l static=LLVMBPFAsmParser -l static=LLVMBPFCodeGen -l static=LLVMBPFDesc -l static=LLVMBPFInfo -l static=LLVMAVRDisassembler -l static=LLVMAVRAsmParser -l static=LLVMAVRCodeGen -l static=LLVMAVRDesc -l static=LLVMAVRInfo -l static=LLVMARMDisassembler -l static=LLVMARMAsmParser -l static=LLVMARMCodeGen -l static=LLVMARMDesc -l static=LLVMARMUtils -l static=LLVMARMInfo -l static=LLVMAMDGPUTargetMCA -l static=LLVMAMDGPUDisassembler -l static=LLVMAMDGPUAsmParser -l static=LLVMAMDGPUCodeGen -l static=LLVMAMDGPUDesc -l static=LLVMAMDGPUUtils -l static=LLVMAMDGPUInfo -l static=LLVMAArch64Disassembler -l static=LLVMAArch64AsmParser -l static=LLVMAArch64CodeGen -l static=LLVMAArch64Desc -l static=LLVMAArch64Utils -l static=LLVMAArch64Info -l static=LLVMPerfJITEvents -l static=LLVMOrcDebugging -l static=LLVMOrcJIT -l static=LLVMWindowsDriver -l static=LLVMMCJIT -l static=LLVMJITLink -l static=LLVMInterpreter -l static=LLVMExecutionEngine -l static=LLVMRuntimeDyld -l static=LLVMOrcTargetProcess -l static=LLVMOrcShared -l static=LLVMDWP -l static=LLVMDebugInfoLogicalView -l static=LLVMDebugInfoGSYM -l static=LLVMOption -l static=LLVMObjectYAML -l static=LLVMObjCopy -l static=LLVMMCA -l static=LLVMMCDisassembler -l static=LLVMLTO -l static=LLVMFrontendOpenACC -l static=LLVMFrontendHLSL -l static=LLVMFrontendDriver -l static=LLVMExtensions -l static=Polly -l static=PollyISL -l static=LLVMPasses -l static=LLVMHipStdPar -l static=LLVMCoroutines -l static=LLVMCFGuard -l static=LLVMipo -l static=LLVMInstrumentation -l static=LLVMVectorize -l static=LLVMLinker -l static=LLVMFrontendOpenMP -l static=LLVMFrontendOffloading -l static=LLVMDWARFLinkerParallel -l static=LLVMDWARFLinkerClassic -l static=LLVMDWARFLinker -l static=LLVMGlobalISel -l static=LLVMMIRParser -l static=LLVMAsmPrinter -l static=LLVMSelectionDAG -l static=LLVMCodeGen -l static=LLVMTarget -l static=LLVMObjCARCOpts -l static=LLVMCodeGenTypes -l static=LLVMIRPrinter -l static=LLVMInterfaceStub -l static=LLVMFileCheck -l static=LLVMFuzzMutate -l static=LLVMScalarOpts -l static=LLVMInstCombine -l static=LLVMAggressiveInstCombine -l static=LLVMTransformUtils -l static=LLVMBitWriter -l static=LLVMAnalysis -l static=LLVMProfileData -l static=LLVMSymbolize -l static=LLVMDebugInfoBTF -l static=LLVMDebugInfoPDB -l static=LLVMDebugInfoMSF -l static=LLVMDebugInfoDWARF -l static=LLVMObject -l static=LLVMTextAPI -l static=LLVMMCParser -l static=LLVMIRReader -l static=LLVMAsmParser -l static=LLVMMC -l static=LLVMDebugInfoCodeView -l static=LLVMBitReader -l static=LLVMFuzzerCLI -l static=LLVMCore -l static=LLVMRemarks -l static=LLVMBitstreamReader -l static=LLVMBinaryFormat -l static=LLVMTargetParser -l static=LLVMTableGen -l static=LLVMSupport -l static=LLVMDemangle -l dylib=rt -l dylib=dl -l dylib=m -l dylib=z -l dylib=zstd -l dylib=tinfo -l dylib=xml2 -l dylib=stdc++`
+       Dirty memlayout v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout): the dependency build_script_build was rebuilt
+   Compiling memlayout v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout)
+     Running `/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/memlayout-e604baafa075544c/build-script-build`
+     Running `/home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name inkwell --edition=2021 /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/inkwell-0.5.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C embed-bitcode=no -C codegen-units=1 -C debuginfo=2 -C split-debuginfo=packed --cfg 'feature="default"' --cfg 'feature="llvm-sys-180"' --cfg 'feature="llvm18-0"' --cfg 'feature="llvm18-0-prefer-static"' --cfg 'feature="target-aarch64"' --cfg 'feature="target-all"' --cfg 'feature="target-amdgpu"' --cfg 'feature="target-arm"' --cfg 'feature="target-bpf"' --cfg 'feature="target-hexagon"' --cfg 'feature="target-lanai"' --cfg 'feature="target-loongarch"' --cfg 'feature="target-mips"' --cfg 'feature="target-msp430"' --cfg 'feature="target-nvptx"' --cfg 'feature="target-powerpc"' --cfg 'feature="target-riscv"' --cfg 'feature="target-sparc"' --cfg 'feature="target-systemz"' --cfg 'feature="target-webassembly"' --cfg 'feature="target-x86"' --cfg 'feature="target-xcore"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("default", "experimental", "llvm-sys-100", "llvm-sys-110", "llvm-sys-120", "llvm-sys-130", "llvm-sys-140", "llvm-sys-150", "llvm-sys-160", "llvm-sys-170", "llvm-sys-180", "llvm-sys-40", "llvm-sys-50", "llvm-sys-60", "llvm-sys-70", "llvm-sys-80", "llvm-sys-90", "llvm10-0", "llvm10-0-no-llvm-linking", "llvm11-0", "llvm11-0-no-llvm-linking", "llvm12-0", "llvm12-0-force-dynamic", "llvm12-0-force-static", "llvm12-0-no-llvm-linking", "llvm12-0-prefer-dynamic", "llvm12-0-prefer-static", "llvm13-0", "llvm13-0-force-dynamic", "llvm13-0-force-static", "llvm13-0-no-llvm-linking", "llvm13-0-prefer-dynamic", "llvm13-0-prefer-static", "llvm14-0", "llvm14-0-force-dynamic", "llvm14-0-force-static", "llvm14-0-no-llvm-linking", "llvm14-0-prefer-dynamic", "llvm14-0-prefer-static", "llvm15-0", "llvm15-0-force-dynamic", "llvm15-0-force-static", "llvm15-0-no-llvm-linking", "llvm15-0-prefer-dynamic", "llvm15-0-prefer-static", "llvm16-0", "llvm16-0-force-dynamic", "llvm16-0-force-static", "llvm16-0-no-llvm-linking", "llvm16-0-prefer-dynamic", "llvm16-0-prefer-static", "llvm17-0", "llvm17-0-force-dynamic", "llvm17-0-force-static", "llvm17-0-no-llvm-linking", "llvm17-0-prefer-dynamic", "llvm17-0-prefer-static", "llvm18-0", "llvm18-0-force-dynamic", "llvm18-0-force-static", "llvm18-0-no-llvm-linking", "llvm18-0-prefer-dynamic", "llvm18-0-prefer-static", "llvm4-0", "llvm4-0-no-llvm-linking", "llvm5-0", "llvm5-0-no-llvm-linking", "llvm6-0", "llvm6-0-no-llvm-linking", "llvm7-0", "llvm7-0-no-llvm-linking", "llvm8-0", "llvm8-0-no-llvm-linking", "llvm9-0", "llvm9-0-no-llvm-linking", "nightly", "no-libffi-linking", "serde", "static-alloc", "target-aarch64", "target-all", "target-amdgpu", "target-arm", "target-bpf", "target-hexagon", "target-lanai", "target-loongarch", "target-mips", "target-msp430", "target-nvptx", "target-powerpc", "target-riscv", "target-sparc", "target-syncvm", "target-systemz", "target-webassembly", "target-x86", "target-xcore"))' -C metadata=807efeae4be2f6d1 -C extra-filename=-29fcf4f954a9d2ee --out-dir /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps -L dependency=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps --extern either=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libeither-a4b468102a943015.rmeta --extern inkwell_internals=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libinkwell_internals-da056ffdbb83fb1e.so --extern libc=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblibc-1f6eab4a252afeab.rmeta --extern llvm_sys_180=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-5837eea9de73e4bd.rmeta --extern once_cell=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libonce_cell-7da9922d9d137cb6.rmeta --extern thiserror=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libthiserror-e3b363cce26ec2fa.rmeta --cap-lints allow -L native=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-1b98b91458cb6d00/out -L native=/usr/lib/llvm-18/lib -l dylib=ffi`
+error: could not find native static library `Polly`, perhaps an -L flag is missing?
+
+error: could not compile `llvm-sys` (lib) due to 1 previous error
+
+Caused by:
+  process didn't exit successfully: `/home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name llvm_sys --edition=2015 /home/davide/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/llvm-sys-180.0.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C embed-bitcode=no -C codegen-units=1 -C debuginfo=2 -C split-debuginfo=packed --cfg 'feature="prefer-static"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("clang-sys", "disable-alltargets-init", "force-dynamic", "force-static", "no-llvm-linking", "prefer-dynamic", "prefer-static", "strict-versioning", "tempfile"))' -C metadata=c034c93a7c0c48c0 -C extra-filename=-5837eea9de73e4bd --out-dir /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps -L dependency=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps --extern libc=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblibc-1f6eab4a252afeab.rmeta --cap-lints allow -L native=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-1b98b91458cb6d00/out -L native=/usr/lib/llvm-18/lib -l static=targetwrappers -l static=LLVMWindowsManifest -l static=LLVMXRay -l static=LLVMLibDriver -l static=LLVMDlltoolDriver -l static=LLVMTextAPIBinaryReader -l static=LLVMCoverage -l static=LLVMLineEditor -l static=LLVMXtensaDisassembler -l static=LLVMXtensaAsmParser -l static=LLVMXtensaCodeGen -l static=LLVMXtensaDesc -l static=LLVMXtensaInfo -l static=LLVMM68kDisassembler -l static=LLVMM68kAsmParser -l static=LLVMM68kCodeGen -l static=LLVMM68kDesc -l static=LLVMM68kInfo -l static=LLVMXCoreDisassembler -l static=LLVMXCoreCodeGen -l static=LLVMXCoreDesc -l static=LLVMXCoreInfo -l static=LLVMX86TargetMCA -l static=LLVMX86Disassembler -l static=LLVMX86AsmParser -l static=LLVMX86CodeGen -l static=LLVMX86Desc -l static=LLVMX86Info -l static=LLVMWebAssemblyDisassembler -l static=LLVMWebAssemblyAsmParser -l static=LLVMWebAssemblyCodeGen -l static=LLVMWebAssemblyUtils -l static=LLVMWebAssemblyDesc -l static=LLVMWebAssemblyInfo -l static=LLVMVEDisassembler -l static=LLVMVEAsmParser -l static=LLVMVECodeGen -l static=LLVMVEDesc -l static=LLVMVEInfo -l static=LLVMSystemZDisassembler -l static=LLVMSystemZAsmParser -l static=LLVMSystemZCodeGen -l static=LLVMSystemZDesc -l static=LLVMSystemZInfo -l static=LLVMSparcDisassembler -l static=LLVMSparcAsmParser -l static=LLVMSparcCodeGen -l static=LLVMSparcDesc -l static=LLVMSparcInfo -l static=LLVMRISCVTargetMCA -l static=LLVMRISCVDisassembler -l static=LLVMRISCVAsmParser -l static=LLVMRISCVCodeGen -l static=LLVMRISCVDesc -l static=LLVMRISCVInfo -l static=LLVMPowerPCDisassembler -l static=LLVMPowerPCAsmParser -l static=LLVMPowerPCCodeGen -l static=LLVMPowerPCDesc -l static=LLVMPowerPCInfo -l static=LLVMNVPTXCodeGen -l static=LLVMNVPTXDesc -l static=LLVMNVPTXInfo -l static=LLVMMSP430Disassembler -l static=LLVMMSP430AsmParser -l static=LLVMMSP430CodeGen -l static=LLVMMSP430Desc -l static=LLVMMSP430Info -l static=LLVMMipsDisassembler -l static=LLVMMipsAsmParser -l static=LLVMMipsCodeGen -l static=LLVMMipsDesc -l static=LLVMMipsInfo -l static=LLVMLoongArchDisassembler -l static=LLVMLoongArchAsmParser -l static=LLVMLoongArchCodeGen -l static=LLVMLoongArchDesc -l static=LLVMLoongArchInfo -l static=LLVMLanaiDisassembler -l static=LLVMLanaiCodeGen -l static=LLVMLanaiAsmParser -l static=LLVMLanaiDesc -l static=LLVMLanaiInfo -l static=LLVMHexagonDisassembler -l static=LLVMHexagonCodeGen -l static=LLVMHexagonAsmParser -l static=LLVMHexagonDesc -l static=LLVMHexagonInfo -l static=LLVMBPFDisassembler -l static=LLVMBPFAsmParser -l static=LLVMBPFCodeGen -l static=LLVMBPFDesc -l static=LLVMBPFInfo -l static=LLVMAVRDisassembler -l static=LLVMAVRAsmParser -l static=LLVMAVRCodeGen -l static=LLVMAVRDesc -l static=LLVMAVRInfo -l static=LLVMARMDisassembler -l static=LLVMARMAsmParser -l static=LLVMARMCodeGen -l static=LLVMARMDesc -l static=LLVMARMUtils -l static=LLVMARMInfo -l static=LLVMAMDGPUTargetMCA -l static=LLVMAMDGPUDisassembler -l static=LLVMAMDGPUAsmParser -l static=LLVMAMDGPUCodeGen -l static=LLVMAMDGPUDesc -l static=LLVMAMDGPUUtils -l static=LLVMAMDGPUInfo -l static=LLVMAArch64Disassembler -l static=LLVMAArch64AsmParser -l static=LLVMAArch64CodeGen -l static=LLVMAArch64Desc -l static=LLVMAArch64Utils -l static=LLVMAArch64Info -l static=LLVMPerfJITEvents -l static=LLVMOrcDebugging -l static=LLVMOrcJIT -l static=LLVMWindowsDriver -l static=LLVMMCJIT -l static=LLVMJITLink -l static=LLVMInterpreter -l static=LLVMExecutionEngine -l static=LLVMRuntimeDyld -l static=LLVMOrcTargetProcess -l static=LLVMOrcShared -l static=LLVMDWP -l static=LLVMDebugInfoLogicalView -l static=LLVMDebugInfoGSYM -l static=LLVMOption -l static=LLVMObjectYAML -l static=LLVMObjCopy -l static=LLVMMCA -l static=LLVMMCDisassembler -l static=LLVMLTO -l static=LLVMFrontendOpenACC -l static=LLVMFrontendHLSL -l static=LLVMFrontendDriver -l static=LLVMExtensions -l static=Polly -l static=PollyISL -l static=LLVMPasses -l static=LLVMHipStdPar -l static=LLVMCoroutines -l static=LLVMCFGuard -l static=LLVMipo -l static=LLVMInstrumentation -l static=LLVMVectorize -l static=LLVMLinker -l static=LLVMFrontendOpenMP -l static=LLVMFrontendOffloading -l static=LLVMDWARFLinkerParallel -l static=LLVMDWARFLinkerClassic -l static=LLVMDWARFLinker -l static=LLVMGlobalISel -l static=LLVMMIRParser -l static=LLVMAsmPrinter -l static=LLVMSelectionDAG -l static=LLVMCodeGen -l static=LLVMTarget -l static=LLVMObjCARCOpts -l static=LLVMCodeGenTypes -l static=LLVMIRPrinter -l static=LLVMInterfaceStub -l static=LLVMFileCheck -l static=LLVMFuzzMutate -l static=LLVMScalarOpts -l static=LLVMInstCombine -l static=LLVMAggressiveInstCombine -l static=LLVMTransformUtils -l static=LLVMBitWriter -l static=LLVMAnalysis -l static=LLVMProfileData -l static=LLVMSymbolize -l static=LLVMDebugInfoBTF -l static=LLVMDebugInfoPDB -l static=LLVMDebugInfoMSF -l static=LLVMDebugInfoDWARF -l static=LLVMObject -l static=LLVMTextAPI -l static=LLVMMCParser -l static=LLVMIRReader -l static=LLVMAsmParser -l static=LLVMMC -l static=LLVMDebugInfoCodeView -l static=LLVMBitReader -l static=LLVMFuzzerCLI -l static=LLVMCore -l static=LLVMRemarks -l static=LLVMBitstreamReader -l static=LLVMBinaryFormat -l static=LLVMTargetParser -l static=LLVMTableGen -l static=LLVMSupport -l static=LLVMDemangle -l dylib=rt -l dylib=dl -l dylib=m -l dylib=z -l dylib=zstd -l dylib=tinfo -l dylib=xml2 -l dylib=stdc++` (exit status: 1)
+warning: build failed, waiting for other jobs to finish...

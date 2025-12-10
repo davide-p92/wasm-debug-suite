@@ -1,0 +1,858 @@
+   Compiling proc-macro2 v1.0.101
+   Compiling cc v1.2.34
+   Compiling quote v1.0.40
+   Compiling libc v0.2.175
+   Compiling syn v2.0.106
+   Compiling version_check v0.9.5
+   Compiling stable_deref_trait v1.2.0
+   Compiling cfg-if v1.0.1
+   Compiling syn v1.0.109
+   Compiling autocfg v1.5.0
+   Compiling semver v1.0.26
+   Compiling synstructure v0.13.2
+   Compiling zerofrom-derive v0.1.6
+   Compiling zerofrom v0.1.6
+   Compiling yoke-derive v0.7.5
+   Compiling yoke v0.7.5
+   Compiling zerovec-derive v0.10.3
+   Compiling zerovec v0.10.4
+   Compiling displaydoc v0.2.5
+   Compiling litemap v0.7.5
+   Compiling crc32fast v1.5.0
+   Compiling tinystr v0.7.6
+   Compiling writeable v0.5.5
+   Compiling crossbeam-utils v0.8.21
+   Compiling typenum v1.18.0
+   Compiling icu_locid_transform_data v1.5.1
+   Compiling icu_locid v1.5.0
+   Compiling icu_provider_macros v1.5.0
+   Compiling generic-array v0.14.7
+   Compiling anyhow v1.0.99
+   Compiling once_cell v1.21.3
+   Compiling icu_properties_data v1.5.1
+   Compiling icu_provider v1.5.0
+   Compiling ptr_meta_derive v0.3.0
+   Compiling icu_normalizer_data v1.5.1
+   Compiling equivalent v1.0.2
+   Compiling hashbrown v0.15.5
+   Compiling ident_case v1.0.1
+   Compiling zerocopy v0.8.26
+   Compiling fnv v1.0.7
+   Compiling darling_core v0.21.2
+   Compiling indexmap v2.10.0
+   Compiling ptr_meta v0.3.0
+   Compiling icu_locid_transform v1.5.0
+   Compiling icu_collections v1.5.0
+   Compiling ahash v0.8.12
+   Compiling ring v0.17.14
+   Compiling simdutf8 v0.1.5
+   Compiling lazy_static v1.5.0
+   Compiling memchr v2.7.5
+   Compiling zeroize v1.8.1
+   Compiling smallvec v1.15.1
+   Compiling regex-lite v0.1.7
+   Compiling bitflags v2.9.2
+   Compiling rustls-pki-types v1.12.0
+   Compiling icu_properties v1.5.1
+   Compiling darling_macro v0.21.2
+   Compiling rancor v0.1.0
+   Compiling bytecheck_derive v0.8.1
+   Compiling thiserror v1.0.69
+   Compiling adler2 v2.0.1
+   Compiling utf8_iter v1.0.4
+   Compiling write16 v1.0.0
+   Compiling utf16_iter v1.0.5
+   Compiling glob v0.3.3
+   Compiling icu_normalizer v1.5.0
+   Compiling clang-sys v1.8.1
+   Compiling bytecheck v0.8.1
+   Compiling miniz_oxide v0.8.9
+   Compiling llvm-sys v180.0.0
+   Compiling darling v0.21.2
+   Compiling crypto-common v0.1.6
+   Compiling block-buffer v0.10.4
+   Compiling ptr_meta_derive v0.1.4
+   Compiling thiserror-impl v1.0.69
+   Compiling munge_macro v0.4.6
+   Compiling getrandom v0.2.16
+   Compiling lock_api v0.4.13
+   Compiling prettyplease v0.2.37
+   Compiling bytecheck v0.6.12
+   Compiling rustix v1.0.8
+   Compiling parking_lot_core v0.9.11
+   Compiling scopeguard v1.2.0
+   Compiling untrusted v0.9.0
+   Compiling target-lexicon v0.12.16
+   Compiling bytes v1.10.1
+   Compiling object v0.36.7
+   Compiling munge v0.4.6
+   Compiling ptr_meta v0.1.4
+   Compiling digest v0.10.7
+   Compiling enumset_derive v0.14.0
+   Compiling hashbrown v0.14.5
+   Compiling rend v0.5.2
+   Compiling idna_adapter v1.2.0
+   Compiling aho-corasick v1.1.3
+   Compiling bytecheck_derive v0.6.12
+   Compiling enum-iterator-derive v0.7.0
+   Compiling rkyv_derive v0.8.11
+   Compiling corosensei v0.2.2
+   Compiling memoffset v0.9.1
+   Compiling siphasher v1.0.1
+   Compiling regex-syntax v0.8.5
+   Compiling rand_core v0.6.4
+   Compiling static_assertions v1.1.0
+   Compiling log v0.4.27
+   Compiling rustls v0.23.31
+   Compiling minimal-lexical v0.2.1
+   Compiling cpufeatures v0.2.17
+   Compiling gimli v0.31.1
+   Compiling percent-encoding v2.3.2
+   Compiling linux-raw-sys v0.9.4
+   Compiling addr2line v0.24.2
+   Compiling form_urlencoded v1.2.2
+   Compiling regex-automata v0.4.9
+   Compiling sha2 v0.10.9
+   Compiling nom v7.1.3
+   Compiling twox-hash v1.6.3
+   Compiling rand v0.8.5
+   Compiling phf_shared v0.11.3
+   Compiling rkyv v0.8.11
+   Compiling enum-iterator v0.7.0
+   Compiling idna v1.1.0
+   Compiling enumset v1.1.10
+   Compiling rustls-webpki v0.103.4
+   Compiling webpki-roots v1.0.2
+   Compiling crossbeam-epoch v0.9.18
+   Compiling derive_more v0.99.20
+   Compiling libloading v0.8.8
+   Compiling rayon-core v1.13.0
+   Compiling wasmparser v0.224.1
+   Compiling either v1.15.0
+   Compiling subtle v2.6.1
+   Compiling more-asserts v0.2.2
+   Compiling xxhash-rust v0.8.15
+   Compiling bindgen v0.70.1
+   Compiling bitflags v1.3.2
+   Compiling rustc-demangle v0.1.26
+   Compiling byteorder v1.5.0
+   Compiling hex v0.4.3
+   Compiling ruzstd v0.5.0
+   Compiling wasmer-types v6.0.1
+   Compiling itertools v0.13.0
+   Compiling backtrace v0.3.74
+   Compiling region v3.0.2
+   Compiling flate2 v1.1.2
+   Compiling crossbeam-deque v0.8.6
+   Compiling webpki-roots v0.26.11
+   Compiling dashmap v6.1.0
+   Compiling url v2.5.6
+   Compiling phf_generator v0.11.3
+   Compiling cexpr v0.6.0
+   Compiling regex v1.11.1
+   Compiling xattr v1.5.1
+   Compiling crossbeam-queue v0.3.12
+   Compiling filetime v0.2.26
+   Compiling memmap2 v0.6.2
+   Compiling inkwell v0.5.0
+   Compiling serde_core v1.0.225
+   Compiling rustc-hash v1.1.0
+   Compiling cfg_aliases v0.2.1
+   Compiling libunwind v1.3.3
+   Compiling base64 v0.22.1
+   Compiling wasmer-vm v6.0.1
+   Compiling ureq v2.12.1
+   Compiling nix v0.30.1
+   Compiling shared-buffer v0.1.4
+   Compiling tar v0.4.44
+   Compiling phf_macros v0.11.3
+   Compiling object v0.32.2
+   Compiling tracing-core v0.1.34
+   Compiling tracing-attributes v0.1.30
+   Compiling inkwell_internals v0.10.0
+   Compiling proc-macro-error-attr2 v2.0.0
+   Compiling cmake v0.1.54
+   Compiling pin-project-lite v0.2.16
+   Compiling serde v1.0.225
+   Compiling unicode-xid v0.2.6
+   Compiling paste v1.0.15
+   Compiling leb128 v0.2.5
+   Compiling self_cell v1.2.0
+   Compiling wasmer-compiler v6.0.1
+   Compiling derive_more-impl v1.0.0
+   Compiling wasmer v6.0.1
+   Compiling tracing v0.1.41
+   Compiling proc-macro-error2 v2.0.1
+   Compiling rayon v1.11.0
+   Compiling phf v0.11.3
+   Compiling itertools v0.10.5
+   Compiling nibble_vec v0.1.0
+   Compiling serde_derive v1.0.225
+   Compiling serde_json v1.0.143
+   Compiling thiserror v2.0.16
+   Compiling endian-type v0.1.2
+   Compiling radix_trie v0.2.1
+   Compiling wasmer-compiler-llvm v6.0.1
+   Compiling wasmer-derive v6.0.1
+   Compiling derive_more v1.0.0
+   Compiling fd-lock v4.0.4
+   Compiling memlayout v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout)
+warning: unused import: `std::path::Path`
+ --> build.rs:2:5
+  |
+2 | use std::path::Path;
+  |     ^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `memlayout` (build script) generated 1 warning
+   Compiling thiserror-impl v2.0.16
+   Compiling unicode-width v0.2.1
+   Compiling fallible-iterator v0.3.0
+   Compiling unicode-segmentation v1.12.0
+   Compiling ryu v1.0.20
+   Compiling itoa v1.0.15
+   Compiling home v0.5.11
+   Compiling utf8parse v0.2.2
+   Compiling rustyline v17.0.2
+   Compiling gimli v0.32.2
+   Compiling wasmparser v0.205.0
+warning: unused imports: `DebugStrOffset`, `EvaluationResult`, `Expression`, `Location`, and `ValueType`
+ --> src/dwarfparser.rs:1:107
+  |
+1 | ...InformationEntry, AttributeValue, DebugStrOffset, Expression, EvaluationResult, Location, ValueType, Value,};
+  |                                      ^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^^^  ^^^^^^^^  ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `gimli::DW_TAG_subprogram`
+ --> src/dwarfparser.rs:5:5
+  |
+5 | use gimli::DW_TAG_subprogram;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::memlayout::*`
+ --> src/dwarfparser.rs:7:5
+  |
+7 | use crate::memlayout::*;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `DwarfError` and `MemoryError`
+ --> src/main.rs:8:14
+  |
+8 | use errors::{DwarfError, MemoryError};
+  |              ^^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused import: `MemoryType`
+ --> src/wasmrt.rs:1:55
+  |
+1 | use wasmer::{Store, Module, Engine, Instance, Memory, MemoryType, Table, Global};//, Universal};
+  |                                                       ^^^^^^^^^^
+
+warning: unused import: `wasmer_types::Type`
+ --> src/wasmrt.rs:8:5
+  |
+8 | use wasmer_types::Type;
+  |     ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `rustc_demangle::demangle`
+  --> src/wasmrt.rs:23:5
+   |
+23 | use rustc_demangle::demangle;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `Cmd`, `EventHandler`, and `Event`
+  --> src/debugger.rs:42:40
+   |
+42 |         use rustyline::{DefaultEditor, Cmd, Event, EventHandler};
+   |                                        ^^^  ^^^^^  ^^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+ --> src/disasm.rs:5:5
+  |
+5 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Operator`
+ --> src/disasm.rs:7:35
+  |
+7 | use wasmparser::{Parser, Payload, Operator};
+  |                                   ^^^^^^^^
+
+warning: unreachable statement
+  --> src/wasmrt.rs:79:9
+   |
+77 |             return Engine::from(raw_engine);
+   |             ------------------------------- any code following this expression is unreachable
+78 |         }
+79 |         panic!("Kein Backend aktiviert — benutze --features cranelift | singlepass | llvm");
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable statement
+   |
+   = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::fmt::Write`
+ --> src/disasm.rs:3:5
+  |
+3 | use std::fmt::Write;
+  |     ^^^^^^^^^^^^^^^
+
+warning: unused variable: `full_path`
+   --> src/dwarfparser.rs:158:33
+    |
+158 | ...                   let full_path = if let Some(dir_attr) = file.directory(header) {
+    |                           ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_full_path`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `depth`
+   --> src/dwarfparser.rs:219:32
+    |
+219 |             while let Ok(Some((depth, entry))) = entries.next_dfs().map_err(DwarfError::GimliError) {
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_depth`
+
+warning: unused variable: `attr`
+   --> src/dwarfparser.rs:353:25
+    |
+353 |             while let Some(attr) = attrs.next().unwrap() {
+    |                            ^^^^ help: if this is intentional, prefix it with an underscore: `_attr`
+
+warning: unused variable: `field_size`
+   --> src/dwarfparser.rs:371:34
+    |
+371 |                     let (type_name, field_size) = if let Some(type_ref) = entry.attr(gimli::DW_AT_type)? {
+    |                                     ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_field_size`
+
+warning: unused variable: `unit`
+   --> src/dwarfparser.rs:313:9
+    |
+313 |         unit: &Unit<EndianSlice<LittleEndian>>,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_unit`
+
+warning: unused variable: `name_str`
+   --> src/dwarfparser.rs:419:13
+    |
+419 |         let name_str = match name_attr.string_value(&self.dwarf.debug_str) {
+    |             ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_name_str`
+
+warning: unused variable: `unit`
+   --> src/dwarfparser.rs:405:9
+    |
+405 |         unit: &Unit<EndianSlice<LittleEndian>>,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_unit`
+
+warning: unused variable: `expr`
+   --> src/dwarfparser.rs:549:36
+    |
+549 |     fn evaluate_entry_value(&self, expr: &gimli::Expression<EndianSlice<LittleEndian>>) -> Result<u64, Box<dyn std::error::Error>> {
+    |                                    ^^^^ help: if this is intentional, prefix it with an underscore: `_expr`
+
+warning: unused variable: `runtime`
+   --> src/dwarfparser.rs:584:34
+    |
+584 |     fn get_register_value(&self, runtime: &WasmRuntime, register: gimli::Register, base_type: gimli::UnitOffset) -> Result<u64, Box<dyn s...
+    |                                  ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_runtime`
+
+warning: unused variable: `register`
+   --> src/dwarfparser.rs:584:57
+    |
+584 | ...lf, runtime: &WasmRuntime, register: gimli::Register, base_type: gimli::UnitOffset) -> Result<u64, Box<dyn std::error::Error>> {
+    |                               ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_register`
+
+warning: unused variable: `base_type`
+   --> src/dwarfparser.rs:584:84
+    |
+584 | ...egister: gimli::Register, base_type: gimli::UnitOffset) -> Result<u64, Box<dyn std::error::Error>> {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_base_type`
+
+warning: unused variable: `runtime`
+   --> src/dwarfparser.rs:592:30
+    |
+592 |     fn get_frame_base(&self, runtime: &WasmRuntime,) -> Result<u64, Box<dyn std::error::Error>> {
+    |                              ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_runtime`
+
+warning: unused variable: `runtime`
+   --> src/dwarfparser.rs:599:32
+    |
+599 |     fn relocate_address(&self, runtime: &WasmRuntime, offset: u64) -> Result<u64, Box<dyn std::error::Error>> {
+    |                                ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_runtime`
+
+warning: unused variable: `value_type`
+   --> src/dwarfparser.rs:616:25
+    |
+616 |     fn get_value(&self, value_type: gimli::ValueType) -> Result<u64, Box<dyn std::error::Error>> {
+    |                         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_value_type`
+
+warning: unused variable: `runtime`
+   --> src/dwarfparser.rs:621:29
+    |
+621 |     fn get_tls_value(&self, runtime: &WasmRuntime) -> Result<u64, Box<dyn std::error::Error>> {
+    |                             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_runtime`
+
+warning: unreachable pattern
+   --> src/wasmrt.rs:115:17
+    |
+115 |                 _ => "unknown",
+    |                 ^ no value can reach this
+    |
+note: multiple earlier patterns match some of the same values
+   --> src/wasmrt.rs:115:17
+    |
+110 |                 wasmer::Extern::Function(_) => "function",
+    |                 --------------------------- matches some of the same values
+111 |                 wasmer::Extern::Global(_) => "global",
+    |                 ------------------------- matches some of the same values
+112 |                 wasmer::Extern::Memory(_) => "memory",
+    |                 ------------------------- matches some of the same values
+113 |                 wasmer::Extern::Table(_) => "table",
+    |                 ------------------------ matches some of the same values
+114 |                 wasmer::Extern::Tag(_) => "tag",
+115 |                 _ => "unknown",
+    |                 ^ ...and 1 other patterns collectively make this unreachable
+    = note: `#[warn(unreachable_patterns)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `memory`
+   --> src/wasmrt.rs:144:13
+    |
+144 |         let memory = instance
+    |             ^^^^^^ help: if this is intentional, prefix it with an underscore: `_memory`
+
+warning: unused variable: `export`
+   --> src/wasmrt.rs:254:24
+    |
+254 |             for (name, export) in exports.iter() {
+    |                        ^^^^^^ help: if this is intentional, prefix it with an underscore: `_export`
+
+warning: unused variable: `var_info`
+   --> src/wasmrt.rs:637:9
+    |
+637 |     let var_info = layout.read_variable(var_name)?;
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_var_info`
+
+warning: unused variable: `rl`
+  --> src/debugger.rs:37:17
+   |
+37 |         let mut rl: Editor::<(), DefaultHistory> = Editor::new()?;
+   |                 ^^ help: if this is intentional, prefix it with an underscore: `_rl`
+
+warning: variable does not need to be mutable
+  --> src/debugger.rs:37:13
+   |
+37 |         let mut rl: Editor::<(), DefaultHistory> = Editor::new()?;
+   |             ----^^
+   |             |
+   |             help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:25:9
+   |
+25 |     let mut runtime = WasmRuntime::new(&wasm_bytes, Some(dwarf_parser.clone()))?;
+   |         ----^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: fields `segments` and `type_registry` are never read
+  --> src/memlayout.rs:8:5
+   |
+ 7 | pub struct MemoryLayout {
+   |            ------------ fields in this struct
+ 8 |     segments: Vec<MemorySegment>,
+   |     ^^^^^^^^
+ 9 |     memory: Vec<u8>,
+10 |     type_registry: HashMap<String, TypeInfo>,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: methods `generate_visualization` and `generate_visualization_json` are never used
+   --> src/memlayout.rs:219:12
+    |
+ 14 | impl MemoryLayout {
+    | ----------------- methods in this implementation
+...
+219 |     pub fn generate_visualization(&self) -> Visualization {
+    |            ^^^^^^^^^^^^^^^^^^^^^^
+...
+253 |     pub fn generate_visualization_json(&self) -> String {
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: field `sections` is never read
+  --> src/dwarfparser.rs:15:5
+   |
+13 | pub struct DwarfParser<'a> {
+   |            ----------- field in this struct
+14 |     dwarf: Dwarf<EndianSlice<'a, LittleEndian>>,
+15 |     sections: std::rc::Rc<HashMap<gimli::SectionId, Vec<u8>>>, // Ownership für from_wasm Funktion behalten
+   |     ^^^^^^^^
+   |
+   = note: `DwarfParser` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: method `get_value` is never used
+   --> src/dwarfparser.rs:616:8
+    |
+ 19 | impl<'a> DwarfParser<'a> {
+    | ------------------------ method in this implementation
+...
+616 |     fn get_value(&self, value_type: gimli::ValueType) -> Result<u64, Box<dyn std::error::Error>> {
+    |        ^^^^^^^^^
+
+warning: variants `InvalidSection` and `UnsupportedVersion` are never constructed
+  --> src/errors.rs:11:5
+   |
+ 6 | pub enum DwarfError {
+   |          ---------- variants in this enum
+...
+11 |     InvalidSection(String),
+   |     ^^^^^^^^^^^^^^
+...
+17 |     UnsupportedVersion(u16),
+   |     ^^^^^^^^^^^^^^^^^^
+   |
+   = note: `DwarfError` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: variants `TypeMismatch`, `MemoryNotInitialized`, `WasmRuntimeError`, and `ParseError` are never constructed
+  --> src/errors.rs:71:5
+   |
+60 | pub enum MemoryError {
+   |          ----------- variants in this enum
+...
+71 |     TypeMismatch { expected: String, found: String },
+   |     ^^^^^^^^^^^^
+...
+77 |     MemoryNotInitialized,
+   |     ^^^^^^^^^^^^^^^^^^^^
+...
+80 |     WasmRuntimeError(String),
+   |     ^^^^^^^^^^^^^^^^
+...
+92 |     ParseError(String),
+   |     ^^^^^^^^^^
+   |
+   = note: `MemoryError` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: variants `GlobalSetFailed`, `TableNotFound`, `TableAccessFailed`, and `Unknown` are never constructed
+   --> src/errors.rs:165:5
+    |
+148 | pub enum RuntimeError {
+    |          ------------ variants in this enum
+...
+165 |     GlobalSetFailed(String, String),
+    |     ^^^^^^^^^^^^^^^
+...
+168 |     TableNotFound(String),
+    |     ^^^^^^^^^^^^^
+...
+171 |     TableAccessFailed(String, String),
+    |     ^^^^^^^^^^^^^^^^^
+...
+183 |     Unknown(String)
+    |     ^^^^^^^
+    |
+    = note: `RuntimeError` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: fields `exported_tables`, `exported_memories`, and `disasm` are never read
+  --> src/wasmrt.rs:47:5
+   |
+41 | pub struct WasmRuntime<'a> {
+   |            ----------- fields in this struct
+...
+47 |     exported_tables: HashMap<String, Table>,
+   |     ^^^^^^^^^^^^^^^
+48 |     exported_memories: HashMap<String, Memory>,
+   |     ^^^^^^^^^^^^^^^^^
+...
+51 |     pub disasm: ModuleDisasm<'a>,
+   |         ^^^^^^
+
+warning: methods `write_memory`, `set_global_value`, `get_table_size`, `get_table_element`, `get_additional_memory`, and `get_global_as_i64` are never used
+   --> src/wasmrt.rs:382:12
+    |
+ 55 | impl<'a> WasmRuntime<'a> {
+    | ------------------------ methods in this implementation
+...
+382 |     pub fn write_memory(&mut self, address: u64, data: &[u8]) -> Result<(), RuntimeError> {
+    |            ^^^^^^^^^^^^
+...
+450 |     pub fn set_global_value(&self, name: &str, value: wasmer::Value) -> Result<(), RuntimeError> {
+    |            ^^^^^^^^^^^^^^^^
+...
+460 |     pub fn get_table_size(&self, name: &str) -> Result<u32, RuntimeError> {
+    |            ^^^^^^^^^^^^^^
+...
+468 |     pub fn get_table_element(&self, name: &str, index: u32) -> Result<Option<wasmer::Value>, RuntimeError> {
+    |            ^^^^^^^^^^^^^^^^^
+...
+483 |     pub fn get_additional_memory(&self, name: &str) -> Result<&Memory, RuntimeError> {
+    |            ^^^^^^^^^^^^^^^^^^^^^
+...
+501 |     pub fn get_global_as_i64(&mut self, name: &str) -> Result<i64, RuntimeError> {
+    |            ^^^^^^^^^^^^^^^^^
+
+warning: function `inspect_variable` is never used
+   --> src/wasmrt.rs:632:4
+    |
+632 | fn inspect_variable(
+    |    ^^^^^^^^^^^^^^^^
+
+warning: multiple associated items are never used
+   --> src/types.rs:84:12
+    |
+ 83 | impl TypeInfo {
+    | ------------- associated items in this implementation
+ 84 |     pub fn new_primitive(size: u64, kind: PrimitiveKind) -> Self {
+    |            ^^^^^^^^^^^^^
+...
+ 88 |     pub fn new_struct(name: String, size: u64, fields: HashMap<String, FieldInfo>) -> Self {
+    |            ^^^^^^^^^^
+...
+ 92 |     pub fn is_primitive(&self) -> bool {
+    |            ^^^^^^^^^^^^
+...
+ 96 |     pub fn is_struct(&self) -> bool {
+    |            ^^^^^^^^^
+...
+114 |     pub fn get_kind(&self) -> TypeKind {
+    |            ^^^^^^^^
+...
+129 |     pub fn int8() -> Self {
+    |            ^^^^
+...
+133 |     pub fn uint8() -> Self {
+    |            ^^^^^
+...
+137 |     pub fn int16() -> Self {
+    |            ^^^^^
+...
+141 |     pub fn uint16() -> Self {
+    |            ^^^^^^
+...
+145 |     pub fn int32() -> Self {
+    |            ^^^^^
+...
+149 |     pub fn uint32() -> Self {
+    |            ^^^^^^
+...
+153 |     pub fn int64() -> Self {
+    |            ^^^^^
+...
+157 |     pub fn uint64() -> Self {
+    |            ^^^^^^
+...
+161 |     pub fn float() -> Self {
+    |            ^^^^^
+...
+165 |     pub fn double() -> Self {
+    |            ^^^^^^
+...
+169 |     pub fn bool() -> Self {
+    |            ^^^^
+...
+173 |     pub fn char() -> Self {
+    |            ^^^^
+...
+177 |     pub fn void() -> Self {
+    |            ^^^^
+...
+181 |     pub fn pointer_to(pointed_type: TypeInfo) -> Self {
+    |            ^^^^^^^^^^
+
+warning: enum `TypeKind` is never used
+   --> src/types.rs:212:10
+    |
+212 | pub enum TypeKind {
+    |          ^^^^^^^^
+
+warning: struct `Visualization` is never constructed
+  --> src/memsegments.rs:22:12
+   |
+22 | pub struct Visualization {
+   |            ^^^^^^^^^^^^^
+
+warning: method `render_html` is never used
+  --> src/memsegments.rs:28:12
+   |
+27 | impl Visualization {
+   | ------------------ method in this implementation
+28 |     pub fn render_html(&self) -> String {
+   |            ^^^^^^^^^^^
+
+warning: struct `VisualizationSegment` is never constructed
+  --> src/memsegments.rs:49:12
+   |
+49 | pub struct VisualizationSegment {
+   |            ^^^^^^^^^^^^^^^^^^^^
+
+warning: field `current_pc` is never read
+  --> src/debugger.rs:15:5
+   |
+ 9 | pub struct WasmDebugger<'a> {
+   |            ------------ field in this struct
+...
+15 |     current_pc: u64, // Aktuelle Instruktionsadresse
+   |     ^^^^^^^^^^
+
+warning: methods `step`, `show_current_location`, and `continue_exec` are never used
+   --> src/debugger.rs:174:8
+    |
+ 21 | impl<'a> WasmDebugger<'a> {
+    | ------------------------- methods in this implementation
+...
+174 |     fn step(&mut self) -> anyhow::Result<()> {
+    |        ^^^^
+...
+209 |     pub fn show_current_location(&self, offset: u64) {
+    |            ^^^^^^^^^^^^^^^^^^^^^
+...
+259 |     fn continue_exec(&mut self) -> anyhow::Result<()> {
+    |        ^^^^^^^^^^^^^
+
+warning: methods `disassemble_function` and `func_len` are never used
+   --> src/disasm.rs:79:12
+    |
+ 26 | impl<'a> ModuleDisasm<'a> {
+    | ------------------------- methods in this implementation
+...
+ 79 |     pub fn disassemble_function(&self, func_name: &str) -> Option<&FunctionDisasm> {
+    |            ^^^^^^^^^^^^^^^^^^^^
+...
+168 |     pub fn func_len(&self, func_index: u32) -> Option<usize> {
+    |            ^^^^^^^^
+
+warning: unused `std::result::Result` that must be used
+   --> src/dwarfparser.rs:220:17
+    |
+220 |                 self.process_die(entry, runtime, &unit, &mut variables, &mut type_registry);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+    = note: `#[warn(unused_must_use)]` (part of `#[warn(unused)]`) on by default
+help: use `let _ = ...` to ignore the resulting value
+    |
+220 |                 let _ = self.process_die(entry, runtime, &unit, &mut variables, &mut type_registry);
+    |                 +++++++
+
+warning: unused `std::result::Result` that must be used
+   --> src/wasmrt.rs:364:9
+    |
+364 | /         view.read(address, &mut buffer)
+365 | |             .map_err(|_| RuntimeError::InvalidMemoryAccess);
+    | |___________________________________________________________^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+help: use `let _ = ...` to ignore the resulting value
+    |
+364 |         let _ = view.read(address, &mut buffer)
+    |         +++++++
+
+warning: unused `std::result::Result` that must be used
+   --> src/wasmrt.rs:390:9
+    |
+390 | /         view.write(address, data)
+391 | |             .map_err(|_| RuntimeError::InvalidMemoryAccess);
+    | |___________________________________________________________^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+help: use `let _ = ...` to ignore the resulting value
+    |
+390 |         let _ = view.write(address, data)
+    |         +++++++
+
+error: linking with `cc` failed: exit status: 1
+  |
+  = note:  "cc" "-m64" "/tmp/rustcIFft54/symbols.o" "<2 object files omitted>" "-Wl,--as-needed" "-Wl,-Bdynamic" "-lstdc++" "-lffi" "-lz" "-lzstd" "-lxml2" "-lrt" "-ldl" "-lm" "-Wl,-Bstatic" "/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/{libserde_json-6b6a26c2b44c17f5,libitoa-1308765a673f9abd,libryu-b36ad5bafc198ae4,libanyhow-037fde54f905f454,librustyline-c3148c08a8e53c9a,libutf8parse-5a5d952638ba730a,libnix-32f5ea70d06dda2e,libunicode_width-b7e46ec982870695,libfd_lock-0cfcd2fb2891bfc7,librustix-424eeaf1677c42d9,liblinux_raw_sys-9ac8795e706e8771,libunicode_segmentation-e0aa22eef5f28ad3,libhome-c14d5f1f8aef0a39,libradix_trie-305c58b74862909f,libnibble_vec-b98bd61ff6d2c7c1,libendian_type-74c6d4b778c96ace,libserde-56536c83c0f1cd8b,libserde_core-fbe253adc77be4b4,libwasmer-c26b7264fdc81e6e,libderive_more-f773e5b66d5115c7,libwasmer_compiler_llvm-081c73b8452e2557,libphf-21ec1b89622a0c6e,libphf_shared-3e74124222aa3326,libsiphasher-45750ee38de61774,libitertools-8ae6b18f6257de53,librayon-5918636da4131422,librayon_core-a5e8db1a8f5501b7,libcrossbeam_deque-75a0f20905d9311e,libcrossbeam_epoch-7d599c8649e525ae,libinkwell-8e8ac28ab4081782,libeither-bcf4ff2ddd9c60cb,libllvm_sys-81d6ab7edd75e54a,libtracing-215bc80a220988a8,liblog-4772dcd2ba4654f7,libpin_project_lite-c7e9b4fa75dce6f1,libtracing_core-1d5a0547a4dfcde6,libwasmer_compiler-823da78a77d1d485,libwasmparser-6147e5ed27fd8927,libself_cell-8d47a518b78239a2,libobject-05ae4f568f6b97aa,libruzstd-aba2efebc3c578a5,libtwox_hash-23a055f33c5ab6e4,libstatic_assertions-dc75c042df2c4895,libflate2-99d5ccab4db13709,libcrc32fast-2d7cbbc9f93b1e81,libshared_buffer-5fab94f79a60b3d4,libmemmap2-72b6257c48c15b86,libwasmer_vm-650bcd546c284902,libcrossbeam_queue-91d0eb811e0a07cc,libregion-5242d55b0b406e4a,libbitflags-8c4e584245ef905d,liblibunwind-2e3386e50c22dd19,libcorosensei-a205055ad85d216d,libbacktrace-7741acc8bd50b53a,libminiz_oxide-4303d88ca0bb071f,libadler2-21cd310ae53c121b,libobject-77be41fc15323a00,libmemchr-0cbd1ac704a99f40,libaddr2line-3466de01139ba8bf,libgimli-0a910ae67c0774ae,librustc_demangle-fd02bacc6655e378,libfnv-19ddccf128fcfa5f,libdashmap-c7ce563758d9a413,liblock_api-9691248160bfd845,libscopeguard-44a1fe0ae829ccb0,libhashbrown-f1b588dae3420020,libahash-17febf297712124c,libzerocopy-df32e9bf03a382e2,libonce_cell-aa868ee1d3349010,libcrossbeam_utils-4e84bd0679164234,libparking_lot_core-0cd78cba7aa0a539,liblibc-7e4b552f59996a13,libsmallvec-8722941b782c49b2,libmemoffset-dcee6c4f828fac3e,libwasmer_types-aaf45d31709eaf07,libxxhash_rust-83950aaeb4378ed1,libhex-ca61161b2f217130,libmore_asserts-0ec4b24e195d706a,libtarget_lexicon-c9bb0354f7d9124a,libenumset-412d4511c015688a,libsha2-ccc6fe3dd5ec38ea,libcpufeatures-c9a2a85874b96298,libcfg_if-596c35fea9f5cebf,libdigest-9636f5855be29261,libblock_buffer-c995d5db0fde0a48,libcrypto_common-1888005710e93d3b,libgeneric_array-fd53dd860e2dddff,libtypenum-0661490654f78903,libenum_iterator-0ac0e50997aedfd6,librkyv-c7d37f56c520baad,librend-79d17ee85afcb5e3,libmunge-a757edc025b9b741,libbytecheck-eb1c7386f1ceda61,libsimdutf8-95f2b8f2bf5289ca,librancor-8337605be0387500,libptr_meta-ecf576c6732e4325,libthiserror-be64f29f7b527edd,libbytes-74a44805d32bddae,libthiserror-166e7489a083e90b,libwasmparser-ff4f95b338b4a76c,libsemver-ff3b8fd95d82d4bd,libbitflags-dc27d4d034029276,libgimli-e9c06b19d9f30a0a,libfallible_iterator-cee6c17606b22125,libindexmap-f539c4b56d03588d,libequivalent-c8429d7741e8a58d,libhashbrown-f54d150d00c854da,libstable_deref_trait-147bb46c0c47a476,libbyteorder-c92ad3aa892b5183}.rlib" "<sysroot>/lib/rustlib/x86_64-unknown-linux-gnu/lib/{libstd-*,libpanic_unwind-*,libobject-*,libmemchr-*,libaddr2line-*,libgimli-*,libcfg_if-*,librustc_demangle-*,libstd_detect-*,libhashbrown-*,librustc_std_workspace_alloc-*,libminiz_oxide-*,libadler2-*,libunwind-*,liblibc-*,librustc_std_workspace_core-*,liballoc-*,libcore-*,libcompiler_builtins-*}.rlib" "-Wl,-Bdynamic" "-lffi" "-lrt" "-ldl" "-lm" "-lz" "-lzstd" "-ltinfo" "-lxml2" "-lstdc++" "-lgcc_s" "-lutil" "-lrt" "-lpthread" "-lm" "-ldl" "-lc" "-L" "/tmp/rustcIFft54/raw-dylibs" "-B<sysroot>/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld" "-fuse-ld=lld" "-Wl,--eh-frame-hdr" "-Wl,-z,noexecstack" "-L" "/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-36cc039606ac9b2e/out" "-L" "/usr/lib/llvm-18/lib" "-L" "<sysroot>/lib/rustlib/x86_64-unknown-linux-gnu/lib" "-o" "/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/memlayout-4b16dbec01318f0d" "-Wl,--gc-sections" "-pie" "-Wl,-z,relro,-z,now" "-nodefaultlibs" "-Wl,-v" "-Wl,--allow-multiple-definition"
+  = note: some arguments are omitted. use `--verbose` to show all linker arguments
+  = note: collect2 version 13.3.0
+          /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld/ld.lld -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccMrNXCF.res --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/memlayout-4b16dbec01318f0d /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/tmp/rustcIFft54/raw-dylibs -L/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-36cc039606ac9b2e/out -L/usr/lib/llvm-18/lib -L/home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib -L/home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. /tmp/rustcIFft54/symbols.o /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/memlayout-4b16dbec01318f0d.76xjxb7zewhcx3xpkqsqlbvka.0993ttj.rcgu.o /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/memlayout-4b16dbec01318f0d.2ol6gb0ii95p9wp3i4p2wm9ha.0993ttj.rcgu.o --as-needed -Bdynamic -lstdc++ -lffi -lz -lzstd -lxml2 -lrt -ldl -lm -Bstatic /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libserde_json-6b6a26c2b44c17f5.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libitoa-1308765a673f9abd.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libryu-b36ad5bafc198ae4.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libanyhow-037fde54f905f454.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librustyline-c3148c08a8e53c9a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libutf8parse-5a5d952638ba730a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libnix-32f5ea70d06dda2e.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libunicode_width-b7e46ec982870695.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libfd_lock-0cfcd2fb2891bfc7.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librustix-424eeaf1677c42d9.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblinux_raw_sys-9ac8795e706e8771.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libunicode_segmentation-e0aa22eef5f28ad3.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libhome-c14d5f1f8aef0a39.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libradix_trie-305c58b74862909f.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libnibble_vec-b98bd61ff6d2c7c1.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libendian_type-74c6d4b778c96ace.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libserde-56536c83c0f1cd8b.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libserde_core-fbe253adc77be4b4.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer-c26b7264fdc81e6e.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libderive_more-f773e5b66d5115c7.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_compiler_llvm-081c73b8452e2557.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libphf-21ec1b89622a0c6e.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libphf_shared-3e74124222aa3326.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libsiphasher-45750ee38de61774.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libitertools-8ae6b18f6257de53.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librayon-5918636da4131422.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librayon_core-a5e8db1a8f5501b7.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcrossbeam_deque-75a0f20905d9311e.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcrossbeam_epoch-7d599c8649e525ae.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libinkwell-8e8ac28ab4081782.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libeither-bcf4ff2ddd9c60cb.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libtracing-215bc80a220988a8.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblog-4772dcd2ba4654f7.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libpin_project_lite-c7e9b4fa75dce6f1.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libtracing_core-1d5a0547a4dfcde6.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_compiler-823da78a77d1d485.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmparser-6147e5ed27fd8927.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libself_cell-8d47a518b78239a2.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libobject-05ae4f568f6b97aa.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libruzstd-aba2efebc3c578a5.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libtwox_hash-23a055f33c5ab6e4.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libstatic_assertions-dc75c042df2c4895.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libflate2-99d5ccab4db13709.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcrc32fast-2d7cbbc9f93b1e81.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libshared_buffer-5fab94f79a60b3d4.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libmemmap2-72b6257c48c15b86.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_vm-650bcd546c284902.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcrossbeam_queue-91d0eb811e0a07cc.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libregion-5242d55b0b406e4a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbitflags-8c4e584245ef905d.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblibunwind-2e3386e50c22dd19.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcorosensei-a205055ad85d216d.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbacktrace-7741acc8bd50b53a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libminiz_oxide-4303d88ca0bb071f.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libadler2-21cd310ae53c121b.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libobject-77be41fc15323a00.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libmemchr-0cbd1ac704a99f40.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libaddr2line-3466de01139ba8bf.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libgimli-0a910ae67c0774ae.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librustc_demangle-fd02bacc6655e378.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libfnv-19ddccf128fcfa5f.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libdashmap-c7ce563758d9a413.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblock_api-9691248160bfd845.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libscopeguard-44a1fe0ae829ccb0.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libhashbrown-f1b588dae3420020.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libahash-17febf297712124c.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libzerocopy-df32e9bf03a382e2.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libonce_cell-aa868ee1d3349010.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcrossbeam_utils-4e84bd0679164234.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libparking_lot_core-0cd78cba7aa0a539.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/liblibc-7e4b552f59996a13.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libsmallvec-8722941b782c49b2.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libmemoffset-dcee6c4f828fac3e.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_types-aaf45d31709eaf07.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libxxhash_rust-83950aaeb4378ed1.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libhex-ca61161b2f217130.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libmore_asserts-0ec4b24e195d706a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libtarget_lexicon-c9bb0354f7d9124a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libenumset-412d4511c015688a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libsha2-ccc6fe3dd5ec38ea.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcpufeatures-c9a2a85874b96298.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcfg_if-596c35fea9f5cebf.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libdigest-9636f5855be29261.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libblock_buffer-c995d5db0fde0a48.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libcrypto_common-1888005710e93d3b.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libgeneric_array-fd53dd860e2dddff.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libtypenum-0661490654f78903.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libenum_iterator-0ac0e50997aedfd6.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librkyv-c7d37f56c520baad.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librend-79d17ee85afcb5e3.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libmunge-a757edc025b9b741.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbytecheck-eb1c7386f1ceda61.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libsimdutf8-95f2b8f2bf5289ca.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librancor-8337605be0387500.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libptr_meta-ecf576c6732e4325.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libthiserror-be64f29f7b527edd.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbytes-74a44805d32bddae.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libthiserror-166e7489a083e90b.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmparser-ff4f95b338b4a76c.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libsemver-ff3b8fd95d82d4bd.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbitflags-dc27d4d034029276.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libgimli-e9c06b19d9f30a0a.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libfallible_iterator-cee6c17606b22125.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libindexmap-f539c4b56d03588d.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libequivalent-c8429d7741e8a58d.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libhashbrown-f54d150d00c854da.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libstable_deref_trait-147bb46c0c47a476.rlib /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbyteorder-c92ad3aa892b5183.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd-a71a575950182156.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libpanic_unwind-150250ca1242312f.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libobject-00745b6f63a5acb7.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libmemchr-ff20d9e744b5ce29.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libaddr2line-05ff42d0bb8bc056.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libgimli-9e30a03d9a87a46b.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcfg_if-ca532f729409e986.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_demangle-d3519961f658f03a.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd_detect-866c9680e50cd51f.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libhashbrown-e3c0c009096f309d.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_alloc-2fb855ef27dbee02.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libminiz_oxide-9b8400ec28816bfd.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libadler2-657586f1e76773bb.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libunwind-1c92ef7cd9e0e2d8.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/liblibc-a1d686c1facffe2c.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_core-84c61cf6bc98478a.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/liballoc-91b4ad6132580879.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcore-f0bc820f356cd8e0.rlib /home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcompiler_builtins-a035fea0a7ead343.rlib -Bdynamic -lffi -lrt -ldl -lm -lz -lzstd -ltinfo -lxml2 -lstdc++ -lgcc_s -lutil -lrt -lpthread -lm -ldl -lc --eh-frame-hdr -z noexecstack --gc-sections -z relro -z now -v --allow-multiple-definition /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+          rust-lld: error: undefined symbol: __rust_probestack
+          >>> referenced by wasmer_vm.3aa091df9136ca2-cgu.0
+          >>>               wasmer_vm-650bcd546c284902.wasmer_vm.3aa091df9136ca2-cgu.0.rcgu.o:(wasmer_vm_probestack) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_vm-650bcd546c284902.rlib
+          
+          rust-lld: error: undefined symbol: llvm::PassBuilder::crossRegisterProxies(llvm::AnalysisManager<llvm::Loop, llvm::LoopStandardAnalysisResults&>&, llvm::AnalysisManager<llvm::Function>&, llvm::AnalysisManager<llvm::LazyCallGraph::SCC, llvm::LazyCallGraph&>&, llvm::AnalysisManager<llvm::Module>&, llvm::AnalysisManager<llvm::MachineFunction>*)
+          >>> referenced by ScopInliner.cpp.o:((anonymous namespace)::ScopInliner::runOnSCC(llvm::CallGraphSCC&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::CleanupInstaller::~CleanupInstaller()
+          >>> referenced by DumpFunctionPass.cpp.o:((anonymous namespace)::runDumpFunction(llvm::Function&, llvm::StringRef)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by DumpModulePass.cpp.o:((anonymous namespace)::runDumpModule(llvm::Module&, llvm::StringRef, bool)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by JSONExporter.cpp.o:(exportScop(polly::Scop&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::Function::getDataLayout() const
+          >>> referenced by ScopBuilder.cpp.o:(polly::ScopBuilder::getNonHoistableCtx(polly::MemoryAccess*, isl::union_map)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by BlockGenerators.cpp.o:(polly::BlockGenerator::trySynthesizeNewValue(polly::ScopStmt&, llvm::Value*, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&, llvm::DenseMap<llvm::Loop const*, llvm::SCEV const*, llvm::DenseMapInfo<llvm::Loop const*, void>, llvm::detail::DenseMapPair<llvm::Loop const*, llvm::SCEV const*>>&, llvm::Loop*) const) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by CodeGeneration.cpp.o:(generateCode(polly::Scop&, polly::IslAstInfo&, llvm::LoopInfo&, llvm::DominatorTree&, llvm::ScalarEvolution&, llvm::RegionInfo&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 2 more times
+          
+          rust-lld: error: undefined symbol: llvm::Instruction::getDataLayout() const
+          >>> referenced by ScopBuilder.cpp.o:(polly::ScopBuilder::canAlwaysBeHoisted(polly::MemoryAccess*, bool, bool, bool)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::BinaryOperator::Create(llvm::Instruction::BinaryOps, llvm::Value*, llvm::Value*, llvm::Twine const&, llvm::InsertPosition)
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::insertFinalReporting()) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::insertRegionEnd(llvm::Instruction*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::insertRegionEnd(llvm::Instruction*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 25 more times
+          
+          rust-lld: error: undefined symbol: llvm::ReturnInst::ReturnInst(llvm::LLVMContext&, llvm::Value*, llvm::InsertPosition)
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::insertFinalReporting()) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::insertFinalReporting()) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::AppendScopReporting()) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 4 more times
+          
+          rust-lld: error: undefined symbol: llvm::BranchInst::BranchInst(llvm::BasicBlock*, llvm::BasicBlock*, llvm::Value*, llvm::InsertPosition)
+          >>> referenced by PerfMonitor.cpp.o:(polly::PerfMonitor::insertInitFunction(llvm::Function*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by LoopGeneratorsGOMP.cpp.o:(polly::ParallelLoopGeneratorGOMP::createSubFn(llvm::Value*, llvm::AllocaInst*, llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by LoopGeneratorsKMP.cpp.o:(polly::ParallelLoopGeneratorKMP::createSubFn(llvm::Value*, llvm::AllocaInst*, llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 9 more times
+          
+          rust-lld: error: undefined symbol: llvm::CastInst::CreatePointerBitCastOrAddrSpaceCast(llvm::Value*, llvm::Type*, llvm::Twine const&, llvm::InsertPosition)
+          >>> referenced by LoopGeneratorsKMP.cpp.o:(llvm::IRBuilderBase::CreatePointerBitCastOrAddrSpaceCast(llvm::Value*, llvm::Type*, llvm::Twine const&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::BranchInst::BranchInst(llvm::BasicBlock*, llvm::InsertPosition)
+          >>> referenced by LoopGeneratorsGOMP.cpp.o:(polly::ParallelLoopGeneratorGOMP::createSubFn(llvm::Value*, llvm::AllocaInst*, llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by LoopGeneratorsGOMP.cpp.o:(polly::ParallelLoopGeneratorGOMP::createSubFn(llvm::Value*, llvm::AllocaInst*, llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by LoopGeneratorsKMP.cpp.o:(polly::ParallelLoopGeneratorKMP::createSubFn(llvm::Value*, llvm::AllocaInst*, llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 8 more times
+          
+          rust-lld: error: undefined symbol: llvm::CastInst::Create(llvm::Instruction::CastOps, llvm::Value*, llvm::Type*, llvm::Twine const&, llvm::InsertPosition)
+          >>> referenced by LoopGeneratorsGOMP.cpp.o:(polly::ParallelLoopGeneratorGOMP::createSubFn(llvm::Value*, llvm::AllocaInst*, llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by IslExprBuilder.cpp.o:(llvm::IRBuilderBase::CreateSExtOrTrunc(llvm::Value*, llvm::Type*, llvm::Twine const&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::SplitBlock(llvm::BasicBlock*, llvm::ilist_iterator_w_bits<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void, true, llvm::BasicBlock>, false, false>, llvm::DominatorTree*, llvm::LoopInfo*, llvm::MemorySSAUpdater*, llvm::Twine const&, bool)
+          >>> referenced by LoopGenerators.cpp.o:(polly::createLoop(llvm::Value*, llvm::Value*, llvm::Value*, llvm::IRBuilder<llvm::ConstantFolder, polly::IRInserter>&, llvm::LoopInfo&, llvm::DominatorTree&, llvm::BasicBlock*&, llvm::CmpInst::Predicate, polly::ScopAnnotator*, bool, bool, bool)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by IslExprBuilder.cpp.o:(polly::IslExprBuilder::createOpBooleanConditional(isl_ast_expr*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by BlockGenerators.cpp.o:(polly::BlockGenerator::copyBB(polly::ScopStmt&, llvm::BasicBlock*, llvm::DenseMap<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>, llvm::DenseMapInfo<llvm::AssertingVH<llvm::Value>, void>, llvm::detail::DenseMapPair<llvm::AssertingVH<llvm::Value>, llvm::AssertingVH<llvm::Value>>>&, llvm::DenseMap<llvm::Loop const*, llvm::SCEV const*, llvm::DenseMapInfo<llvm::Loop const*, void>, llvm::detail::DenseMapPair<llvm::Loop const*, llvm::SCEV const*>>&, isl_id_to_ast_expr*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 10 more times
+          
+          rust-lld: error: undefined symbol: llvm::AllocaInst::AllocaInst(llvm::Type*, unsigned int, llvm::Value*, llvm::Twine const&, llvm::InsertPosition)
+          >>> referenced by LoopGenerators.cpp.o:(polly::ParallelLoopGenerator::storeValuesIntoStruct(llvm::SetVector<llvm::Value*, llvm::SmallVector<llvm::Value*, 0u>, llvm::DenseSet<llvm::Value*, llvm::DenseMapInfo<llvm::Value*, void>>, 0u>&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::IRBuilderBase::CreateGlobalString(llvm::StringRef, llvm::Twine const&, unsigned int, llvm::Module*, bool)
+          >>> referenced by RuntimeDebugBuilder.cpp.o:(llvm::IRBuilderBase::CreateGlobalStringPtr(llvm::StringRef, llvm::Twine const&, unsigned int, llvm::Module*, bool)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::ConstantExpr::getGetElementPtr(llvm::Type*, llvm::Constant*, llvm::ArrayRef<llvm::Value*>, llvm::GEPNoWrapFlags, std::optional<llvm::ConstantRange>, llvm::Type*)
+          >>> referenced by RuntimeDebugBuilder.cpp.o:(llvm::ConstantExpr::getGetElementPtr(llvm::Type*, llvm::Constant*, llvm::ArrayRef<llvm::Constant*>, llvm::GEPNoWrapFlags, std::optional<llvm::ConstantRange>, llvm::Type*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::GetElementPtrInst::setNoWrapFlags(llvm::GEPNoWrapFlags)
+          >>> referenced by IslExprBuilder.cpp.o:(llvm::IRBuilderBase::CreateGEP(llvm::Type*, llvm::Value*, llvm::ArrayRef<llvm::Value*>, llvm::Twine const&, llvm::GEPNoWrapFlags)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::SplitBlockAndInsertIfThen(llvm::Value*, llvm::ilist_iterator_w_bits<llvm::ilist_detail::node_options<llvm::Instruction, false, false, void, true, llvm::BasicBlock>, false, false>, bool, llvm::MDNode*, llvm::DomTreeUpdater*, llvm::LoopInfo*, llvm::BasicBlock*)
+          >>> referenced by BlockGenerators.cpp.o:(polly::BlockGenerator::generateConditionalExecution(polly::ScopStmt&, isl::set const&, llvm::StringRef, std::function<void ()> const&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::Instruction::Instruction(llvm::Type*, unsigned int, llvm::Use*, unsigned int, llvm::InsertPosition)
+          >>> referenced by IslExprBuilder.cpp.o:(llvm::ExtractValueInst::Create(llvm::Value*, llvm::ArrayRef<unsigned int>, llvm::Twine const&, llvm::InsertPosition)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by IslExprBuilder.cpp.o:(llvm::GetElementPtrInst::Create(llvm::Type*, llvm::Value*, llvm::ArrayRef<llvm::Value*>, llvm::Twine const&, llvm::InsertPosition)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced by BlockGenerators.cpp.o:(polly::BlockGenerator::createScalarFinalization(polly::Scop&)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          >>> referenced 3 more times
+          
+          rust-lld: error: undefined symbol: llvm::BasicBlock::getDataLayout() const
+          >>> referenced by BlockGenerators.cpp.o:(polly::BlockGenerator::getOrCreateAlloca(polly::ScopArrayInfo const*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: undefined symbol: llvm::AllocaInst::AllocaInst(llvm::Type*, unsigned int, llvm::Value*, llvm::Align, llvm::Twine const&, llvm::InsertPosition)
+          >>> referenced by BlockGenerators.cpp.o:(polly::BlockGenerator::getOrCreateAlloca(polly::ScopArrayInfo const*)) in archive /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-81d6ab7edd75e54a.rlib
+          
+          rust-lld: error: too many errors emitted, stopping now (use --error-limit=0 to see all errors)
+          collect2: error: ld returned 1 exit status
+          LLD 21.1.2 (/checkout/src/llvm-project/llvm 8c30b9c5098bdff1d3d9a2d460ee091cd1171e60) (compatible with GNU linkers)
+          
+
+warning: `memlayout` (bin "memlayout") generated 55 warnings
+error: could not compile `memlayout` (bin "memlayout") due to 1 previous error; 55 warnings emitted

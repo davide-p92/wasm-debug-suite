@@ -1,0 +1,58 @@
+use std::env;
+use std::path::Path;
+
+#[cfg(not(disable_probestack))]
+extern "C" {
+    fn __rust_probestack();
+}
+
+fn main() {
+
+    //println!("cargo:rerun-if-changed=probestack_shim.c");
+    println!("cargo:rustc-cfg=disable_probestack");
+    /*cc::Build::new()
+        .file("probestack_shim.c")
+        .flag("-fPIC")
+        .compile("probestack_shim");
+    */
+    // Erzwingen, dass der Shim *vor* libstd gelinkt wird
+    println!("cargo:rustc-link-lib=static=probestack_shim");
+    println!("cargo:rustc-link-arg=-Wl,--whole-archive");
+    println!("cargo:rustc-link-arg=-Wl,--no-as-needed");
+    println!("cargo:rustc-link-arg=-Wl,--allow-multiple-definition");
+    println!("cargo:warning=✅ Cumpiling and linking probestack shim");
+
+    let llvm_prefix = "/usr/lib/llvm-18";
+
+    if !Path::new(llvm_prefix).exists() {
+        println!("cargo:warning=❌ LLVM 18 not found at {}", llvm_prefix);
+        return;
+    }
+
+    // LLVM environment setup
+    env::set_var("LLVM_SYS_180_PREFIX", llvm_prefix);
+    env::set_var("LLVM_SYS_NO_POLLY", "1");
+
+    // Add LLVM lib path
+    println!("cargo:rustc-link-search=native={}/lib", llvm_prefix);
+
+    // Standard C libs
+    /*for lib in &["stdc++", "ffi", "z", "zstd", "xml2", "rt", "dl", "m"] {
+        println!("cargo:rustc-link-lib=dylib={}", lib);
+    }*/
+
+    // 🩹 Fix for __rust_probestack:
+    // Statt manuell compiler_builtins zu linken, erzwingen wir, dass Rust sie nicht entfernt.
+ /*   println!("cargo:rustc-link-arg=-Wl,--whole-archive");
+    println!("cargo:rustc-link-arg=-Wl,--no-as-needed");
+    println!("cargo:rustc-link-arg=-Wl,--gc-sections");
+    println!("cargo:rustc-link-arg=-Wl,--allow-multiple-definition");
+
+    // Optional: system linker (gold or bfd is okay)
+    println!("cargo:rustc-link-arg=-fuse-ld=gold");
+*/
+    println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:warning=🔗 Using LLVM 18 from {}", llvm_prefix);
+    println!("cargo:warning=✅ Enforcing whole-archive linking to fix __rust_probestack");
+}
+

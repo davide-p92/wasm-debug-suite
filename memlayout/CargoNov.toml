@@ -1,0 +1,56 @@
+[package]
+name = "memlayout"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["dwarf", "runtime", "llvm"]
+
+# Feature toggles
+dwarf = ["gimli"]
+runtime = []
+
+# Backend selection (mutually exclusive)
+llvm = ["wasmer/llvm", "wasmer-compiler-llvm"]
+cranelift = ["wasmer/cranelift", "wasmer-compiler-cranelift"]
+singlepass = ["wasmer/singlepass", "wasmer-compiler-singlepass"]
+
+[dependencies]
+anyhow = "1.0"
+byteorder = "1.5"
+gimli = { version = "0.32", optional = true }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+
+# Wasmer 6
+wasmer = { version = "6.0.1", default-features = false }
+wasmer-types = "6.0.1"
+wasmer-compiler = "6.0.1"
+wasmer-compiler-llvm = { version = "6.0.1", optional = true }
+wasmer-compiler-cranelift = { version = "6.0.1", optional = true }
+wasmer-compiler-singlepass = { version = "6.0.1", optional = true }
+wasmparser = { version = "0.205", package = "wasmparser" }
+
+# LLVM 18 support
+llvm-sys = { version = "180.0.0" } #, features = ["prefer-static"] }
+inkwell  = { version = "0.5.0", features = ["llvm18-0"] }
+
+rustyline = "17.0.2"
+rustc-demangle = "0.1.26"
+#compiler_builtins = { version = "0.1", features = ["mem"] }
+
+[build-dependencies]
+cc = "1.0"
+lazy_static = "1.4"
+regex-lite = "0.1"
+semver = "1.0"
+
+[profile.dev]
+debug = true
+opt-level = 0
+split-debuginfo = "packed"
+panic = "unwind"
+lto = false
+codegen-units = 1
+

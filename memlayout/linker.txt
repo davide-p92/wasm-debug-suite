@@ -1,0 +1,24 @@
+warning: unused import: `std::path::Path`
+ --> build.rs:2:5
+  |
+2 | use std::path::Path;
+  |     ^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `memlayout` (build script) generated 1 warning
+   Compiling memlayout v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout)
+error: the option `Z` is only accepted on the nightly compiler
+
+help: consider switching to a nightly toolchain: `rustup default nightly`
+
+note: selecting a toolchain with `+toolchain` arguments require a rustup proxy; see <https://rust-lang.github.io/rustup/concepts/index.html>
+
+note: for more information about Rust's stability policy, see <https://doc.rust-lang.org/book/appendix-07-nightly-rust.html#unstable-features>
+
+error: 1 nightly option were parsed
+
+error: could not compile `memlayout` (bin "memlayout")
+
+Caused by:
+  process didn't exit successfully: `/home/davide/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name memlayout --edition=2021 src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C embed-bitcode=no -C codegen-units=1 -C debuginfo=2 -C split-debuginfo=packed --cfg 'feature="default"' --cfg 'feature="dwarf"' --cfg 'feature="gimli"' --cfg 'feature="llvm"' --cfg 'feature="runtime"' --cfg 'feature="wasmer-compiler-llvm"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("cranelift", "default", "dwarf", "gimli", "llvm", "runtime", "singlepass", "wasmer-compiler-cranelift", "wasmer-compiler-llvm", "wasmer-compiler-singlepass"))' -C metadata=fdfc1e405137bfbf -C extra-filename=-c5b7152b6fa55132 --out-dir /home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps -C incremental=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/incremental -L dependency=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps --extern anyhow=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libanyhow-d67008bc79302311.rlib --extern byteorder=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libbyteorder-232eb263ec2f3817.rlib --extern gimli=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libgimli-1bf23e65f36e3497.rlib --extern inkwell=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libinkwell-29fcf4f954a9d2ee.rlib --extern llvm_sys=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libllvm_sys-5837eea9de73e4bd.rlib --extern rustc_demangle=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librustc_demangle-761db7db00f8edeb.rlib --extern rustyline=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/librustyline-a7a012820026c454.rlib --extern serde=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libserde-656e08f0b9d00085.rlib --extern serde_json=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libserde_json-d4c09adad24a1494.rlib --extern thiserror=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libthiserror-51d0253350003f7e.rlib --extern wasmer=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer-129dc7fe9b9ccc68.rlib --extern wasmer_compiler=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_compiler-e53e2642fffa537d.rlib --extern wasmer_compiler_llvm=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_compiler_llvm-552fa66480c18df3.rlib --extern wasmer_types=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmer_types-7b9b37302fac375d.rlib --extern wasmparser=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/deps/libwasmparser-76729f111fa3cd5c.rlib -Z print-link-args -L native=/home/davide/Downloads/proj_javescript/wasm-debug-suite/memlayout/target/debug/build/llvm-sys-1b98b91458cb6d00/out -L native=/usr/lib/llvm-18/lib -L native=/usr/lib/llvm-18/lib -l dylib=stdc++ -l dylib=ffi -l dylib=z -l dylib=zstd -l dylib=xml2 -l dylib=rt -l dylib=dl -l dylib=m -C link-arg=-Wl,--allow-multiple-definition` (exit status: 1)
