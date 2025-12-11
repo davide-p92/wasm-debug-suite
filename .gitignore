@@ -47,15 +47,19 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+*.wasm
+*.wat
 
 # Txt
 wasm-token.txt
 
 # Other
-third_party
+third_party/
 web/
 wabt/
 tools_backup/
+didspace/wasi-sdk/
+didspace/target/
 "Cargo_toml Fehleranalyse_files"
 "Cargo_toml Fehleranalyse.html"
 "Cargo_toml Fehleranalyse.html"
