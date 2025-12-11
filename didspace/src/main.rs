@@ -20,27 +20,27 @@ fn main() -> anyhow::Result<()> {
 
         Commands::WasmWat { input, output } => {
             ensure_file_exists(&input)?;
-            let wat = wasmprinter::print_file(input)
+            let wat = wasmprinter::print_file(&input)
                 .map_err(|e| anyhow::anyhow!("Failed to convert WASM to WAT: {}", e))?;
-            fs::write(output, wat)?;
+            fs::write(&output, wat)?;
             println!("✅ Converted {} → {}", input, output);
         }
 
         Commands::WatWasm { input, output } => {
             ensure_file_exists(&input)?;
-            let wat_src = fs::read_to_string(input)?;
+            let wat_src = fs::read_to_string(&input)?;
             let wasm_bytes = wat::parse_str(&wat_src)
                 .map_err(|e| anyhow::anyhow!("Failed to convert WAT to WASM: {}", e))?;
-            fs::write(output, wasm_bytes)?;
+            fs::write(&output, wasm_bytes)?;
             println!("✅ Converted {} → {}", input, output);
         }
 
         Commands::WasmC { input, output } => {
             ensure_file_exists(&input)?;
             let status = SysCommand::new("wasm2c")
-                .arg(input)
+                .arg(&input)
                 .arg("-o")
-                .arg(output)
+                .arg(&output)
                 .status()
                 .map_err(|e| anyhow::anyhow!("Failed to run wasm2c: {}", e))?;
             if !status.success() {
@@ -67,7 +67,7 @@ fn main() -> anyhow::Result<()> {
             let temp_wasm = "temp.wasm";
             compile_c_to_wasm(&input, temp_wasm, minimal, wasi, &wasi_sysroot)?;
             let wat = wasmprinter::print_file(temp_wasm)?;
-            fs::write(output, wat)?;
+            fs::write(&output, wat)?;
             println!("✅ Converted {} → {}", input, output);
             std::fs::remove_file(temp_wasm)?;
         }
@@ -104,7 +104,7 @@ fn main() -> anyhow::Result<()> {
                 println!("✅ C++ → WASM done: {}", temp_wasm);
 
                 let wat = wasmprinter::print_file(temp_wasm)?;
-                fs::write(output, wat)?;
+                fs::write(&output, wat)?;
                 println!("✅ Converted {} → {}", input, output);
                 std::fs::remove_file(temp_wasm)?;
             } else {
@@ -151,6 +151,7 @@ fn main() -> anyhow::Result<()> {
                 Err(e) => eprintln!("Error: {}", e),
             }
         }
+        Commands::Repl => start_repl()?,
     }
 
     Ok(())

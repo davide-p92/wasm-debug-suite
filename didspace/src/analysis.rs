@@ -22,39 +22,36 @@ impl WasmAnalysis {
         let mut parser = Parser::new(0);
         let mut offset = 0;
 
-        while let Ok(chunk) = parser.parse(&bytes[offset..], true) {
-            match chunk {
-                wasmparser::Chunk::Parsed { payload, .. } => {
-                    match payload {
+        for payload in parser.parse_all(bytes) {
+            match payload.unwrap() {
 
-                        Payload::Version { .. } => {}
-                        Payload::TypeSection(types) => {
-                            section_sizes.insert("Type".to_string(), types.range().end - types.range().start);
-                        }
-                        Payload::ImportSection(imports_section) => {
-                            imports += imports_section.count();
-                            section_sizes.insert("Import".to_string(), imports_section.range().end - imports_section.range().start);
-                        }
-                        Payload::FunctionSection(funcs) => {
-                            function_count += funcs.count();
-                            section_sizes.insert("Function".to_string(), funcs.range().end - funcs.range().start);
-                        }
-                        Payload::ExportSection(exports_section) => {
-                            exports += exports_section.count();
-                            section_sizes.insert("Export".to_string(), exports_section.range().end - exports_section.range().start);
-                        }
-                        Payload::CodeSectionEntry(code) => {
-                            for op in code.get_operators_reader().unwrap() {
-                                let op_name = format!("{:?}", op.unwrap());
-                                *instruction_freq.entry(op_name).or_insert(0) += 1;
-                            }
-                        }
-                        Payload::End(_) => break,
+                Payload::Version { .. } => {}
+                Payload::TypeSection(types) => {
+                    section_sizes.insert("Type".to_string(), types.range().end - types.range().start);
+                }
+                Payload::ImportSection(imports_section) => {
+                    imports += imports_section.count();
+                    section_sizes.insert("Import".to_string(), imports_section.range().end - imports_section.range().start);
+                }
+                Payload::FunctionSection(funcs) => {
+                    function_count += funcs.count();
+                    section_sizes.insert("Function".to_string(), funcs.range().end - funcs.range().start);
+                }
+                Payload::ExportSection(exports_section) => {
+                    exports += exports_section.count();
+                    section_sizes.insert("Export".to_string(), exports_section.range().end - exports_section.range().start);
+                }
+                Payload::CodeSectionEntry(code) => {
+                    for op in code.get_operators_reader().unwrap() {
+                        let op_name = format!("{:?}", op.unwrap());
+                        *instruction_freq.entry(op_name).or_insert(0) += 1;
                     }
                 }
-                wasmparser::Chunk::NeedMoreData(_) => break,
+                Payload::End(_) => break,
+                _ => {}
             }
-            offset += chunk.consumed();
+
+            //offset += chunk.consumed();
         }
 
         Ok(Self {

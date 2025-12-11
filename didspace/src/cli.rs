@@ -65,5 +65,7 @@ pub enum Commands {
         #[arg(value_name = "FILE")]
         file: String,
     },
+    
+    Repl,
 
 }
