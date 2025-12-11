@@ -1,0 +1,354 @@
+   Compiling didspace v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/didspace)
+error: expected one of `,`, `=`, or `}`, found doc comment `/// Analyze a WASM binary and show detailed report`
+  --> src/cli.rs:64:5
+   |
+62 |     }
+   |      -
+   |      |
+   |      expected one of `,`, `=`, or `}`
+   |      help: missing `,`
+63 |
+64 |     /// Analyze a WASM binary and show detailed report
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unexpected token
+
+error: expected `,`
+  --> src/cli.rs:64:5
+   |
+64 |     /// Analyze a WASM binary and show detailed report
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0774]: `derive` may only be applied to `struct`s, `enum`s and `union`s
+   --> src/main.rs:12:1
+    |
+ 12 |   #[derive(Parser)]
+    |   ^^^^^^^^^^^^^^^^^ not applicable here
+...
+ 17 | / fn main() -> anyhow::Result<()> {
+ 18 | |     let cli = Cli::parse();
+ 19 | |
+ 20 | |     match cli.command {
+...   |
+162 | |     Ok(())
+163 | | }
+    | |_- not a `struct`, `enum` or `union`
+
+error[E0432]: unresolved import `wasmparser`
+ --> src/analysis.rs:3:5
+  |
+3 | use wasmparser::{Parser, Payload};
+  |     ^^^^^^^^^^ use of unresolved module or unlinked crate `wasmparser`
+  |
+  = help: if you wanted to use a crate named `wasmparser`, use `cargo add wasmparser` to add it to your `Cargo.toml`
+
+error: cannot find attribute `command` in this scope
+  --> src/main.rs:13:3
+   |
+13 | #[command(name = "wasm-convert")]
+   |   ^^^^^^^
+   |
+help: `command` is an attribute that can be used by the derive macros `Args`, `Parser` and `Subcommand`, you might be missing a `derive` attribute
+   |
+17 + #[derive(Args, Parser, Subcommand)]
+18 | fn main() -> anyhow::Result<()> {
+   |
+
+error: cannot find attribute `command` in this scope
+  --> src/main.rs:14:3
+   |
+14 | #[command(version = "1.4")]
+   |   ^^^^^^^
+   |
+help: `command` is an attribute that can be used by the derive macros `Args`, `Parser` and `Subcommand`, you might be missing a `derive` attribute
+   |
+17 + #[derive(Args, Parser, Subcommand)]
+18 | fn main() -> anyhow::Result<()> {
+   |
+
+error: cannot find attribute `command` in this scope
+  --> src/main.rs:15:3
+   |
+15 | #[command(about = "Convert between WASM, WAT, C, and C++", long_about = None)]
+   |   ^^^^^^^
+   |
+help: `command` is an attribute that can be used by the derive macros `Args`, `Parser` and `Subcommand`, you might be missing a `derive` attribute
+   |
+17 + #[derive(Args, Parser, Subcommand)]
+18 | fn main() -> anyhow::Result<()> {
+   |
+
+warning: unused import: `Subcommand`
+ --> src/main.rs:1:20
+  |
+1 | use clap::{Parser, Subcommand};
+  |                    ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::fmt`
+ --> src/hex_dump.rs:3:5
+  |
+3 | use std::fmt;
+  |     ^^^^^^^^
+
+error[E0277]: the trait bound `Commands: FromArgMatches` is not satisfied
+  --> src/cli.rs:9:18
+   |
+ 9 |     pub command: Commands,
+   |                  ^^^^^^^^ unsatisfied trait bound
+   |
+help: the trait `FromArgMatches` is not implemented for `Commands`
+  --> src/cli.rs:13:1
+   |
+13 | pub enum Commands {
+   | ^^^^^^^^^^^^^^^^^
+   = help: the following other types implement trait `FromArgMatches`:
+             ()
+             Box<T>
+             Cli
+             Infallible
+             wasm_metadata::AddMetadataOpts
+             wasm_tools::AdaptersArg
+             wasm_tools::GeneralOpts
+             wasm_tools::GenerateDwarfArg
+           and 4 others
+
+error[E0277]: the trait bound `Commands: Subcommand` is not satisfied
+  --> src/cli.rs:9:18
+   |
+ 9 |     pub command: Commands,
+   |                  ^^^^^^^^ unsatisfied trait bound
+   |
+help: the trait `Subcommand` is not implemented for `Commands`
+  --> src/cli.rs:13:1
+   |
+13 | pub enum Commands {
+   | ^^^^^^^^^^^^^^^^^
+   = help: the following other types implement trait `Subcommand`:
+             ()
+             Box<T>
+             Infallible
+
+error[E0308]: mismatched types
+   --> src/main.rs:28:32
+    |
+ 28 |             ensure_file_exists(input)?;
+    |             ------------------ ^^^^^ expected `&str`, found `String`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> src/main.rs:217:4
+    |
+217 | fn ensure_file_exists(path: &str) -> anyhow::Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^ ----------
+help: consider borrowing here
+    |
+ 28 |             ensure_file_exists(&input)?;
+    |                                +
+
+error[E0308]: mismatched types
+   --> src/main.rs:36:32
+    |
+ 36 |             ensure_file_exists(input)?;
+    |             ------------------ ^^^^^ expected `&str`, found `String`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> src/main.rs:217:4
+    |
+217 | fn ensure_file_exists(path: &str) -> anyhow::Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^ ----------
+help: consider borrowing here
+    |
+ 36 |             ensure_file_exists(&input)?;
+    |                                +
+
+error[E0308]: mismatched types
+   --> src/main.rs:45:32
+    |
+ 45 |             ensure_file_exists(input)?;
+    |             ------------------ ^^^^^ expected `&str`, found `String`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> src/main.rs:217:4
+    |
+217 | fn ensure_file_exists(path: &str) -> anyhow::Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^ ----------
+help: consider borrowing here
+    |
+ 45 |             ensure_file_exists(&input)?;
+    |                                +
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> src/main.rs:64:47
+   |
+64 |         } => compile_c_to_wasm(input, output, *minimal, *wasi, wasi_sysroot)?,
+   |                                               ^^^^^^^^ can't be dereferenced
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> src/main.rs:64:57
+   |
+64 |         } => compile_c_to_wasm(input, output, *minimal, *wasi, wasi_sysroot)?,
+   |                                                         ^^^^^ can't be dereferenced
+
+error[E0308]: arguments to this function are incorrect
+   --> src/main.rs:64:14
+    |
+ 64 |         } => compile_c_to_wasm(input, output, *minimal, *wasi, wasi_sysroot)?,
+    |              ^^^^^^^^^^^^^^^^^ -----  ------ expected `&str`, found `String`
+    |                                |
+    |                                expected `&str`, found `String`
+    |
+note: expected `&Option<String>`, found `Option<String>`
+   --> src/main.rs:64:64
+    |
+ 64 |         } => compile_c_to_wasm(input, output, *minimal, *wasi, wasi_sysroot)?,
+    |                                                                ^^^^^^^^^^^^
+    = note: expected reference `&Option<_>`
+                    found enum `Option<_>`
+note: function defined here
+   --> src/main.rs:165:4
+    |
+165 | fn compile_c_to_wasm(
+    |    ^^^^^^^^^^^^^^^^^
+166 |     input: &str,
+    |     -----------
+167 |     output: &str,
+    |     ------------
+...
+170 |     wasi_sysroot: &Option<String>,
+    |     -----------------------------
+help: consider borrowing here
+    |
+ 64 |         } => compile_c_to_wasm(&input, output, *minimal, *wasi, wasi_sysroot)?,
+    |                                +
+help: consider borrowing here
+    |
+ 64 |         } => compile_c_to_wasm(input, &output, *minimal, *wasi, wasi_sysroot)?,
+    |                                       +
+help: consider borrowing here
+    |
+ 64 |         } => compile_c_to_wasm(input, output, *minimal, *wasi, &wasi_sysroot)?,
+    |                                                                +
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> src/main.rs:74:49
+   |
+74 |             compile_c_to_wasm(input, temp_wasm, *minimal, *wasi, wasi_sysroot)?;
+   |                                                 ^^^^^^^^ can't be dereferenced
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> src/main.rs:74:59
+   |
+74 |             compile_c_to_wasm(input, temp_wasm, *minimal, *wasi, wasi_sysroot)?;
+   |                                                           ^^^^^ can't be dereferenced
+
+error[E0308]: arguments to this function are incorrect
+   --> src/main.rs:74:13
+    |
+ 74 |             compile_c_to_wasm(input, temp_wasm, *minimal, *wasi, wasi_sysroot)?;
+    |             ^^^^^^^^^^^^^^^^^ ----- expected `&str`, found `String`
+    |
+note: expected `&Option<String>`, found `Option<String>`
+   --> src/main.rs:74:66
+    |
+ 74 |             compile_c_to_wasm(input, temp_wasm, *minimal, *wasi, wasi_sysroot)?;
+    |                                                                  ^^^^^^^^^^^^
+    = note: expected reference `&Option<_>`
+                    found enum `Option<_>`
+note: function defined here
+   --> src/main.rs:165:4
+    |
+165 | fn compile_c_to_wasm(
+    |    ^^^^^^^^^^^^^^^^^
+166 |     input: &str,
+    |     -----------
+...
+170 |     wasi_sysroot: &Option<String>,
+    |     -----------------------------
+help: consider borrowing here
+    |
+ 74 |             compile_c_to_wasm(&input, temp_wasm, *minimal, *wasi, wasi_sysroot)?;
+    |                               +
+help: consider borrowing here
+    |
+ 74 |             compile_c_to_wasm(input, temp_wasm, *minimal, *wasi, &wasi_sysroot)?;
+    |                                                                  +
+
+error[E0308]: mismatched types
+   --> src/main.rs:89:32
+    |
+ 89 |             ensure_file_exists(input)?;
+    |             ------------------ ^^^^^ expected `&str`, found `String`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> src/main.rs:217:4
+    |
+217 | fn ensure_file_exists(path: &str) -> anyhow::Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^ ----------
+help: consider borrowing here
+    |
+ 89 |             ensure_file_exists(&input)?;
+    |                                +
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> src/main.rs:90:16
+   |
+90 |             if *wasi {
+   |                ^^^^^ can't be dereferenced
+
+error[E0308]: mismatched types
+   --> src/main.rs:102:25
+    |
+102 |                         input,
+    |                         ^^^^^ expected `&str`, found `String`
+    |
+help: consider borrowing here
+    |
+102 |                         &input,
+    |                         +
+
+error[E0308]: mismatched types
+   --> src/main.rs:127:32
+    |
+127 |             ensure_file_exists(input)?;
+    |             ------------------ ^^^^^ expected `&str`, found `String`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> src/main.rs:217:4
+    |
+217 | fn ensure_file_exists(path: &str) -> anyhow::Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^ ----------
+help: consider borrowing here
+    |
+127 |             ensure_file_exists(&input)?;
+    |                                +
+
+error[E0614]: type `bool` cannot be dereferenced
+   --> src/main.rs:128:16
+    |
+128 |             if *wasi {
+    |                ^^^^^ can't be dereferenced
+
+error[E0308]: mismatched types
+   --> src/main.rs:139:31
+    |
+139 |                         "-o", output,
+    |                               ^^^^^^ expected `&str`, found `String`
+    |
+help: consider borrowing here
+    |
+139 |                         "-o", &output,
+    |                               +
+
+Some errors have detailed explanations: E0277, E0308, E0432, E0614, E0774.
+For more information about an error, try `rustc --explain E0277`.
+warning: `didspace` (bin "didspace") generated 2 warnings
+error: could not compile `didspace` (bin "didspace") due to 26 previous errors; 2 warnings emitted

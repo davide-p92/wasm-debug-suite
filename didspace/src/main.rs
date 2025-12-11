@@ -1,71 +1,25 @@
 use clap::{Parser, Subcommand};
+mod cli;
+use cli::{Cli, Commands};
+mod hex_dump;
+use hex_dump::wasm_to_hex;
+mod analysis;
+use analysis::WasmAnalysis;
 use std::fs;
 use std::process::Command as SysCommand;
-
-/// WASM Converter CLI
-#[derive(Parser)]
-#[command(name = "wasm-convert")]
-#[command(version = "1.4")]
-#[command(about = "Convert between WASM, WAT, C, and C++", long_about = None)]
-struct Cli {
-    #[command(subcommand)]
-    command: Commands,
-}
-
-#[derive(Subcommand)]
-enum Commands {
-    /// Convert WASM to WAT
-    WasmWat { input: String, output: String },
-
-    /// Convert WAT to WASM
-    WatWasm { input: String, output: String },
-
-    /// Convert WASM to C
-    WasmC { input: String, output: String },
-
-    /// Convert C to WASM
-    C2Wasm {
-        input: String,
-        output: String,
-        #[arg(long)] minimal: bool,
-        #[arg(long)] wasi: bool,
-        #[arg(long)] wasi_sysroot: Option<String>,
-    },
-
-    /// Convert C to WAT (via WASM)
-    CWAT {
-        input: String,
-        output: String,
-        #[arg(long)] minimal: bool,
-        #[arg(long)] wasi: bool,
-        #[arg(long)] wasi_sysroot: Option<String>,
-    },
-
-    /// Convert C++ to WASM
-    Cpp2Wasm {
-        input: String,
-        output: String,
-        #[arg(long)] wasi: bool,
-        #[arg(long)] wasi_sysroot: Option<String>,
-    },
-
-    /// Convert C++ to WAT
-
-    Cpp2Wat {
-        input: String,
-        output: String,
-        #[arg(long)] wasi: bool,
-        #[arg(long)] wasi_sysroot: Option<String>,
-    }
-
-}
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
 
-    match &cli.command {
+    match cli.command {
+        Commands::Wasm2Hex { file } => {
+            let bytes = fs::read(&file).expect("Failed to read WASM file");
+            let dump = wasm_to_hex(&bytes);
+            println!("{}", dump);
+        }
+
         Commands::WasmWat { input, output } => {
-            ensure_file_exists(input)?;
+            ensure_file_exists(&input)?;
             let wat = wasmprinter::print_file(input)
                 .map_err(|e| anyhow::anyhow!("Failed to convert WASM to WAT: {}", e))?;
             fs::write(output, wat)?;
@@ -73,7 +27,7 @@ fn main() -> anyhow::Result<()> {
         }
 
         Commands::WatWasm { input, output } => {
-            ensure_file_exists(input)?;
+            ensure_file_exists(&input)?;
             let wat_src = fs::read_to_string(input)?;
             let wasm_bytes = wat::parse_str(&wat_src)
                 .map_err(|e| anyhow::anyhow!("Failed to convert WAT to WASM: {}", e))?;
@@ -82,7 +36,7 @@ fn main() -> anyhow::Result<()> {
         }
 
         Commands::WasmC { input, output } => {
-            ensure_file_exists(input)?;
+            ensure_file_exists(&input)?;
             let status = SysCommand::new("wasm2c")
                 .arg(input)
                 .arg("-o")
@@ -101,7 +55,7 @@ fn main() -> anyhow::Result<()> {
             minimal,
             wasi,
             wasi_sysroot,
-        } => compile_c_to_wasm(input, output, *minimal, *wasi, wasi_sysroot)?,
+        } => compile_c_to_wasm(&input, &output, minimal, wasi, &wasi_sysroot)?,
 
         Commands::CWAT {
             input,
@@ -111,7 +65,7 @@ fn main() -> anyhow::Result<()> {
             wasi_sysroot,
         } => {
             let temp_wasm = "temp.wasm";
-            compile_c_to_wasm(input, temp_wasm, *minimal, *wasi, wasi_sysroot)?;
+            compile_c_to_wasm(&input, temp_wasm, minimal, wasi, &wasi_sysroot)?;
             let wat = wasmprinter::print_file(temp_wasm)?;
             fs::write(output, wat)?;
             println!("✅ Converted {} → {}", input, output);
@@ -126,8 +80,8 @@ fn main() -> anyhow::Result<()> {
             wasi_sysroot,
         } => {
             let temp_wasm = "temp_cpp.wasm";
-            ensure_file_exists(input)?;
-            if *wasi {
+            ensure_file_exists(&input)?;
+            if wasi {
                 println!("🔹 Compiling C++ in WASI mode...");
                 let sysroot = wasi_sysroot
                     .as_ref()
@@ -139,7 +93,7 @@ fn main() -> anyhow::Result<()> {
                         "--sysroot", sysroot,
                         "-D_WASI_EMULATED_SIGNAL",
                         "-o", temp_wasm,
-                        input,
+                        &input,
                         "-lc++", "-lc++abi", "-lwasi-emulated-signal",
                     ])
                     .status()?;
@@ -164,8 +118,8 @@ fn main() -> anyhow::Result<()> {
             wasi,
             wasi_sysroot,
         } => {
-            ensure_file_exists(input)?;
-            if *wasi {
+            ensure_file_exists(&input)?;
+            if wasi {
                 println!("🔹 Compiling C++ in WASI mode with signal emulation...");
                 let sysroot = wasi_sysroot
                     .as_ref()
@@ -176,8 +130,8 @@ fn main() -> anyhow::Result<()> {
                         "--target=wasm32-wasi",
                         "--sysroot", sysroot,
                         "-D_WASI_EMULATED_SIGNAL",
-                        "-o", output,
-                        input,
+                        "-o", &output,
+                        &input,
                         "-lc++", "-lc++abi", "-lwasi-emulated-signal",
                     ])
                     .status()?;
@@ -188,6 +142,13 @@ fn main() -> anyhow::Result<()> {
                 println!("✅ C++ → WASM done: {}", output);
             } else {
                 return Err(anyhow::anyhow!("Currently only --wasi mode is supported for C++"));
+            }
+        }
+        Commands::Analyze { file } => {
+            let bytes = fs::read(&file).expect("Failed to read WASM file");
+            match WasmAnalysis::analyze(&bytes) {
+                Ok(report) => println!("{}", report.report()),
+                Err(e) => eprintln!("Error: {}", e),
             }
         }
     }
@@ -202,7 +163,7 @@ fn compile_c_to_wasm(
     wasi: bool,
     wasi_sysroot: &Option<String>,
 ) -> anyhow::Result<()> {
-    ensure_file_exists(input)?;
+    ensure_file_exists(&input)?;
     if minimal && wasi {
         return Err(anyhow::anyhow!("Cannot use both --minimal and --wasi."));
     }
