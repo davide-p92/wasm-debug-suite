@@ -65,6 +65,12 @@ pub enum Commands {
         #[arg(value_name = "FILE")]
         file: String,
     },
+
+    /// Profile functions in a WASM bin for performance hot
+    Profile {
+        #[arg(value_name = "FILE")]
+        file: String,
+    },
     
     Repl,
 

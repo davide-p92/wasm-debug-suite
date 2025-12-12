@@ -5,6 +5,10 @@ mod hex_dump;
 use hex_dump::wasm_to_hex;
 mod analysis;
 use analysis::WasmAnalysis;
+mod repl;
+use repl::{start_repl, CommandCompleter};
+mod utils; 
+mod converter;
 use std::fs;
 use std::process::Command as SysCommand;
 
@@ -146,12 +150,18 @@ fn main() -> anyhow::Result<()> {
         }
         Commands::Analyze { file } => {
             let bytes = fs::read(&file).expect("Failed to read WASM file");
-            match WasmAnalysis::analyze(&bytes) {
-                Ok(report) => println!("{}", report.report()),
-                Err(e) => eprintln!("Error: {}", e),
-            }
+            let analysis = WasmAnalysis::analyze(&bytes);
+            println!("{}", analysis?.report());
         }
+
+        Commands::Profile { file } => {
+            let bytes = std::fs::read(&file)?;
+            WasmAnalysis::profile_functions(&bytes);
+        }
+
         Commands::Repl => start_repl()?,
+        
+        _ => {}
     }
 
     Ok(())

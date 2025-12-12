@@ -1,4 +1,24 @@
    Compiling didspace v0.1.0 (/home/davide/Downloads/proj_javescript/wasm-debug-suite/didspace)
+error: `match` arm body without braces
+   --> src/main.rs:162:27
+    |
+162 |         Commands::Repl => start_repl()?;
+    |                        -- ^^^^^^^^^^^^^ this statement is not surrounded by a body
+    |                        |
+    |                        while parsing the `match` arm starting here
+    |
+help: replace `;` with `,` to end a `match` arm expression
+    |
+162 -         Commands::Repl => start_repl()?;
+162 +         Commands::Repl => start_repl()?,
+    |
+
+error[E0425]: cannot find value `report` in this scope
+   --> src/main.rs:154:28
+    |
+154 |             println!("{}", report.report());
+    |                            ^^^^^^ not found in this scope
+
 warning: unused import: `Subcommand`
  --> src/main.rs:1:20
   |
@@ -13,153 +33,30 @@ warning: unused import: `std::fmt`
 3 | use std::fmt;
   |     ^^^^^^^^
 
-error[E0599]: no method named `consumed` found for enum `Chunk<'a>` in the current scope
-  --> src/analysis.rs:57:29
-   |
-57 |             offset += chunk.consumed();
-   |                             ^^^^^^^^ method not found in `Chunk<'_>`
+warning: unused import: `rustyline::highlight::Highlighter`
+ --> src/repl.rs:4:5
+  |
+4 | use rustyline::highlight::Highlighter;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-error[E0382]: borrow of moved value: `input`
-  --> src/main.rs:26:45
-   |
-21 |         Commands::WasmWat { input, output } => {
-   |                             ----- move occurs because `input` has type `std::string::String`, which does not implement the `Copy` trait
-22 |             ensure_file_exists(&input)?;
-23 |             let wat = wasmprinter::print_file(input)
-   |                                               ----- value moved here
-...
-26 |             println!("✅ Converted {} → {}", input, output);
-   |                                              ^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `input`
-   |
-23 |             let wat = wasmprinter::print_file(&input)
-   |                                               +
+warning: unused imports: `CommandCompleter` and `start_repl`
+ --> src/main.rs:9:12
+  |
+9 | use repl::{start_repl, CommandCompleter};
+  |            ^^^^^^^^^^  ^^^^^^^^^^^^^^^^
 
-error[E0382]: borrow of moved value: `output`
-  --> src/main.rs:26:52
-   |
-21 |         Commands::WasmWat { input, output } => {
-   |                                    ------ move occurs because `output` has type `std::string::String`, which does not implement the `Copy` trait
-...
-25 |             fs::write(output, wat)?;
-   |                       ------ value moved here
-26 |             println!("✅ Converted {} → {}", input, output);
-   |                                                     ^^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `output`
-   |
-25 |             fs::write(&output, wat)?;
-   |                       +
-
-error[E0382]: borrow of moved value: `input`
-  --> src/main.rs:35:45
-   |
-29 |         Commands::WatWasm { input, output } => {
-   |                             ----- move occurs because `input` has type `std::string::String`, which does not implement the `Copy` trait
-30 |             ensure_file_exists(&input)?;
-31 |             let wat_src = fs::read_to_string(input)?;
-   |                                              ----- value moved here
-...
-35 |             println!("✅ Converted {} → {}", input, output);
-   |                                              ^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `input`
-   |
-31 |             let wat_src = fs::read_to_string(&input)?;
-   |                                              +
-
-error[E0382]: borrow of moved value: `output`
-  --> src/main.rs:35:52
-   |
-29 |         Commands::WatWasm { input, output } => {
-   |                                    ------ move occurs because `output` has type `std::string::String`, which does not implement the `Copy` trait
-...
-34 |             fs::write(output, wasm_bytes)?;
-   |                       ------ value moved here
-35 |             println!("✅ Converted {} → {}", input, output);
-   |                                                     ^^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `output`
-   |
-34 |             fs::write(&output, wasm_bytes)?;
-   |                       +
-
-error[E0382]: borrow of moved value: `input`
-  --> src/main.rs:49:45
-   |
-38 |         Commands::WasmC { input, output } => {
-   |                           ----- move occurs because `input` has type `std::string::String`, which does not implement the `Copy` trait
-...
-41 |                 .arg(input)
-   |                      ----- value moved here
-...
-49 |             println!("✅ Converted {} → {}", input, output);
-   |                                              ^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `input`
-   |
-41 |                 .arg(&input)
-   |                      +
-
-error[E0382]: borrow of moved value: `output`
-  --> src/main.rs:49:52
-   |
-38 |         Commands::WasmC { input, output } => {
-   |                                  ------ move occurs because `output` has type `std::string::String`, which does not implement the `Copy` trait
-...
-43 |                 .arg(output)
-   |                      ------ value moved here
-...
-49 |             println!("✅ Converted {} → {}", input, output);
-   |                                                     ^^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `output`
-   |
-43 |                 .arg(&output)
-   |                      +
-
-error[E0382]: borrow of moved value: `output`
-  --> src/main.rs:71:52
-   |
-62 |             output,
-   |             ------ move occurs because `output` has type `std::string::String`, which does not implement the `Copy` trait
-...
-70 |             fs::write(output, wat)?;
-   |                       ------ value moved here
-71 |             println!("✅ Converted {} → {}", input, output);
-   |                                                     ^^^^^^ value borrowed here after move
-   |
-   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `output`
-   |
-70 |             fs::write(&output, wat)?;
-   |                       +
-
-error[E0382]: borrow of moved value: `output`
-   --> src/main.rs:108:56
+error[E0599]: no variant named `Profile` found for enum `Commands`
+   --> src/main.rs:157:19
     |
- 78 |             output,
-    |             ------ move occurs because `output` has type `std::string::String`, which does not implement the `Copy` trait
-...
-107 |                 fs::write(output, wat)?;
-    |                           ------ value moved here
-108 |                 println!("✅ Converted {} → {}", input, output);
-    |                                                         ^^^^^^ value borrowed here after move
+157 |         Commands::Profile { file } => {
+    |                   ^^^^^^^ variant not found in `Commands`
     |
-    = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-help: consider borrowing `output`
+   ::: src/cli.rs:12:1
     |
-107 |                 fs::write(&output, wat)?;
-    |                           +
+ 12 | pub enum Commands {
+    | ----------------- variant `Profile` not found here
 
-Some errors have detailed explanations: E0382, E0599.
-For more information about an error, try `rustc --explain E0382`.
-warning: `didspace` (bin "didspace") generated 2 warnings
-error: could not compile `didspace` (bin "didspace") due to 9 previous errors; 2 warnings emitted
+Some errors have detailed explanations: E0425, E0599.
+For more information about an error, try `rustc --explain E0425`.
+warning: `didspace` (bin "didspace") generated 4 warnings
+error: could not compile `didspace` (bin "didspace") due to 3 previous errors; 4 warnings emitted
