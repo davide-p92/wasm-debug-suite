@@ -10,6 +10,7 @@ use crate::utils::highlight_wat;
 use crate::hex_dump::wasm_to_hex;
 use crate::converter::{wat_to_wasm, wasm_to_wat};
 use crate::analysis::WasmAnalysis;
+use crate::wasi::{detect_wasi_imports, detect_component_model, analyze_component};
 
 const COMMANDS: &[&str] = &["wat2wasm", "wasm2wat", "hex", "analyze", "help", "exit"];
 
@@ -115,6 +116,25 @@ pub fn start_repl() -> anyhow::Result<()> where CommandCompleter: Helper {
                         let file = parts[1];
                         let bytes = fs::read(file)?;
                         WasmAnalysis::profile_functions(&bytes);
+                    }
+                    "wasi" => {
+                        if parts.len() < 2 {
+                            println!("Usage: wasi <file>");
+                            continue;
+                        }
+                        let file = parts[1];
+                        let bytes = fs::read(file)?;
+                        detect_wasi_imports(&bytes);
+                    }
+                    "component" => {
+                        if parts.len() < 2 {
+                            println!("Usage: component <file>");
+                            continue;
+                        }
+                        let file = parts[1];
+                        let bytes = fs::read(file)?;
+                        //detect_component_model(&bytes);
+                        analyze_component(&bytes);
                     }
                         
                     _ => println!("Unknown command: {}", parts[0]),

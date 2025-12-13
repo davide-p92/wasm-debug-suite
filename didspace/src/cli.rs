@@ -71,6 +71,18 @@ pub enum Commands {
         #[arg(value_name = "FILE")]
         file: String,
     },
+
+    /// WASI detection
+    Wasi {
+        #[arg(value_name = "FILE")]
+        file: String,
+    },
+
+    /// Component model for WASI
+    Component {
+        #[arg(value_name = "FILE")]
+        file: String,
+    },
     
     Repl,
 

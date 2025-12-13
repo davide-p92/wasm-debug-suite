@@ -1,4 +1,4 @@
-use clap::{Parser, Subcommand};
+use clap::{Arg, Parser, Subcommand};
 mod cli;
 use cli::{Cli, Commands};
 mod hex_dump;
@@ -10,6 +10,8 @@ use repl::{start_repl, CommandCompleter};
 mod utils; 
 mod converter;
 use std::fs;
+mod wasi;
+use wasi::{detect_wasi_imports, detect_component_model, analyze_component};
 use std::process::Command as SysCommand;
 
 fn main() -> anyhow::Result<()> {
@@ -157,6 +159,17 @@ fn main() -> anyhow::Result<()> {
         Commands::Profile { file } => {
             let bytes = std::fs::read(&file)?;
             WasmAnalysis::profile_functions(&bytes);
+        }
+
+        Commands::Wasi { file } => {
+            let bytes = std::fs::read(&file)?;
+            detect_wasi_imports(&bytes);
+        }
+
+        Commands::Component { file } => {
+            let bytes = std::fs::read(&file)?;
+            //detect_component_model(&bytes);
+            analyze_component(&bytes);
         }
 
         Commands::Repl => start_repl()?,

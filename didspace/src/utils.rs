@@ -1,4 +1,5 @@
-
+use std::fs::File;
+use std::io::Write;
 use colored::*;
 
 pub fn highlight_wat(wat: &str) -> String {
@@ -17,4 +18,10 @@ pub fn highlight_wat(wat: &str) -> String {
         })
         .collect::<Vec<_>>()
         .join("\n")
+}
+
+pub fn write_output(path: &str, content: &str) -> std::io::Result<()> {
+    let mut file = File::create(path)?;
+    file.write_all(content.as_bytes())?;
+    Ok(())
 }
