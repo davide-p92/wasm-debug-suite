@@ -1,0 +1,45 @@
+Profile Functions
+=================
+Function at offset 382: 1 instructions
+Function at offset 385: 27 instructions
+Function at offset 469: 69 instructions
+Function at offset 635: 5 instructions
+Function at offset 651: 6 instructions
+Function at offset 669: 8 instructions
+Function at offset 691: 8 instructions
+Function at offset 713: 4 instructions
+Function at offset 725: 1 instructions
+Function at offset 728: 3 instructions
+Function at offset 743: 19 instructions
+Function at offset 803: 1 instructions
+Function at offset 806: 14 instructions
+Function at offset 846: 4 instructions
+Function at offset 860: 46 instructions
+Function at offset 975: 148 instructions
+Function at offset 1291: 42 instructions
+Function at offset 1394: 22 instructions
+Function at offset 1454: 41 instructions
+Function at offset 1555: 6 instructions
+Function at offset 1573: 2 instructions
+Function at offset 1583: 169 instructions
+Function at offset 1971: 44 instructions
+Function at offset 2065: 115 instructions
+Function at offset 2303: 144 instructions
+Function at offset 2592: 2 instructions
+Function at offset 2597: 4 instructions
+Function at offset 2610: 28 instructions
+Function at offset 2697: 152 instructions
+Function at offset 3008: 11 instructions
+Function at offset 3034: 57 instructions
+Function at offset 3178: 14 instructions
+Function at offset 3215: 3 instructions
+Function at offset 3221: 177 instructions
+Function at offset 3619: 4483 instructions
+  ⚠ Hotspot detected: Consider optimizing this function.Function at offset 12614: 268 instructions
+Function at offset 13179: 69 instructions
+Function at offset 13338: 7 instructions
+Function at offset 13368: 524 instructions
+  ⚠ Hotspot detected: Consider optimizing this function.Function at offset 14376: 197 instructions
+Function at offset 14770: 112 instructions
+Function at offset 14976: 203 instructions
+Function at offset 15347: 11 instructions

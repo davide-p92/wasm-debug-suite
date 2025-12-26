@@ -118,20 +118,73 @@ impl WasmAnalysis {
         sizes
     }
 
-    pub fn profile_functions(bytes: &[u8]) {
+    pub fn to_report_string(&self) -> String {
+        let mut out = String::new();
+
+        out.push_str("WASM Analysis\n");
+        out.push_str("================\n\n");
+
+        out.push_str("Sections (bytes):\n");
+        // ordinati per nome (o fai per size se preferisci)
+        let mut sections: Vec<_> = self.section_sizes.iter().collect();
+        sections.sort_by_key(|(k, _)| *k);
+        for (name, size) in sections {
+            out.push_str(&format!("  - {:<10} {}\n", name, size));
+        }
+
+        out.push_str("\nCounts:\n");
+        out.push_str(&format!("  • functions: {}\n", self.function_count));
+        out.push_str(&format!("  • imports:   {}\n", self.imports));
+        out.push_str(&format!("  • exports:   {}\n", self.exports));
+
+        out.push_str("\nTop instructions:\n");
+        let mut instr: Vec<_> = self.instruction_freq.iter().collect();
+        instr.sort_by_key(|(_, v)| std::cmp::Reverse(**v));
+        for (name, count) in instr.into_iter().take(30) {
+            out.push_str(&format!("  - {:<40} {}\n", name, count));
+        }
+
+        out
+    }
+
+    pub fn analyze_report(bytes: &[u8]) -> Result<String> {
+        let a = Self::analyze(bytes)?;
+        Ok(a.to_report_string())
+    }
+
+    pub fn profile_functions(bytes: &[u8]) -> Result<String> {
         let parser = Parser::new(0);
+        let mut out = String::new();
+        out.push_str("Profile Functions\n");
+        out.push_str("=================\n");
+
         for payload in parser.parse_all(bytes) {
-            if let Payload::CodeSectionEntry(code) = payload.unwrap() {
-                let mut count = 0;
-                for op in code.get_operators_reader().unwrap() {
-                    op.unwrap();
-                    count += 1;
+            match payload? {
+                Payload::CodeSectionEntry(code) => {
+                    let mut count = 0;
+                    //for op in code.get_operators_reader().unwrap() {
+                    let mut r = code.get_operators_reader()?;
+                    while !r.eof() {
+                        let _op = r.read()?; // non serve usarlo, basta contare
+                        count += 1;
+                    }
+
+                    out.push_str(&format!(
+                        "Function at offset {}: {} instructions\n",
+                        code.range().start,
+                        count
+                    ));
+
+                    println!("Function at offset {}: {} instructions", code.range().start, count);
+                    if count > 500 {
+                        out.push_str("  ⚠ Hotspot detected: Consider optimizing this function.");
+                        println!("  ⚠ Hotspot detected: Consider optimizing this function.");
+                    }
                 }
-                println!("Function at offset {}: {} instructions", code.range().start, count);
-                if count > 500 {
-                    println!("  ⚠ Hotspot detected: Consider optimizing this function.");
-                }
+                Payload::End(_) => break,
+                _ => {}
             }
         }
+        Ok(out)
     }
 }

@@ -1,8 +1,12 @@
 use wasmparser::{Parser, Payload, ComponentType, ComponentValType, ComponentExternalKind};
+use anyhow::Result;
 
-pub fn detect_wasi_imports(wasm_bytes: &[u8]) -> Result<bool, Box<dyn std::error::Error>> {
+pub fn detect_wasi_imports(wasm_bytes: &[u8]) -> Result<(bool, String)> {
     let mut parser = Parser::new(0);
     let mut wasi_found = false;
+    let mut out = String::new();
+    out.push_str("WASI Imports\n");
+    out.push_str("===========\n");
 
     for payload in parser.parse_all(wasm_bytes) {
         match payload? {
@@ -10,6 +14,11 @@ pub fn detect_wasi_imports(wasm_bytes: &[u8]) -> Result<bool, Box<dyn std::error
                 for import in imports {
                     let import = import?;
                     if import.module.starts_with("wasi") {
+                        out.push_str(&format!(
+                            "Found WASI import: module='{}', name='{}'\n",
+                            import.module,
+                            import.name
+                        ));
                         println!(
                             "Found WASI import: module='{}', name='{}'",
                             import.module, import.name
@@ -21,8 +30,12 @@ pub fn detect_wasi_imports(wasm_bytes: &[u8]) -> Result<bool, Box<dyn std::error
             _ => {}
         }
     }
+    
+    if !wasi_found {
+        out.push_str("No WASI imports found.\n");
+    }
 
-    Ok(wasi_found)
+    Ok((wasi_found, out))
 }
 
 pub fn detect_component_model(wasm_bytes: &[u8]) -> Result<bool, Box<dyn std::error::Error>> {
@@ -45,7 +58,7 @@ pub fn detect_component_model(wasm_bytes: &[u8]) -> Result<bool, Box<dyn std::er
     Ok(component_found)
 }
 
-pub fn analyze_component(wasm_bytes: &[u8]) -> Result<(), Box<dyn std::error::Error>> {
+pub fn analyze_component(wasm_bytes: &[u8]) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
 
     let mut parser = Parser::new(0);
     let mut comp_types = Vec::new();
@@ -94,7 +107,10 @@ pub fn analyze_component(wasm_bytes: &[u8]) -> Result<(), Box<dyn std::error::Er
                             comp_types.push(format!("  - func({}){}", params.join(", "), result));
                             func_count += 1;
                         },
-                        _ => println!("  - other type: {:?}", ty),
+                        _ => {
+                            println!("  - other type: {:?}", ty);
+                            comp_types.push(format!("  - other type: {:?}", ty));
+                        }
                     }
                 }
             }
@@ -123,23 +139,34 @@ pub fn analyze_component(wasm_bytes: &[u8]) -> Result<(), Box<dyn std::error::Er
         }
     }
 
+    let mut out = String::new();
+    out.push_str("Component Analysis:\n");
+    out.push_str("✅ Component Model detected\n\n");
+    out.push_str("Types:\n");
     println!("Component Analysis:");
     println!("✅ Component Model detected");
     println!("Types:");
     for ctp in comp_types {
         println!("  {}", ctp);
+        out.push_str(&format!("{}\n", ctp));
     }
     println!("Imports:");
+    out.push_str("\nImports:\n");
     for imp in imports {
-        println!("  {}", imp);
+        println!("  {}\n", imp);
+        out.push_str(&format!("  {}\n", imp));
     }
     println!("Exports:");
+    out.push_str("\nExports:\n");
     for exp in exports {
         println!("  {}", exp);
+        out.push_str(&format!("  {}\n", exp));
     }
+    out.push_str("\nTypes Summary:\n");
+    out.push_str(&format!("  • Functions: {}\n", func_count));
     println!("Types Summary:");
     println!("  • Functions: {}", func_count);
 
-    Ok(())
+    Ok(out)
 }
 

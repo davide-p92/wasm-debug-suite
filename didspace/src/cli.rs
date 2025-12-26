@@ -4,6 +4,9 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 #[command(name = "didspace", version = "1.0", about = "WASM/WAT Translator")]
 pub struct Cli {
+    #[arg(long, global = true)]
+    pub output: Option<String>,
+
     #[command(subcommand)]
     pub command: Commands,
 }

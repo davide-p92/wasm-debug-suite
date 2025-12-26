@@ -1,0 +1,11 @@
+Component Analysis:
+✅ Component Model detected
+
+Types:
+
+Imports:
+
+Exports:
+
+Types Summary:
+  • Functions: 0
