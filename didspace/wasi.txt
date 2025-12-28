@@ -1,0 +1,1622 @@
+// wasi-sdk.cmake
+# Cmake toolchain description file for the Makefile
+
+# Until Platform/WASI.cmake is upstream we need to inject the path to it
+# into CMAKE_MODULE_PATH.
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
+
+set(CMAKE_SYSTEM_NAME WASI)
+set(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_PROCESSOR wasm32)
+set(triple wasm32-wasi)
+
+if(WIN32)
+	set(WASI_HOST_EXE_SUFFIX ".exe")
+else()
+	set(WASI_HOST_EXE_SUFFIX "")
+endif()
+
+# When building from source, WASI_SDK_PREFIX represents the generated directory
+if(NOT WASI_SDK_PREFIX)
+    set(WASI_SDK_PREFIX ${CMAKE_CURRENT_LIST_DIR}/../../)
+endif()
+
+set(CMAKE_C_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_CXX_COMPILER ${WASI_SDK_PREFIX}/bin/clang++${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_ASM_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_AR ${WASI_SDK_PREFIX}/bin/llvm-ar${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_RANLIB ${WASI_SDK_PREFIX}/bin/llvm-ranlib${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_C_COMPILER_TARGET ${triple})
+set(CMAKE_CXX_COMPILER_TARGET ${triple})
+set(CMAKE_ASM_COMPILER_TARGET ${triple})
+
+# Don't look in the sysroot for executables to run during the build
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# Only look in the sysroot (not in the host paths) for the rest
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+
+// wasi-sdk-pthread.cmake
+# Cmake toolchain description file for the Makefile
+
+set(CMAKE_SYSTEM_NAME WASI)
+set(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_PROCESSOR wasm32)
+set(triple wasm32-wasi-threads)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+# wasi-threads requires --import-memory.
+# wasi requires --export-memory.
+# (--export-memory is implicit unless --import-memory is given)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--import-memory")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--export-memory")
+
+if(WIN32)
+	set(WASI_HOST_EXE_SUFFIX ".exe")
+else()
+	set(WASI_HOST_EXE_SUFFIX "")
+endif()
+
+# When building from source, WASI_SDK_PREFIX represents the generated directory
+if(NOT WASI_SDK_PREFIX)
+    set(WASI_SDK_PREFIX ${CMAKE_CURRENT_LIST_DIR}/../../)
+endif()
+
+set(CMAKE_C_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_CXX_COMPILER ${WASI_SDK_PREFIX}/bin/clang++${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_ASM_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_AR ${WASI_SDK_PREFIX}/bin/llvm-ar${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_RANLIB ${WASI_SDK_PREFIX}/bin/llvm-ranlib${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_C_COMPILER_TARGET ${triple})
+set(CMAKE_CXX_COMPILER_TARGET ${triple})
+set(CMAKE_ASM_COMPILER_TARGET ${triple})
+
+# Don't look in the sysroot for executables to run during the build
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# Only look in the sysroot (not in the host paths) for the rest
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+
+// wasi-sdk-p2.cmake
+# Cmake toolchain description file for the Makefile
+
+# Until Platform/WASI.cmake is upstream we need to inject the path to it
+# into CMAKE_MODULE_PATH.
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
+
+set(CMAKE_SYSTEM_NAME WASI)
+set(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_PROCESSOR wasm32)
+set(triple wasm32-wasip2)
+
+if(WIN32)
+	set(WASI_HOST_EXE_SUFFIX ".exe")
+else()
+	set(WASI_HOST_EXE_SUFFIX "")
+endif()
+
+# When building from source, WASI_SDK_PREFIX represents the generated directory
+if(NOT WASI_SDK_PREFIX)
+    set(WASI_SDK_PREFIX ${CMAKE_CURRENT_LIST_DIR}/../../)
+endif()
+
+set(CMAKE_C_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_CXX_COMPILER ${WASI_SDK_PREFIX}/bin/clang++${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_ASM_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_AR ${WASI_SDK_PREFIX}/bin/llvm-ar${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_RANLIB ${WASI_SDK_PREFIX}/bin/llvm-ranlib${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_C_COMPILER_TARGET ${triple})
+set(CMAKE_CXX_COMPILER_TARGET ${triple})
+set(CMAKE_ASM_COMPILER_TARGET ${triple})
+
+# Don't look in the sysroot for executables to run during the build
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# Only look in the sysroot (not in the host paths) for the rest
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+
+// wasi-sdk-p1.cmake
+# Cmake toolchain description file for the Makefile
+
+# Until Platform/WASI.cmake is upstream we need to inject the path to it
+# into CMAKE_MODULE_PATH.
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
+
+set(CMAKE_SYSTEM_NAME WASI)
+set(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_PROCESSOR wasm32)
+set(triple wasm32-wasip1)
+
+if(WIN32)
+	set(WASI_HOST_EXE_SUFFIX ".exe")
+else()
+	set(WASI_HOST_EXE_SUFFIX "")
+endif()
+
+# When building from source, WASI_SDK_PREFIX represents the generated directory
+if(NOT WASI_SDK_PREFIX)
+	set(WASI_SDK_PREFIX ${CMAKE_CURRENT_LIST_DIR}/../../)
+endif()
+
+set(CMAKE_C_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_CXX_COMPILER ${WASI_SDK_PREFIX}/bin/clang++${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_ASM_COMPILER ${WASI_SDK_PREFIX}/bin/clang${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_AR ${WASI_SDK_PREFIX}/bin/llvm-ar${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_RANLIB ${WASI_SDK_PREFIX}/bin/llvm-ranlib${WASI_HOST_EXE_SUFFIX})
+set(CMAKE_C_COMPILER_TARGET ${triple})
+set(CMAKE_CXX_COMPILER_TARGET ${triple})
+set(CMAKE_ASM_COMPILER_TARGET ${triple})
+
+# Don't look in the sysroot for executables to run during the build
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+
+# Only look in the sysroot (not in the host paths) for the rest
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+
+# version.py
+#!/usr/bin/env python3
+
+# This script finds and prints the various versions in this project: wasi-sdk
+# itself, LLVM, and the Git revisions of dependencies.
+#
+# Usage: version [wasi-sdk|llvm|llvm-major|dump] [--llvm-dir=<non-project dir>]
+
+import argparse
+import os
+import subprocess
+import sys
+
+# The number of characters to use for the abbreviated Git revision.
+GIT_REF_LEN = 12
+
+
+def exec(command, cwd):
+    result = subprocess.run(command, stdout=subprocess.PIPE,
+                            universal_newlines=True, check=True, cwd=cwd)
+    return result.stdout.strip()
+
+
+def git_commit(dir):
+    return exec(['git', 'rev-parse', f'--short={GIT_REF_LEN}', 'HEAD'], dir)
+
+
+def parse_git_version(version):
+    # Parse, e.g.: wasi-sdk-21-0-g317548590b40+m
+    parts = version.replace('+', '-').split('-')
+    assert parts.pop(0) == 'wasi'
+    assert parts.pop(0) == 'sdk'
+
+    major, minor = parts.pop(0), parts.pop(0)
+    git = None
+    dirty = False
+
+    if parts:
+        # Check: git|dirty.
+        next = parts.pop(0)
+        if next == 'm':
+            dirty = True
+        elif minor != '0':
+            git = next[1:]
+
+        # Check: dirty.
+        if parts:
+            assert parts.pop(0) == 'm', f'expected dirty flag: +m'
+            dirty = True
+
+    assert not parts, f'unexpected suffixes: {parts}'
+    return major, minor, git, dirty
+
+
+# Some inline tests to check Git version parsing:
+assert parse_git_version(
+    'wasi-sdk-21-1-g317548590b40+m') == ('21', '1', '317548590b40', True)
+assert parse_git_version('wasi-sdk-21-2+m') == ('21', '2', None, True)
+assert parse_git_version(
+    'wasi-sdk-23-0-g317548590b40') == ('23', '0', None, False)
+
+
+def git_version():
+    version = exec(['git', 'describe', '--long', '--candidates=999',
+                    '--match=wasi-sdk-*', '--dirty=+m', f'--abbrev={GIT_REF_LEN}'],
+                    os.path.dirname(sys.argv[0]))
+    major, minor, git, dirty = parse_git_version(version)
+    version = f'{major}.{minor}'
+    if git:
+        version += f'g{git}'
+    if dirty:
+        version += '+m'
+    return version
+
+
+def parse_cmake_set(line):
+    return line.split(' ')[1].split(')')[0]
+
+
+def llvm_cmake_version(llvm_dir):
+    path = f'{llvm_dir}/cmake/Modules/LLVMVersion.cmake'
+    if not os.path.exists(path):
+        # Handle older LLVM versions; see #399.
+        path = f'{llvm_dir}/llvm/CMakeLists.txt'
+    with open(path) as file:
+        for line in file:
+            line = line.strip()
+            if line.startswith('set(LLVM_VERSION_MAJOR'):
+                llvm_version_major = parse_cmake_set(line)
+            elif line.startswith('set(LLVM_VERSION_MINOR'):
+                llvm_version_minor = parse_cmake_set(line)
+            elif line.startswith('set(LLVM_VERSION_PATCH'):
+                llvm_version_patch = parse_cmake_set(line)
+    return llvm_version_major, llvm_version_minor, llvm_version_patch
+
+
+def main(action, llvm_dir):
+    if action == 'wasi-sdk':
+        print(git_version())
+    elif action == 'llvm':
+        major, minor, path = llvm_cmake_version(llvm_dir)
+        print(f'{major}.{minor}.{path}')
+    elif action == 'llvm-major':
+        major, _, _ = llvm_cmake_version(llvm_dir)
+        print(major)
+    elif action == 'dump':
+        print(git_version())
+        print(f'wasi-libc: {git_commit("src/wasi-libc")}')
+        print(f'llvm: {git_commit(llvm_dir)}')
+        major, minor, path = llvm_cmake_version(llvm_dir)
+        print(f'llvm-version: {major}.{minor}.{path}')
+        print(f'config: {git_commit("src/config")}')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Print the various kinds of versions in wasi-sdk')
+    parser.add_argument('action',
+                        choices=['wasi-sdk', 'llvm', 'llvm-major', 'dump'],
+                        nargs='?',
+                        default='wasi-sdk',
+                        help='Which kind of version to print (default: wasi-sdk).')
+    parser.add_argument('--llvm-dir',
+                        nargs='?',
+                        default='src/llvm-project',
+                        help='Override the location of the LLVM source directory (default: src/llvm-project).')
+    args = parser.parse_args()
+    main(args.action, args.llvm_dir)
+    sys.exit(0)
+
+
+// cmake/Platform/WASI.cmake
+set(WASI 1)
+
+
+// cmake/wasi-sdk-sysroot.cmake
+# Build logic for building a sysroot for wasi-sdk which includes compiler-rt,
+# wasi-libc, libcxx, and libcxxabi.
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE RelWithDebInfo)
+endif()
+
+if(NOT CMAKE_C_COMPILER_ID MATCHES Clang)
+  message(FATAL_ERROR "C compiler ${CMAKE_C_COMPILER} is not `Clang`, it is ${CMAKE_C_COMPILER_ID}")
+endif()
+
+set(minimum_clang_required 18.0.0)
+
+if(CMAKE_C_COMPILER_VERSION VERSION_LESS ${minimum_clang_required})
+  message(FATAL_ERROR "compiler version ${CMAKE_C_COMPILER_VERSION} is less than the required version ${minimum_clang_required}")
+endif()
+
+message(STATUS "Found executable for `nm`: ${CMAKE_NM}")
+message(STATUS "Found executable for `ar`: ${CMAKE_AR}")
+
+find_program(MAKE make REQUIRED)
+
+option(WASI_SDK_DEBUG_PREFIX_MAP "Pass `-fdebug-prefix-map` for built artifacts" ON)
+option(WASI_SDK_INCLUDE_TESTS "Whether or not to build tests by default" OFF)
+option(WASI_SDK_INSTALL_TO_CLANG_RESOURCE_DIR "Whether or not to modify the compiler's resource directory" OFF)
+option(WASI_SDK_LTO "Whether or not to build LTO assets" ON)
+set(WASI_SDK_CPU_CFLAGS "-mcpu=lime1" CACHE STRING "CFLAGS to specify wasm features to enable")
+
+set(wasi_tmp_install ${CMAKE_CURRENT_BINARY_DIR}/install)
+set(wasi_sysroot ${wasi_tmp_install}/share/wasi-sysroot)
+set(wasi_resource_dir ${wasi_tmp_install}/wasi-resource-dir)
+
+if(WASI_SDK_DEBUG_PREFIX_MAP)
+  add_compile_options(
+    -fdebug-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}=wasisdk://v${wasi_sdk_version})
+endif()
+
+# Default arguments for builds of cmake projects (mostly LLVM-based) to forward
+# along much of our own configuration into these projects.
+set(default_cmake_args
+  -DCMAKE_SYSTEM_NAME=WASI
+  -DCMAKE_SYSTEM_VERSION=1
+  -DCMAKE_SYSTEM_PROCESSOR=wasm32
+  -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+  -DCMAKE_AR=${CMAKE_AR}
+  -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+  -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+  -DCMAKE_C_COMPILER_WORKS=ON
+  -DCMAKE_CXX_COMPILER_WORKS=ON
+  -DCMAKE_SYSROOT=${wasi_sysroot}
+  -DCMAKE_MODULE_PATH=${CMAKE_CURRENT_SOURCE_DIR}/cmake
+  # CMake detects this based on `CMAKE_C_COMPILER` alone and when that compiler
+  # is just a bare "clang" installation then it can mistakenly deduce that this
+  # feature is supported when it's not actually supported for WASI targets.
+  # Currently `wasm-ld` does not support the linker flag for this.
+  -DCMAKE_C_LINKER_DEPFILE_SUPPORTED=OFF
+  -DCMAKE_CXX_LINKER_DEPFILE_SUPPORTED=OFF)
+
+if(CMAKE_C_COMPILER_LAUNCHER)
+  list(APPEND default_cmake_args -DCMAKE_C_COMPILER_LAUNCHER=${CMAKE_C_COMPILER_LAUNCHER})
+endif()
+if(CMAKE_CXX_COMPILER_LAUNCHER)
+  list(APPEND default_cmake_args -DCMAKE_CXX_COMPILER_LAUNCHER=${CMAKE_CXX_COMPILER_LAUNCHER})
+endif()
+
+# =============================================================================
+# compiler-rt build logic
+# =============================================================================
+
+add_custom_target(compiler-rt-build)
+function(define_compiler_rt target)
+  ExternalProject_Add(compiler-rt-build-${target}
+    SOURCE_DIR "${llvm_proj_dir}/compiler-rt"
+    CMAKE_ARGS
+        ${default_cmake_args}
+        -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=ON
+        -DCOMPILER_RT_BAREMETAL_BUILD=ON
+        -DCOMPILER_RT_BUILD_XRAY=OFF
+        -DCOMPILER_RT_INCLUDE_TESTS=OFF
+        -DCOMPILER_RT_HAS_FPIC_FLAG=OFF
+        -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
+        -DCOMPILER_RT_BUILD_SANITIZERS=OFF
+        -DCOMPILER_RT_BUILD_XRAY=OFF
+        -DCOMPILER_RT_BUILD_LIBFUZZER=OFF
+        -DCOMPILER_RT_BUILD_PROFILE=OFF
+        -DCOMPILER_RT_BUILD_CTX_PROFILE=OFF
+        -DCOMPILER_RT_BUILD_MEMPROF=OFF
+        -DCOMPILER_RT_BUILD_ORC=OFF
+        -DCOMPILER_RT_BUILD_GWP_ASAN=OFF
+        -DCMAKE_C_COMPILER_TARGET=${target}
+        -DCMAKE_C_FLAGS=${WASI_SDK_CPU_CFLAGS}
+        -DCMAKE_INSTALL_PREFIX=${wasi_resource_dir}
+    EXCLUDE_FROM_ALL ON
+    USES_TERMINAL_CONFIGURE ON
+    USES_TERMINAL_BUILD ON
+    USES_TERMINAL_INSTALL ON
+  )
+  add_dependencies(compiler-rt-build compiler-rt-build-${target})
+endfunction()
+
+define_compiler_rt(wasm32-wasi)
+define_compiler_rt(wasm32-wasip1-threads)
+
+# In addition to the default installation of `compiler-rt` itself also copy
+# around some headers and make copies of the `wasi` directory as `wasip1` and
+# `wasip2`
+execute_process(
+  COMMAND ${CMAKE_C_COMPILER} -print-resource-dir
+  OUTPUT_VARIABLE clang_resource_dir
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+add_custom_target(compiler-rt-post-build
+  # The `${wasi_resource_dir}` folder is going to get used as `-resource-dir`
+  # for future compiles. Copy the host compiler's own headers into this
+  # directory to ensure that all host-defined headers all work as well.
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${clang_resource_dir}/include ${wasi_resource_dir}/include
+
+  # Copy the `lib/wasm32-unknown-wasi` folder to `lib/wasm32-unknown-wasi{p1,p2}` to ensure that those
+  # OS-strings also work for looking up the compiler-rt.a file.
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${wasi_resource_dir}/lib/wasm32-unknown-wasi ${wasi_resource_dir}/lib/wasm32-unknown-wasip1
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${wasi_resource_dir}/lib/wasm32-unknown-wasi ${wasi_resource_dir}/lib/wasm32-unknown-wasip2
+  # Copy the `lib/wasm32-unknown-wasip1-threads` folder to `lib/wasm32-unknown-wasi-threads`
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${wasi_resource_dir}/lib/wasm32-unknown-wasip1-threads ${wasi_resource_dir}/lib/wasm32-unknown-wasi-threads
+
+  COMMENT "finalizing compiler-rt installation"
+)
+add_dependencies(compiler-rt-post-build compiler-rt-build)
+
+add_custom_target(compiler-rt DEPENDS compiler-rt-build compiler-rt-post-build)
+
+
+# =============================================================================
+# wasi-libc build logic
+# =============================================================================
+
+function(define_wasi_libc_sub target target_suffix lto)
+  set(build_dir ${CMAKE_CURRENT_BINARY_DIR}/wasi-libc-${target}${target_suffix})
+
+  string(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_UPPER)
+  get_property(directory_cflags DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY COMPILE_OPTIONS)
+  list(APPEND directory_cflags -resource-dir ${wasi_resource_dir})
+  set(extra_cflags_list
+    "${WASI_SDK_CPU_CFLAGS} ${CMAKE_C_FLAGS} ${directory_cflags} ${CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE_UPPER}}")
+
+  set(extra_make_flags default)
+
+  # If LTO is enabled then pass that on to wasi-libc, and otherwise make sure to
+  # build a `libc.so` dynamic library where possible (not compatible with
+  # threads though)
+  if(lto)
+    list(APPEND extra_make_flags LTO=full)
+  elseif(NOT ${target} MATCHES threads)
+    list(APPEND extra_make_flags libc_so)
+  endif()
+
+  if(${target} MATCHES threads)
+    list(APPEND extra_make_flags THREAD_MODEL=posix)
+  elseif(${target} MATCHES p2)
+    list(APPEND extra_make_flags WASI_SNAPSHOT=p2)
+    # Always enable `-fPIC` for the `wasm32-wasip2` target. This makes `libc.a`
+    # more flexible and usable in dynamic linking situations.
+    list(APPEND extra_cflags_list -fPIC)
+  endif()
+
+  list(JOIN extra_cflags_list " " extra_cflags)
+
+  if(${target} MATCHES threads)
+    set(libcompiler_rt_a ${wasi_resource_dir}/lib/wasm32-unknown-wasip1-threads/libclang_rt.builtins.a)
+  else()
+    set(libcompiler_rt_a ${wasi_resource_dir}/lib/wasm32-unknown-wasip1/libclang_rt.builtins.a)
+  endif()
+
+  ExternalProject_Add(wasi-libc-${target}${target_suffix}-build
+    # Currently wasi-libc doesn't support out-of-tree builds so feign a
+    # "download command" which copies the source tree to a different location
+    # so out-of-tree builds are supported.
+    DOWNLOAD_COMMAND
+      ${CMAKE_COMMAND} -E copy_directory ${wasi_libc} ${build_dir}
+    SOURCE_DIR "${build_dir}"
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND
+      ${MAKE} -j8 -C ${build_dir}
+        CC=${CMAKE_C_COMPILER}
+        AR=${CMAKE_AR}
+        NM=${CMAKE_NM}
+        SYSROOT=${wasi_sysroot}
+        EXTRA_CFLAGS=${extra_cflags}
+        TARGET_TRIPLE=${target}
+        BUILTINS_LIB=${libcompiler_rt_a}
+        ${extra_make_flags}
+    INSTALL_COMMAND ""
+    DEPENDS compiler-rt
+    EXCLUDE_FROM_ALL ON
+    USES_TERMINAL_CONFIGURE ON
+    USES_TERMINAL_BUILD ON
+    USES_TERMINAL_INSTALL ON
+  )
+endfunction()
+
+function(define_wasi_libc target)
+  define_wasi_libc_sub (${target} "" OFF)
+  if(WASI_SDK_LTO)
+    define_wasi_libc_sub (${target} "-lto" ON)
+  endif()
+
+  add_custom_target(wasi-libc-${target}
+    DEPENDS wasi-libc-${target}-build $<$<BOOL:${WASI_SDK_LTO}>:wasi-libc-${target}-lto-build>)
+endfunction()
+
+foreach(target IN LISTS WASI_SDK_TARGETS)
+  define_wasi_libc(${target})
+endforeach()
+
+# =============================================================================
+# libcxx build logic
+# =============================================================================
+
+execute_process(
+  COMMAND ${CMAKE_C_COMPILER} -dumpversion
+  OUTPUT_VARIABLE llvm_version
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+function(define_libcxx_sub target target_suffix extra_target_flags extra_libdir_suffix)
+  if(${target} MATCHES threads)
+    set(pic OFF)
+    set(target_flags -pthread)
+  else()
+    set(pic ON)
+    set(target_flags "")
+  endif()
+  if(${target_suffix} MATCHES lto)
+    set(pic OFF)
+  endif()
+  list(APPEND target_flags ${extra_target_flags})
+
+  set(runtimes "libcxx;libcxxabi")
+
+  get_property(dir_compile_opts DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY COMPILE_OPTIONS)
+  get_property(dir_link_opts DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY LINK_OPTIONS)
+  set(extra_flags
+    ${WASI_SDK_CPU_CFLAGS}
+    ${target_flags}
+    --target=${target}
+    ${dir_compile_opts}
+    ${dir_link_opts}
+    --sysroot ${wasi_sysroot}
+    -resource-dir ${wasi_resource_dir})
+
+  set(extra_cflags_list ${CMAKE_C_FLAGS} ${extra_flags})
+  list(JOIN extra_cflags_list " " extra_cflags)
+  set(extra_cxxflags_list ${CMAKE_CXX_FLAGS} ${extra_flags})
+  list(JOIN extra_cxxflags_list " " extra_cxxflags)
+
+  ExternalProject_Add(libcxx-${target}${target_suffix}-build
+    SOURCE_DIR ${llvm_proj_dir}/runtimes
+    CMAKE_ARGS
+      ${default_cmake_args}
+      # Ensure headers are installed in a target-specific path instead of a
+      # target-generic path.
+      -DCMAKE_INSTALL_INCLUDEDIR=${wasi_sysroot}/include/${target}
+      -DCMAKE_STAGING_PREFIX=${wasi_sysroot}
+      -DCMAKE_POSITION_INDEPENDENT_CODE=${pic}
+      -DCXX_SUPPORTS_CXX11=ON
+      -DLIBCXX_ENABLE_THREADS:BOOL=ON
+      -DLIBCXX_HAS_PTHREAD_API:BOOL=ON
+      -DLIBCXX_HAS_EXTERNAL_THREAD_API:BOOL=OFF
+      -DLIBCXX_BUILD_EXTERNAL_THREAD_LIBRARY:BOOL=OFF
+      -DLIBCXX_HAS_WIN32_THREAD_API:BOOL=OFF
+      -DLLVM_COMPILER_CHECKED=ON
+      -DLIBCXX_ENABLE_SHARED:BOOL=${pic}
+      -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY:BOOL=OFF
+      -DLIBCXX_ENABLE_EXCEPTIONS:BOOL=OFF
+      -DLIBCXX_ENABLE_FILESYSTEM:BOOL=ON
+      -DLIBCXX_ENABLE_ABI_LINKER_SCRIPT:BOOL=OFF
+      -DLIBCXX_CXX_ABI=libcxxabi
+      -DLIBCXX_CXX_ABI_INCLUDE_PATHS=${llvm_proj_dir}/libcxxabi/include
+      -DLIBCXX_HAS_MUSL_LIBC:BOOL=ON
+      -DLIBCXX_ABI_VERSION=2
+      -DLIBCXXABI_ENABLE_EXCEPTIONS:BOOL=OFF
+      -DLIBCXXABI_ENABLE_SHARED:BOOL=${pic}
+      -DLIBCXXABI_SILENT_TERMINATE:BOOL=ON
+      -DLIBCXXABI_ENABLE_THREADS:BOOL=ON
+      -DLIBCXXABI_HAS_PTHREAD_API:BOOL=ON
+      -DLIBCXXABI_HAS_EXTERNAL_THREAD_API:BOOL=OFF
+      -DLIBCXXABI_BUILD_EXTERNAL_THREAD_LIBRARY:BOOL=OFF
+      -DLIBCXXABI_HAS_WIN32_THREAD_API:BOOL=OFF
+      -DLIBCXXABI_ENABLE_PIC:BOOL=${pic}
+      -DLIBCXXABI_USE_LLVM_UNWINDER:BOOL=OFF
+      -DUNIX:BOOL=ON
+      -DCMAKE_C_FLAGS=${extra_cflags}
+      -DCMAKE_CXX_FLAGS=${extra_cxxflags}
+      -DLIBCXX_LIBDIR_SUFFIX=/${target}${extra_libdir_suffix}
+      -DLIBCXXABI_LIBDIR_SUFFIX=/${target}${extra_libdir_suffix}
+      -DLIBCXX_INCLUDE_TESTS=OFF
+      -DLIBCXX_INCLUDE_BENCHMARKS=OFF
+
+    # See https://www.scivision.dev/cmake-externalproject-list-arguments/ for
+    # why this is in `CMAKE_CACHE_ARGS` instead of above
+    CMAKE_CACHE_ARGS
+      -DLLVM_ENABLE_RUNTIMES:STRING=${runtimes}
+    DEPENDS
+      wasi-libc-${target}
+      compiler-rt
+    EXCLUDE_FROM_ALL ON
+    USES_TERMINAL_CONFIGURE ON
+    USES_TERMINAL_BUILD ON
+    USES_TERMINAL_INSTALL ON
+  )
+endfunction()
+
+function(define_libcxx target)
+  define_libcxx_sub(${target} "" "" "")
+  if(WASI_SDK_LTO)
+    # Note: clang knows this /llvm-lto/${llvm_version} convention.
+    # https://github.com/llvm/llvm-project/blob/llvmorg-18.1.8/clang/lib/Driver/ToolChains/WebAssembly.cpp#L204-L210
+    define_libcxx_sub(${target} "-lto" "-flto=full" "/llvm-lto/${llvm_version}")
+  endif()
+
+  # As of this writing, `clang++` will ignore the target-specific include dirs
+  # unless this one also exists:
+  add_custom_target(libcxx-${target}-extra-dir
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${wasi_sysroot}/include/c++/v1
+    COMMENT "creating libcxx-specific header file folder")
+  add_custom_target(libcxx-${target}
+    DEPENDS libcxx-${target}-build $<$<BOOL:${WASI_SDK_LTO}>:libcxx-${target}-lto-build> libcxx-${target}-extra-dir)
+endfunction()
+
+foreach(target IN LISTS WASI_SDK_TARGETS)
+  define_libcxx(${target})
+endforeach()
+
+# =============================================================================
+# misc build logic
+# =============================================================================
+
+install(DIRECTORY ${wasi_tmp_install}/share
+        USE_SOURCE_PERMISSIONS
+        DESTINATION ${CMAKE_INSTALL_PREFIX})
+if(WASI_SDK_INSTALL_TO_CLANG_RESOURCE_DIR)
+  install(DIRECTORY ${wasi_resource_dir}/lib
+          USE_SOURCE_PERMISSIONS
+          DESTINATION ${clang_resource_dir})
+else()
+  install(DIRECTORY ${wasi_resource_dir}/lib
+          USE_SOURCE_PERMISSIONS
+          DESTINATION ${CMAKE_INSTALL_PREFIX}/clang-resource-dir)
+endif()
+
+# Add a top-level `build` target as well as `build-$target` targets.
+add_custom_target(build ALL)
+foreach(target IN LISTS WASI_SDK_TARGETS)
+  add_custom_target(build-${target})
+  add_dependencies(build-${target} libcxx-${target} wasi-libc-${target} compiler-rt)
+  add_dependencies(build build-${target})
+endforeach()
+
+# Install a `VERSION` file in the output prefix with a dump of version
+# information.
+execute_process(
+  COMMAND ${PYTHON} ${version_script} dump
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  OUTPUT_VARIABLE version_dump)
+set(version_file_tmp ${wasi_sysroot}/VERSION)
+file(GENERATE OUTPUT ${version_file_tmp} CONTENT ${version_dump})
+add_custom_target(version-file DEPENDS ${version_file_tmp})
+add_dependencies(build version-file)
+
+if(WASI_SDK_INCLUDE_TESTS)
+  add_subdirectory(tests)
+endif()
+
+include(wasi-sdk-dist)
+
+set(dist_dir ${CMAKE_CURRENT_BINARY_DIR}/dist)
+
+# Tarball with just `compiler-rt` libraries within it
+wasi_sdk_add_tarball(dist-compiler-rt
+  ${dist_dir}/libclang_rt-${wasi_sdk_version}.tar.gz
+  ${wasi_resource_dir}/lib)
+add_dependencies(dist-compiler-rt compiler-rt)
+
+# Tarball with the whole sysroot
+wasi_sdk_add_tarball(dist-sysroot
+  ${dist_dir}/wasi-sysroot-${wasi_sdk_version}.tar.gz
+  ${wasi_sysroot})
+add_dependencies(dist-sysroot build)
+
+add_custom_target(dist DEPENDS dist-compiler-rt dist-sysroot)
+
+
+// cmake/wasi-sdk-dist.cmake
+# Helper function to create tarballs for wasi-sdk.
+#
+# The `target` is the name of the CMake target to create for the creation of
+# this tarball. The `tarball` argument is where the final tarball will be
+# located. The name of the tarball is also used for the name of the root folder
+# in the tarball. The `dir` argument is is the directory that will get packaged
+# up within the tarball.
+function(wasi_sdk_add_tarball target tarball dir)
+  cmake_path(GET tarball PARENT_PATH tarball_dir)
+
+  # Run STEM twice to chop of both `.gz` and `.tar` in `.tar.gz`
+  cmake_path(GET tarball STEM LAST_ONLY tarball_stem)
+  cmake_path(GET tarball_stem STEM LAST_ONLY tarball_stem)
+
+  if(CMAKE_SYSTEM_NAME MATCHES Windows)
+    # Copy the contents of symlinks on Windows to avoid dealing with symlink
+    set(copy_dir ${CMAKE_COMMAND} -E copy_directory ${dir} ${tarball_stem})
+  else()
+    # ... but on non-Windows copy symlinks themselves to cut down on
+    # distribution size.
+    set(copy_dir cp -R ${dir} ${tarball_stem})
+  endif()
+
+  add_custom_command(
+    OUTPUT ${tarball}
+    # First copy the directory under a different name, the filestem of the
+    # tarball.
+    COMMAND ${copy_dir}
+    # Next use CMake to create the tarball itself
+    COMMAND ${CMAKE_COMMAND} -E tar cfz ${tarball} ${tarball_stem}
+    # Finally delete the temporary directory created above.
+    COMMAND ${CMAKE_COMMAND} -E rm -rf ${tarball_stem}
+    WORKING_DIRECTORY ${tarball_dir}
+    COMMENT "Creating ${tarball}..."
+  )
+  add_custom_target(${target} DEPENDS ${tarball})
+endfunction()
+
+
+// cmake/wasi-sdk-enable-ccache.cmake
+# Helper module to auto-enable ccache if detected.
+
+find_program(CCACHE ccache)
+
+option(WASI_SDK_DISABLE_CCACHE "Force disable ccache even if it's found" OFF)
+
+if(NOT CMAKE_C_COMPILER_LAUNCHER)
+  if(NOT WASI_SDK_DISABLE_CCACHE)
+    if(CCACHE)
+      set(CMAKE_C_COMPILER_LAUNCHER ccache)
+      set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+      message(STATUS "Auto-enabling ccache")
+    else()
+      message(STATUS "Failed to auto-enable ccache, not found on system")
+    endif()
+  endif()
+endif()
+
+
+// cmake/wasi-sdk-toolchain.cmake
+# Build logic and support for building a Clang toolchain that can target
+# WebAssembly and build a WASI sysroot.
+
+set(LLVM_CMAKE_FLAGS "" CACHE STRING "Extra cmake flags to pass to LLVM's build")
+set(RUST_TARGET "" CACHE STRING "Target to build Rust code for, if not the host")
+set(WASI_SDK_ARTIFACT "" CACHE STRING "Name of the wasi-sdk artifact being produced")
+
+string(REGEX REPLACE "[ ]+" ";" llvm_cmake_flags_list "${LLVM_CMAKE_FLAGS}")
+
+set(wasi_tmp_install ${CMAKE_CURRENT_BINARY_DIR}/install)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE MinSizeRel)
+endif()
+
+set(default_cmake_args
+  -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+  -DCMAKE_AR=${CMAKE_AR}
+  -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+  -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+  -DCMAKE_INSTALL_PREFIX=${wasi_tmp_install})
+
+if(CMAKE_C_COMPILER_LAUNCHER)
+  list(APPEND default_cmake_args -DCMAKE_C_COMPILER_LAUNCHER=${CMAKE_C_COMPILER_LAUNCHER})
+endif()
+if(CMAKE_CXX_COMPILER_LAUNCHER)
+  list(APPEND default_cmake_args -DCMAKE_CXX_COMPILER_LAUNCHER=${CMAKE_CXX_COMPILER_LAUNCHER})
+endif()
+
+set(links_to_create clang-cl clang-cpp clang++)
+foreach(target IN LISTS WASI_SDK_TARGETS)
+  list(APPEND links_to_create ${target}-clang)
+  list(APPEND links_to_create ${target}-clang++)
+endforeach()
+
+set(projects "lld;clang;clang-tools-extra")
+
+set(tools
+  clang
+  clang-format
+  clang-tidy
+  clang-apply-replacements
+  lld
+  llvm-addr2line
+  llvm-mc
+  llvm-ranlib
+  llvm-strip
+  llvm-dwarfdump
+  llvm-dwp
+  clang-resource-headers
+  ar
+  ranlib
+  strip
+  nm
+  size
+  strings
+  objdump
+  objcopy
+  c++filt
+  llvm-config)
+
+# By default link LLVM dynamically to all the various tools. This greatly
+# reduces the binary size of all the tools through a shared library rather than
+# statically linking LLVM to each individual tool. This requires a few other
+# install targets as well to ensure the appropriate libraries are all installed.
+#
+# Also note that the `-wasi-sdk` version suffix is intended to help prevent
+# these dynamic libraries from clashing with other system libraries in case the
+# `lib` dir gets put on `LD_LIBRARY_PATH` or similar.
+if(NOT WIN32)
+  list(APPEND default_cmake_args -DLLVM_LINK_LLVM_DYLIB=ON -DLLVM_VERSION_SUFFIX=-wasi-sdk)
+  list(APPEND tools LLVM clang-cpp)
+endif()
+
+list(TRANSFORM tools PREPEND --target= OUTPUT_VARIABLE build_targets)
+list(TRANSFORM tools PREPEND --target=install- OUTPUT_VARIABLE install_targets)
+
+ExternalProject_Add(llvm-build
+  SOURCE_DIR "${llvm_proj_dir}/llvm"
+  CMAKE_ARGS
+    ${default_cmake_args}
+    -DLLVM_ENABLE_ZLIB=OFF
+    -DLLVM_ENABLE_ZSTD=OFF
+    -DLLVM_STATIC_LINK_CXX_STDLIB=ON
+    -DLLVM_INCLUDE_TESTS=OFF
+    -DLLVM_INCLUDE_UTILS=OFF
+    -DLLVM_INCLUDE_BENCHMARKS=OFF
+    -DLLVM_INCLUDE_EXAMPLES=OFF
+    -DLLVM_TARGETS_TO_BUILD=WebAssembly
+    -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi
+    -DLLVM_INSTALL_BINUTILS_SYMLINKS=TRUE
+    -DLLVM_ENABLE_LIBXML2=OFF
+    # Pass `-s` to strip symbols by default and shrink the size of the
+    # distribution
+    -DCMAKE_EXE_LINKER_FLAGS=-s
+    ${llvm_cmake_flags_list}
+  # See https://www.scivision.dev/cmake-externalproject-list-arguments/ for
+  # why this is in `CMAKE_CACHE_ARGS` instead of above
+  CMAKE_CACHE_ARGS
+    -DLLVM_ENABLE_PROJECTS:STRING=${projects}
+    -DCLANG_LINKS_TO_CREATE:STRING=${links_to_create}
+  BUILD_COMMAND
+    cmake --build . ${build_targets}
+  INSTALL_COMMAND
+    cmake --build . ${install_targets}
+  USES_TERMINAL_CONFIGURE ON
+  USES_TERMINAL_BUILD ON
+  USES_TERMINAL_INSTALL ON
+)
+
+add_custom_target(build ALL DEPENDS llvm-build)
+
+# Installation target for this outer project for installing the toolchain to the
+# system.
+install(DIRECTORY ${wasi_tmp_install}/bin ${wasi_tmp_install}/lib ${wasi_tmp_install}/share
+        USE_SOURCE_PERMISSIONS
+        DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+# Build logic for `wasm-component-ld` installed from Rust code.
+set(wasm_component_ld_root ${CMAKE_CURRENT_BINARY_DIR}/wasm-component-ld)
+set(wasm_component_ld ${wasm_component_ld_root}/bin/wasm-component-ld${CMAKE_EXECUTABLE_SUFFIX})
+set(wasm_component_ld_version 0.5.19)
+if(RUST_TARGET)
+  set(rust_target_flag --target=${RUST_TARGET})
+endif()
+add_custom_command(
+  OUTPUT ${wasm_component_ld}
+  COMMAND
+    cargo install --root ${wasm_component_ld_root} ${rust_target_flag}
+      wasm-component-ld@${wasm_component_ld_version}
+  COMMAND
+    cmake -E make_directory ${wasi_tmp_install}/bin
+  COMMAND
+    cmake -E copy ${wasm_component_ld} ${wasi_tmp_install}/bin
+  COMMENT "Building `wasm-component-ld` ...")
+add_custom_target(wasm-component-ld DEPENDS ${wasm_component_ld})
+add_dependencies(build wasm-component-ld)
+
+# Setup installation logic for CMake support files.
+add_custom_target(misc-files)
+add_dependencies(build misc-files)
+
+function(copy_misc_file src dst_folder)
+  cmake_path(GET src FILENAME src_filename)
+  set(dst ${wasi_tmp_install}/share/${dst_folder}/${src_filename})
+  add_custom_command(
+    OUTPUT ${dst}
+    COMMAND cmake -E copy ${CMAKE_CURRENT_SOURCE_DIR}/${src} ${dst})
+  add_custom_target(copy-${src_filename} DEPENDS ${dst})
+  add_dependencies(misc-files copy-${src_filename})
+endfunction()
+
+copy_misc_file(src/config/config.sub misc)
+copy_misc_file(src/config/config.guess misc)
+copy_misc_file(wasi-sdk.cmake cmake)
+copy_misc_file(wasi-sdk-pthread.cmake cmake)
+copy_misc_file(wasi-sdk-p1.cmake cmake)
+copy_misc_file(wasi-sdk-p2.cmake cmake)
+copy_misc_file(cmake/Platform/WASI.cmake cmake/Platform)
+
+function(copy_cfg_file compiler)
+  set(dst ${wasi_tmp_install}/bin/${compiler}.cfg)
+  add_custom_command(
+    OUTPUT ${dst}
+    COMMAND cmake -E copy ${CMAKE_CURRENT_SOURCE_DIR}/clang.cfg ${dst})
+  add_custom_target(copy-${compiler} DEPENDS ${dst})
+  add_dependencies(misc-files copy-${compiler})
+endfunction()
+
+copy_cfg_file(clang)
+copy_cfg_file(clang++)
+
+include(wasi-sdk-dist)
+
+# Figure out the name of the artifact which is either explicitly specified or
+# inferred from CMake default variables.
+if(WASI_SDK_ARTIFACT)
+  set(wasi_sdk_artifact ${WASI_SDK_ARTIFACT})
+else()
+  if(APPLE)
+    set(wasi_sdk_os macos)
+  else()
+    string(TOLOWER ${CMAKE_SYSTEM_NAME} wasi_sdk_os)
+  endif()
+  set(wasi_sdk_arch ${CMAKE_SYSTEM_PROCESSOR})
+  set(wasi_sdk_artifact ${wasi_sdk_arch}-${wasi_sdk_os})
+endif()
+
+set(dist_dir ${CMAKE_CURRENT_BINARY_DIR}/dist)
+wasi_sdk_add_tarball(dist-toolchain
+  ${dist_dir}/wasi-toolchain-${wasi_sdk_version}-${wasi_sdk_artifact}.tar.gz
+  ${wasi_tmp_install})
+add_dependencies(dist-toolchain build)
+add_custom_target(dist DEPENDS dist-toolchain)
+
+
+// tests/compile-only/addresses.c
+#include <stdio.h>
+#include <limits.h>
+#include <errno.h>
+extern char **environ;
+
+extern void __dso_handle;
+#if !defined(__clang_major__) || __clang_major__ >= 10
+extern void __data_end;
+extern void __global_base;
+extern void __heap_base;
+#endif
+
+int main(int argc, char *argv[]) {
+    printf("NULL=%p\n", NULL);
+    printf("__dso_handle=%p\n", &__dso_handle);
+#if !defined(__clang_major__) || __clang_major__ >= 10
+    printf("__data_end=%p\n", &__data_end);
+    printf("__global_base=%p\n", &__global_base);
+    printf("__heap_base=%p\n", &__heap_base);
+#endif
+    printf("__builtin_frame_address(0)=%p\n", __builtin_frame_address(0));
+    printf("__builtin_alloca(0)=%p\n", __builtin_alloca(0));
+    printf("__builtin_wasm_memory_size(0)=%p\n", (void *)(__builtin_wasm_memory_size(0) * PAGE_SIZE));
+    printf("&errno=%p\n", (void *)&errno);
+    printf("&environ=%p\n", (void *)&environ);
+    return 0;
+}
+
+
+// tests/compile-only/printf-long-double.c
+#include <stdio.h>
+
+volatile long double x = 42.0L;
+
+int main(void) {
+    printf("the answer is %Lf\n", x);
+    return 0;
+}
+
+
+// tests/general/environ.c
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+#include <stdio.h>
+extern char **environ;
+
+int main(void) {
+    assert(environ != NULL);
+    for (char **p = environ; *p; ++p) {
+        assert(p != NULL);
+    }
+    for (char **p = environ; *p; ++p) {
+        if (strncmp(*p, "HELLO=", 5) == 0) {
+            printf("HELLO = %s\n", *p + 6);
+        }
+    }
+    return 0;
+}
+
+
+// tests/general/assert-pass.c
+#include <assert.h>
+#include <stdbool.h>
+
+int main(void) {
+    assert(true);
+    return 0;
+}
+
+
+// tests/general/printf-no-long-double.c
+#include <stdio.h>
+
+volatile double x = 42.0;
+
+int main(void) {
+    printf("the answer is %f\n", x);
+    return 0;
+}
+
+
+// tests/general/opendir.c
+#include <fcntl.h>
+#include <string.h>
+#include <stdbool.h>
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <dirent.h>
+#include <errno.h>
+#include <limits.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+#define perror_and_exit(message) \
+  do {                           \
+    perror(message);             \
+    return EXIT_FAILURE;         \
+  } while (0)
+
+#define OFFSET 10726
+#define LENGTH 143
+
+int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    fprintf(stderr, "usage: %s <dir>\n", argv[0]);
+    return EXIT_FAILURE;
+  }
+  DIR *dir = opendir(argv[1]);
+  if (dir == NULL) {
+    perror_and_exit("opendir");
+  }
+
+  int count = 0;
+  int zeros = 0;
+  errno = 0;
+  for (;; count += 1) {
+    struct dirent *ent = readdir(dir);
+    if (ent == NULL) {
+      if (errno == 0) {
+        break;
+      }
+      perror_and_exit("readdir");
+    }
+
+    if (strcmp(ent->d_name, "file.md") == 0) {
+      assert(ent->d_type == DT_REG);
+    } else if (strcmp(ent->d_name, "dir") == 0) {
+      assert(ent->d_type == DT_DIR);
+    } else if (strcmp(ent->d_name, "file-symlink") == 0) {
+      assert(ent->d_type == DT_LNK);
+    } else if (strcmp(ent->d_name, "dir-symlink") == 0) {
+      assert(ent->d_type == DT_LNK);
+    } else if (strcmp(ent->d_name, ".") == 0) {
+      assert(ent->d_type == DT_DIR);
+    } else if (strcmp(ent->d_name, "..") == 0) {
+      assert(ent->d_type == DT_DIR);
+    } else {
+      assert(false);
+    }
+    if (ent->d_ino == 0) {
+      zeros += 1;
+    }
+  }
+
+  assert(count == 6);
+  assert(zeros <= 1);
+
+  if (closedir(dir) != 0)
+    perror_and_exit("closedir");
+
+  return EXIT_SUCCESS;
+}
+
+
+// tests/general/env.c
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+    printf("HELLO = %s\n", getenv("HELLO"));
+    return 0;
+}
+
+
+// tests/general/signals.c
+#ifdef NDEBUG
+#undef NDEBUG
+#endif
+
+#include <signal.h>
+#include <string.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+
+// Make sure this exists.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-W#warnings"
+#include <sys/signal.h>
+#pragma clang diagnostic pop
+
+volatile sig_atomic_t flag = 0;
+
+static void handler(int n) {
+    // This is undefined behavior by the spec, but this is just a testcase.
+    fflush(stdout);
+    printf("handler for signal %s\n", strsignal(n));
+    fflush(stdout);
+    flag = 1;
+}
+
+int main(void) {
+    // Test various raise cases that don't abort.
+    assert(raise(SIGCHLD) == 0);
+#ifdef SIGCLD
+    assert(raise(SIGCLD) == 0);
+#endif
+    assert(raise(SIGURG) == 0);
+    assert(raise(SIGWINCH) == 0);
+
+    errno = 0;
+    assert(raise(_NSIG) == -1 && errno == EINVAL);
+
+    // Test psignal.
+    psignal(SIGINT, "psignal message for SIGINT");
+
+    // Test strsignal.
+    printf("strsignal for SIGHUP: '%s'\n", strsignal(SIGHUP));
+
+    // Some signals can't be ignored.
+    errno = 0;
+    assert(signal(SIGKILL, SIG_IGN) == SIG_ERR && errno == EINVAL);
+    errno = 0;
+    assert(signal(SIGSTOP, SIG_IGN) == SIG_ERR && errno == EINVAL);
+
+    // Test that all the C-standard-required signals can be
+    // ignored with `SIG_IGN`.
+    int some_fatal_sigs[] = {
+        SIGINT, SIGABRT, SIGFPE, SIGILL, SIGSEGV, SIGTERM
+    };
+    for (size_t i = 0;
+         i < sizeof(some_fatal_sigs) / sizeof(some_fatal_sigs[0]);
+         ++i)
+    {
+        int sig = some_fatal_sigs[i];
+        assert(signal(sig, SIG_IGN) == SIG_DFL);
+        raise(sig);
+        assert(signal(sig, SIG_DFL) == SIG_IGN);
+        assert(signal(sig, SIG_DFL) == SIG_DFL);
+    }
+
+    // Install a handler and invoke it.
+    printf("beginning handler test:\n");
+    assert(signal(SIGWINCH, handler) == SIG_DFL);
+    fflush(stdout);
+    assert(raise(SIGWINCH) == 0);
+    fflush(stdout);
+    assert(flag == 1);
+    printf("finished handler test\n");
+
+    // Check various API invariants.
+    assert(signal(SIGWINCH, SIG_IGN) == handler);
+    assert(raise(SIGWINCH) == 0);
+    assert(signal(SIGWINCH, SIG_DFL) == SIG_IGN);
+    assert(raise(SIGWINCH) == 0);
+    assert(signal(SIGWINCH, SIG_DFL) == SIG_DFL);
+    assert(raise(SIGWINCH) == 0);
+
+    return EXIT_SUCCESS;
+}
+
+
+// tests/general/printf-long-double-enabled.c
+#include <stdio.h>
+
+volatile long double x = 42.0L;
+
+int main(void) {
+    printf("the answer is %Lf\n", x);
+    return 0;
+}
+
+
+// tests/general/main_errno.c
+#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+
+// It isn't required that errno be zero on entry to main, but
+// for tidiness' sake, if we ever do things during startup that
+// do set errno, we should reset it for tidiness' sake.
+int main(void) {
+    int n = errno;
+    printf("initial errno is %d: %s\n", n, strerror(n));
+    return 0;
+}
+
+
+// tests/general/void_main.c
+#include <stdio.h>
+
+int main(void) {
+    puts("hello from void main!");
+    return 0;
+}
+
+
+// tests/general/empty.c
+int main(void) { return 0; }
+
+
+// tests/general/ctors_dtors.c
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+#include <errno.h>
+extern char **environ;
+
+static void from_atexit(void) {
+    printf("hello from_atexit\n");
+}
+
+static void another_from_atexit(void) {
+    printf("hello another_from_atexit\n");
+}
+
+__attribute__((constructor)) static void from_constructor(void) {
+    printf("hello from_constructor\n");
+}
+
+__attribute__((constructor(101))) static void from_constructor_101(void) {
+    assert(errno == 0);
+    printf("hello from_constructor101\n");
+
+    assert(environ && "environment should be initialized by this point");
+}
+
+__attribute__((constructor(65535))) static void from_constructor_65535(void) {
+    printf("hello from_constructor65535\n");
+}
+
+__attribute__((destructor)) static void from_destructor(void) {
+    printf("hello from_destructor\n");
+}
+
+__attribute__((destructor(101))) static void from_destructor101(void) {
+    printf("hello from_destructor101\n");
+}
+
+__attribute__((destructor(65535))) static void from_destructor65535(void) {
+    printf("hello from_destructor65535\n");
+}
+
+int main(int argc, char *argv[]) {
+    printf("hello main\n");
+    assert(argc != 0);
+    assert(argv != NULL);
+    assert(argv[argc] == NULL);
+
+    atexit(from_atexit);
+    atexit(another_from_atexit);
+    printf("goodbye main\n");
+    return 0;
+}
+
+
+// tests/general/argc_argv_main.c
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    puts("hello from argc argv main!");
+    return 0;
+}
+
+
+// tests/general/env-absent.c
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+    printf("HELLO = %s\n", getenv("HELLO"));
+    return 0;
+}
+
+
+// tests/general/getentropy.c
+#include <assert.h>
+#include <unistd.h>
+#include <stdbool.h>
+
+int main() {
+  char buf[256] = {0};
+  int ret = getentropy(buf, 256);
+  assert(ret == 0);
+
+  bool something_nonzero = false;
+  for (int i = 0; i < 256; i++) {
+    if (buf[i] != 0)
+      something_nonzero = true;
+  }
+
+  assert(something_nonzero);
+
+  return 0;
+}
+
+
+// tests/general/clocks.c
+#include <time.h>
+#include <sys/resource.h>
+#include <sys/times.h>
+#include <assert.h>
+
+static void test_clock(void) {
+    clock_t a = clock();
+    clock_t b = clock();
+    assert(a != -1);
+    assert(b != -1);
+    assert(a > 0);
+    assert(b >= a);
+}
+
+static void test_times(void) {
+    struct tms before;
+    struct tms after;
+    clock_t a = times(&before);
+    clock_t b = times(&after);
+    assert(a != -1);
+    assert(b != -1);
+    assert(b >= a);
+    assert(after.tms_utime >= before.tms_utime);
+}
+
+static void test_getrusage(void) {
+    struct rusage before;
+    struct rusage after;
+    int a = getrusage(RUSAGE_SELF, &before);
+    int b = getrusage(RUSAGE_SELF, &after);
+    assert(a != -1);
+    assert(b != -1);
+    assert(after.ru_utime.tv_sec >= before.ru_utime.tv_sec);
+    assert(after.ru_utime.tv_sec != before.ru_utime.tv_sec ||
+	   after.ru_utime.tv_usec >= before.ru_utime.tv_usec);
+}
+
+int main(void) {
+    test_clock();
+    test_times();
+    test_getrusage();
+    return 0;
+}
+
+
+// tests/general/assert-fail.c
+#ifdef NDEBUG
+#undef NDEBUG
+#endif
+
+#include <assert.h>
+#include <stdbool.h>
+
+int main(void) {
+    assert(false);
+    return 0;
+}
+
+
+// tests/general/stat.c
+#include <assert.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "usage: %s <dir>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    char *filename;
+    int n = asprintf(&filename, "%s/file", argv[1]);
+    assert(n > 0);
+
+    n = creat(filename, S_IRUSR|S_IWUSR);
+    assert(n >= 0);
+
+    char *linkname;
+    n = asprintf(&linkname, "%s/symlink", argv[1]);
+    assert(n > 0);
+
+    n = symlink("file", linkname);
+    assert(n == 0);
+
+    struct stat file_statbuf;
+    struct stat link_statbuf;
+
+    // Test stat.
+
+    n = stat(filename, &file_statbuf);
+    assert(n == 0);
+    assert(file_statbuf.st_size == 0);
+    assert(S_ISREG(file_statbuf.st_mode));
+
+    n = stat(linkname, &link_statbuf);
+    assert(n == 0);
+    assert(link_statbuf.st_size == 0);
+    assert(S_ISREG(link_statbuf.st_mode));
+
+    assert(file_statbuf.st_dev == link_statbuf.st_dev);
+
+    assert(file_statbuf.st_dev == link_statbuf.st_dev);
+    assert(file_statbuf.st_ino == link_statbuf.st_ino);
+    assert(file_statbuf.st_mode == link_statbuf.st_mode);
+    assert(file_statbuf.st_uid == link_statbuf.st_uid);
+    assert(file_statbuf.st_gid == link_statbuf.st_gid);
+    assert(file_statbuf.st_rdev == link_statbuf.st_rdev);
+    assert(file_statbuf.st_size == link_statbuf.st_size);
+    assert(file_statbuf.st_blksize == link_statbuf.st_blksize);
+    assert(file_statbuf.st_blocks == link_statbuf.st_blocks);
+    // NB: `atim` is explicitly not compared here
+    assert(file_statbuf.st_mtim.tv_sec == link_statbuf.st_mtim.tv_sec);
+    assert(file_statbuf.st_mtim.tv_nsec == link_statbuf.st_mtim.tv_nsec);
+    assert(file_statbuf.st_ctim.tv_sec == link_statbuf.st_ctim.tv_sec);
+    assert(file_statbuf.st_ctim.tv_nsec == link_statbuf.st_ctim.tv_nsec);
+
+    // Test lstat.
+
+    n = lstat(filename, &file_statbuf);
+    assert(n == 0);
+    assert(file_statbuf.st_size == 0);
+    assert(S_ISREG(file_statbuf.st_mode));
+
+    n = lstat(linkname, &link_statbuf);
+    assert(n == 0);
+    assert(link_statbuf.st_size != 0);
+    assert(S_ISLNK(link_statbuf.st_mode));
+
+    assert(file_statbuf.st_dev == link_statbuf.st_dev);
+    assert(link_statbuf.st_ino != file_statbuf.st_ino);
+
+    n = unlink(filename);
+    assert(n == 0);
+    n = unlink(linkname);
+    assert(n == 0);
+
+    free(filename);
+    free(linkname);
+
+    return 0;
+}
+
+
+// tests/general/printf-no-float.c
+#include <stdio.h>
+
+volatile int x = 42;
+
+int main(void) {
+    printf("the answer is %d\n", x);
+    return 0;
+}
+
+
+// tests/general/mmap.c
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <limits.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#ifdef __GLIBC__
+#include <sys/user.h>
+#endif
+#include <unistd.h>
+
+#define perror_and_exit(message) \
+  do {                           \
+    perror(message);             \
+    return EXIT_FAILURE;         \
+  } while (0)
+
+#define OFFSET 10726
+#define LENGTH 143
+
+int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    fprintf(stderr, "usage: %s <dir>\n", argv[0]);
+    return EXIT_FAILURE;
+  }
+  char *filename;
+  if (asprintf(&filename, "%s/input.txt", argv[1]) == -1) {
+    fprintf(stderr, "can't allocate filename");
+    return EXIT_FAILURE;
+  }
+
+  int fd = open(filename, O_RDONLY);
+  if (fd < 0)
+    perror_and_exit("open");
+
+  struct stat stat_buf;
+  if (fstat(fd, &stat_buf) != 0)
+    perror_and_exit("fstat");
+
+  off_t offset = OFFSET;
+  if (offset < 0) {
+    fprintf(stderr, "negative offset\n");
+    return EXIT_FAILURE;
+  }
+  if (offset > (off_t)SIZE_MAX) {
+    fprintf(stderr, "offset overflow\n");
+    return EXIT_FAILURE;
+  }
+
+  off_t aligned_offset = offset & -(off_t)PAGE_SIZE;
+
+  if (offset >= stat_buf.st_size) {
+    fprintf(stderr, "offset is past end of file\n");
+    return EXIT_FAILURE;
+  }
+
+  size_t length = LENGTH;
+  if ((off_t)length < 0) {
+    fprintf(stderr, "length overflow\n");
+    return EXIT_FAILURE;
+  }
+  if ((off_t)length > stat_buf.st_size - offset)
+    length = (size_t)(stat_buf.st_size - offset);
+
+  size_t mmap_length = length + (size_t)(offset - aligned_offset);
+  char *addr = mmap(NULL, mmap_length, PROT_READ, MAP_PRIVATE, fd, aligned_offset);
+  if (addr == MAP_FAILED)
+    perror_and_exit("mmap");
+
+  ssize_t nwritten = write(STDOUT_FILENO, addr + (offset - aligned_offset), length);
+  if (nwritten < 0)
+    perror_and_exit("write");
+
+  if ((size_t)nwritten != length) {
+    fprintf(stderr, "partial write");
+    return EXIT_FAILURE;
+  }
+
+  if (munmap(addr, mmap_length) != 0)
+    perror_and_exit("munmap");
+
+  if (close(fd) != 0)
+    perror_and_exit("close");
+
+  return EXIT_SUCCESS;
+}
+
+
+// tests/general/no_arg_main.c
+#include <stdio.h>
+
+int main() {
+    puts("hello from no-arg main!");
+    return 0;
+}
+
+
+// tests/general/sigabrt.c
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    fprintf(stderr, "raising SIGABRT...\n");
+    raise(SIGABRT);
+    fprintf(stderr, "oops!\n");
+    return EXIT_FAILURE;
+}
+
+
+// tests/general/abort.c
+#include <stdlib.h>
+
+int main(void) {
+    abort();
+    return 0;
+}
+
+

@@ -351,6 +351,8 @@ dependencies = [
  "clap",
  "colored",
  "rustyline",
+ "serde",
+ "serde_json",
  "wabt",
  "wasm-tools",
  "wasmparser 0.243.0",

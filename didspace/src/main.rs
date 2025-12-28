@@ -12,6 +12,8 @@ mod converter;
 use std::fs;
 mod wasi;
 use wasi::{detect_wasi_imports, detect_component_model, analyze_component};
+mod doctor;
+use doctor::{doctor_report, report_to_text, DoctorOptions};
 use std::process::Command as SysCommand;
 use anyhow::anyhow;
 
@@ -159,24 +161,26 @@ fn main() -> anyhow::Result<()> {
                     .as_ref()
                     .ok_or_else(|| anyhow::anyhow!("--wasi requires --wasi-sysroot"))?;
 
-                let status = SysCommand::new("clang++")
+                let status = SysCommand::new("wasm32-wasi-clang++")
                     .args([
                         "--target=wasm32-wasi",
                         "--sysroot", sysroot,
-                        "-D_WASI_EMULATED_SIGNAL",
+                        "-D_WASI_EMULATED_SIGNAL", "-D_WASI_EMULATED_MMAN",
+                        //"-fno-exceptions",
+                        "-fno-rtti",
                         "-o", temp_wasm,
                         &input,
-                        "-lc++", "-lc++abi", "-lwasi-emulated-signal",
+                        "-lc++", "-lc++abi", "-lwasi-emulated-signal", "-lwasi-emulated-mman",
                     ])
                     .status()?;
 
                 if !status.success() {
                     return Err(anyhow::anyhow!("clang++ failed in WASI mode"));
                 }
-                println!("✅ C++ → WASM done: {}", temp_wasm);
+                println!("✅ C++ → WAT done: {}", temp_wasm);
 
                 let wat = wasmprinter::print_file(temp_wasm)?;
-                fs::write(&output, wat)?;
+                fs::write(&output, &wat)?;
                 println!("✅ Converted {} → {}", input, output);
                 std::fs::remove_file(temp_wasm)?;
                 
@@ -184,10 +188,11 @@ fn main() -> anyhow::Result<()> {
                 report.push_str("Cpp2Wat\n");
                 report.push_str(&format!("  input:       {}\n", input));
                 report.push_str(&format!("  output:      {}\n", output));
+                report.push_str(&format!("  wat:         {}\n", wat));
                 report.push_str(&format!("  wasi_sysroot: {}\n\n", sysroot));
 
                 report.push_str("✅ Steps:\n");
-                report.push_str(&format!("  - compiled C++ → WASM: {}\n", temp_wasm));
+                /*report.push_str(&format!("  - compiled C++ → WASM: {}\n", temp_wasm));*/
                 report.push_str(&format!("  - converted WASM → WAT: {}\n", output));
                 report.push_str(&format!("  - removed temp: {}\n", temp_wasm));
 
@@ -210,14 +215,16 @@ fn main() -> anyhow::Result<()> {
                     .as_ref()
                     .ok_or_else(|| anyhow::anyhow!("--wasi requires --wasi-sysroot"))?;
 
-                let status = SysCommand::new("clang++")
+                let status = SysCommand::new("wasm32-wasi-clang++")
                     .args([
                         "--target=wasm32-wasi",
                         "--sysroot", sysroot,
-                        "-D_WASI_EMULATED_SIGNAL",
+                        "-D_WASI_EMULATED_SIGNAL", "-D_WASI_EMULATED_MMAN",
+                        "-fno-exceptions",
+                        "-fno-rtti",
                         "-o", &output,
                         &input,
-                        "-lc++", "-lc++abi", "-lwasi-emulated-signal",
+                        "-lc++", "-lc++abi", "-lwasi-emulated-signal", "-lwasi-emulated-mman",
                     ])
                     .status()?;
 
@@ -272,6 +279,29 @@ fn main() -> anyhow::Result<()> {
             Ok(report)
         }
 
+        Commands::Doctor { file, wasi_sysroot, max_list, json, pretty } => {
+            let bytes = std::fs::read(&file)?;
+            let rep = doctor_report(
+                &bytes,
+                DoctorOptions {
+                    wasi_sysroot: wasi_sysroot.as_deref(),
+                    max_list,
+                },
+            )?;
+
+            let out = if json {
+                if pretty {
+                    serde_json::to_string_pretty(&rep)?
+                } else {
+                    serde_json::to_string(&rep)?
+                }
+            } else {
+                report_to_text(&rep)
+            };
+
+            Ok(out)
+        }
+
         Commands::Repl => {
             start_repl();
             Ok("Started REPL".to_string())
@@ -280,7 +310,7 @@ fn main() -> anyhow::Result<()> {
         _ => Ok("No command provided".to_string()),
     };
 
-    if let Some(path) = cli.output {
+    if let Some(path) = cli.report {
         let content = result?;
         std::fs::write(&path, content)?;
         println!("✅ Output written to {}", path);
@@ -304,10 +334,12 @@ fn compile_c_to_wasm(
     }
     if minimal {
         println!("🔹 Compiling in minimal mode...");
-        let status = SysCommand::new("clang")
+        let status = SysCommand::new("wasm32-wasi-clang")
             .args([
                 "--target=wasm32",
-                "-nostdlib",
+                //"-nostdlib",
+                "-fno-exceptions",
+                "-fno-rtti",
                 "-Wl,--no-entry",
                 "-Wl,--export-all",
                 "-o",
@@ -323,14 +355,14 @@ fn compile_c_to_wasm(
         let sysroot = wasi_sysroot
             .as_ref()
             .ok_or_else(|| anyhow::anyhow!("--wasi requires --wasi-sysroot"))?;
-        let status = SysCommand::new("clang")
+        let status = SysCommand::new("wasm32-wasi-clang")
             .args([
                 "--target=wasm32-wasi",
                 "--sysroot", sysroot,
-                "-D_WASI_EMULATED_SIGNAL",
+                "-D_WASI_EMULATED_SIGNAL", "-D_WASI_EMULATED_MMAN",
                 "-o", output,
                 input,
-                "-lwasi-emulated-signal",
+                "-lwasi-emulated-signal", "-lwasi-emulated-mman",
             ])
             .status()?;
         if !status.success() {

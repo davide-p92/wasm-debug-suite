@@ -5,7 +5,7 @@ use clap::{Parser, Subcommand};
 #[command(name = "didspace", version = "1.0", about = "WASM/WAT Translator")]
 pub struct Cli {
     #[arg(long, global = true)]
-    pub output: Option<String>,
+    pub report: Option<String>,
 
     #[command(subcommand)]
     pub command: Commands,
@@ -85,6 +85,24 @@ pub enum Commands {
     Component {
         #[arg(value_name = "FILE")]
         file: String,
+    },
+
+    /// Doctor WASI-Wasmtime analysis
+    Doctor {
+        #[arg(value_name="FILE")]
+        file: String,
+
+        #[arg(long)]
+        wasi_sysroot: Option<String>,
+
+        #[arg(long, default_value_t = 20)]
+        max_list: usize,
+
+        #[arg(long)]
+        json: bool,
+
+        #[arg(long)]
+        pretty: bool,
     },
     
     Repl,

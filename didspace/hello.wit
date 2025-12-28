@@ -1,5 +1,0 @@
-package hello:component
-
-world hello {
-	export hello: func() -> string
-}
