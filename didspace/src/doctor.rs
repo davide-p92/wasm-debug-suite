@@ -1,6 +1,7 @@
 use anyhow::Result;
 use serde::Serialize;
 use wasmparser::{Parser, Payload};
+use crate::toolchain::ToolchainReport;
 
 #[derive(Debug, Serialize)]
 pub struct DoctorReport {
@@ -11,6 +12,7 @@ pub struct DoctorReport {
     pub heuristics: Heuristics,
     pub sysroot: Option<SysrootInfo>,
     pub suggestions: Suggestions,
+    pub toolchain: Option<ToolchainReport>,
 }
 
 #[derive(Debug, Serialize)]
@@ -58,7 +60,7 @@ pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorRepo
     let kind = detect_kind(bytes)?;
     let (wasi_flavor, wasi_detected) = detect_wasi_preview_and_imports(bytes)?;
 
-    let (core, component, suggestions) = if kind == "component" {
+    let (core, component, suggestions, toolchain) = if kind == "component" {
         let (imports, exports) = collect_component_imports_exports(bytes)?;
         let mut run = Vec::new();
         if exports.iter().any(|e| e.contains("wasi:cli/run") || e.contains("wasi:cli")) {
@@ -77,6 +79,7 @@ pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorRepo
                 wasmtime_run: run,
                 compile_hints: Vec::new(),
             },
+            None::<ToolchainReport>,
         )
     } else {
         let (imports, exports) = collect_core_imports_exports(bytes)?;
@@ -96,6 +99,7 @@ pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorRepo
                 wasmtime_run: run,
                 compile_hints: Vec::new(),
             },
+            None::<ToolchainReport>,
         )
     };
 
@@ -131,6 +135,7 @@ pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorRepo
             wasmtime_run: suggestions.wasmtime_run,
             compile_hints,
         },
+        toolchain: None::<ToolchainReport>,
     })
 }
 
@@ -186,6 +191,11 @@ pub fn report_to_text(r: &DoctorReport) -> String {
         for h in &r.suggestions.compile_hints {
             out.push_str(&format!(" -  {}\n", h));
         }
+    }
+
+    if let Some(tc) = &r.toolchain {
+        out.push_str("\n");
+        out.push_str(&tc.to_text());
     }
 
     out

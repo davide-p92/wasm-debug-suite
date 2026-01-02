@@ -103,6 +103,9 @@ pub enum Commands {
 
         #[arg(long)]
         pretty: bool,
+
+        #[arg(long = "check-toolchain")]
+        check_toolchain: bool,
     },
     
     Repl,

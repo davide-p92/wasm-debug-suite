@@ -14,6 +14,8 @@ mod wasi;
 use wasi::{detect_wasi_imports, detect_component_model, analyze_component};
 mod doctor;
 use doctor::{doctor_report, report_to_text, DoctorOptions};
+mod toolchain;
+use toolchain::{toolchain_check, ToolchainOptions};
 use std::process::Command as SysCommand;
 use anyhow::anyhow;
 
@@ -279,15 +281,24 @@ fn main() -> anyhow::Result<()> {
             Ok(report)
         }
 
-        Commands::Doctor { file, wasi_sysroot, max_list, json, pretty } => {
+        Commands::Doctor { file, wasi_sysroot, max_list, json, pretty, check_toolchain } => {
             let bytes = std::fs::read(&file)?;
-            let rep = doctor_report(
+            let mut rep = doctor_report(
                 &bytes,
                 DoctorOptions {
                     wasi_sysroot: wasi_sysroot.as_deref(),
                     max_list,
                 },
             )?;
+
+            if check_toolchain {
+                let tc = toolchain_check(ToolchainOptions {
+                    wasi_sysroot: wasi_sysroot.as_deref(),
+                    check_cpp: true,
+                    check_wasmtime: true,
+                });
+                rep.toolchain = Some(tc);
+            }
 
             let out = if json {
                 if pretty {
