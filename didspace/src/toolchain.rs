@@ -19,6 +19,10 @@ pub struct Toolcheck {
 
 #[derive(Debug, Clone, Serialize)]
 pub struct ToolchainReport {
+    pub ok: usize,
+    pub warn: usize,
+    pub err: usize,
+    pub skip: usize,
     pub checks: Vec<Toolcheck>,
 }
 
@@ -220,7 +224,21 @@ pub fn toolchain_check(opts: ToolchainOptions<'_>) -> ToolchainReport {
         }
     }
 
-    ToolchainReport { checks }
+    let mut rep = ToolchainReport { ok:0, warn:0, err:0, skip:0, checks };
+    //let mut ok = 0usize;
+    //let mut warn = 0usize;
+    //let mut err = 0usize;
+    //let mut skip = 0usize;
+
+    for c in &rep.checks { 
+        match c.status { 
+            CheckStatus::Ok => rep.ok += 1,
+            CheckStatus::Warn => rep.warn += 1,
+            CheckStatus::Err => rep.err += 1,
+            CheckStatus::Skip => rep.skip += 1,
+        } 
+    }
+    rep
 }
 
 // ---------------- utilities ----------------

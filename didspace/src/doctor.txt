@@ -12,7 +12,6 @@ pub struct DoctorReport {
     pub heuristics: Heuristics,
     pub sysroot: Option<SysrootInfo>,
     pub suggestions: Suggestions,
-    #[serde(skip_serializing_if = "Option::is_none")]
     pub toolchain: Option<ToolchainReport>,
 }
 
@@ -26,28 +25,18 @@ pub struct WasiInfo {
 pub struct CoreInfo {
     pub imports: Vec<String>,
     pub exports: Vec<String>,
-    pub imports_count: usize,
-    pub exports_count: usize,
 }
 
 #[derive(Debug, Serialize)]
 pub struct ComponentInfo {
     pub imports: Vec<String>,
     pub exports: Vec<String>,
-    pub imports_count: usize,
-    pub exports_count: usize,
 }
 
 #[derive(Debug, Serialize)]
 pub struct Heuristics {
-    pub cxx_eh: EhHeuristic,
-    //pub detected_strings: Vec<String>,
-}
-
-#[derive(Debug, Serialize)]
-pub struct EhHeuristic {
-    pub level: String,   // "none" | "maybe" | "likely"
-    pub signals: Vec<String>,
+    pub cxx_exceptions_strings: bool,
+    pub detected_strings: Vec<String>,
 }
 
 #[derive(Debug, Serialize)]
@@ -67,63 +56,11 @@ pub struct DoctorOptions<'a> {
     pub max_list: usize,
 }
 
-fn detect_cxx_eh(bytes: &[u8], core_imports: Option<&[String]>) -> EhHeuristic {
-    let mut signals = Vec::new();
-
-    // (1) string scan
-    let needles: [(&[u8], &str); 6] = [
-        (b"__cxa_throw", "__cxa_throw"),
-        (b"__cxa_allocate_exception", "__cxa_allocate_exception"),
-        (b"__gxx_personality_v0", "__gxx_personality_v0"),
-        (b"_Unwind_RaiseException", "_Unwind_RaiseException"),
-        (b"_Unwind_Resume", "_Unwind_Resume"),
-        (b"__clang_call_terminate", "__clang_call_terminate"),
-    ];
-    for (n, name) in needles {
-        if bytes.windows(n.len()).any(|w| w == n) {
-            signals.push(format!("string:{}", name));
-        }
-    }
-
-    // (2) name custom section scan (best-effort)
-    // Non è parsing perfetto: cerchiamo la parola "name" in custom section payload.
-    // Se vuoi farlo “preciso”: usa wasmparser::NameSectionReader (ma dipende dalla tua version).
-    if bytes.windows(4).any(|w| w == b"name") {
-        // se già abbiamo segnali EH, rinforza
-        if signals.iter().any(|s| s.contains("__cxa") || s.contains("_Unwind") || s.contains("__gxx")) {
-            signals.push("hint:contains_name_section_or_name_bytes".to_string());
-        }
-    }
-
-    // (3) imports (se hai core imports già raccolti)
-    if let Some(imps) = core_imports {
-        let strong = imps.iter().any(|s| {
-            s.contains("_Unwind_") || s.contains("__cxa_") || s.contains("__gxx_")
-        });
-        if strong {
-            signals.push("import:runtime_eh_symbol".to_string());
-        }
-    }
-
-    let level = if signals.iter().any(|s| s.starts_with("import:")) {
-        "likely"
-    } else if signals.iter().any(|s| s.starts_with("string:")) {
-        "maybe"
-    } else {
-        "none"
-    };
-
-    EhHeuristic {
-        level: level.to_string(),
-        signals,
-    }
-}
-
 pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorReport> {
     let kind = detect_kind(bytes)?;
     let (wasi_flavor, wasi_detected) = detect_wasi_preview_and_imports(bytes)?;
 
-    let (core, component, suggestions) = if kind == "component" {
+    let (core, component, suggestions, toolchain) = if kind == "component" {
         let (imports, exports) = collect_component_imports_exports(bytes)?;
         let mut run = Vec::new();
         if exports.iter().any(|e| e.contains("wasi:cli/run") || e.contains("wasi:cli")) {
@@ -132,58 +69,48 @@ pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorRepo
             run.push("wasmtime run component.wasm".to_string());
             run.push("wasmtime run --invoke 'export_name(...)' component.wasm".to_string());
         }
-        let imports_count = imports.len();
-        let exports_count = exports.len();
         (
             None,
             Some(ComponentInfo {
                 imports: limit_vec(imports, opts.max_list),
                 exports: limit_vec(exports, opts.max_list),
-                imports_count,
-                exports_count,
             }),
             Suggestions {
                 wasmtime_run: run,
                 compile_hints: Vec::new(),
             },
+            None::<ToolchainReport>,
         )
     } else {
         let (imports, exports) = collect_core_imports_exports(bytes)?;
         let mut run = Vec::new();
         if wasi_detected {
-            if needs_preopen_dir(&imports) {
-                run.push("wasmtime run --dir=. module.wasm".to_string());
-            } else {
-                run.push("wasmtime run module.wasm".to_string());
-            }
+            run.push("wasmtime run --dir=. module.wasm".to_string());
         } else {
             run.push("wasmtime run module.wasm".to_string());
         }
-        let imports_count = imports.len();
-        let exports_count = exports.len();
         (
             Some(CoreInfo {
                 imports: limit_vec(imports, opts.max_list),
                 exports: limit_vec(exports, opts.max_list),
-                imports_count,
-                exports_count,
             }),
             None,
             Suggestions {
                 wasmtime_run: run,
                 compile_hints: Vec::new(),
-            }, 
+            },
+            None::<ToolchainReport>,
         )
     };
 
-    let eh = detect_cxx_eh(bytes, core.as_ref().map(|c| c.imports.as_slice()));
     let (eh_found, detected_strings) = detect_cxx_eh_strings(bytes);
     let mut compile_hints = suggestions.compile_hints;
     
     if eh_found {
         compile_hints.push(
-            "C++ exceptions strings found; if linking fails on __cxa_*, try: -fno-exceptions -fno-rtti -D_LIBCPP_NO_EXCEPTIONS".to_string(),
-        );
+            "C++ exceptions strings found; if linking fails on __cxa_*, try: -fno-exceptions -fno-rtti -D_LIBCPP_NO_EXCEPTIONS"
+                .to_string(),
+            );
     }
 
     let preferred = if wasi_flavor.contains("preview1") {
@@ -217,14 +144,15 @@ pub fn doctor_report(bytes: &[u8], opts: DoctorOptions<'_>) -> Result<DoctorRepo
         core,
         component,
         heuristics: Heuristics {
-            cxx_eh: eh, //eh_found,
+            cxx_exceptions_strings: eh_found,
+            detected_strings,
         },
         sysroot,
         suggestions: Suggestions {
             wasmtime_run: suggestions.wasmtime_run,
             compile_hints,
         },
-        toolchain: None,
+        toolchain: None::<ToolchainReport>,
     })
 }
 
@@ -250,9 +178,9 @@ pub fn report_to_text(r: &DoctorReport) -> String {
     }
 
     out.push_str("Heuristics:\n");
-    if r.heuristics.cxx_eh.level != "none" {
-        out.push_str("  ⚠ C++ EH strings detected If linking fails on __cxa_* with wasi-sdk, try: -fno-exceptions -fno-rtti -D_LIBCPP_NO_EXCEPTIONS\n");//.to_string());
-        for s in &r.heuristics.cxx_eh.signals {
+    if r.heuristics.cxx_exceptions_strings {
+        out.push_str("  ⚠ C++ EH strings detected (try/catch likely)\n");
+        for s in &r.heuristics.detected_strings {
             out.push_str(&format!("    - {}\n", s));
         }
     } else {
@@ -327,7 +255,8 @@ fn detect_wasi_preview_and_imports(bytes: &[u8]) -> Result<(String, bool)> {
                     if im.module == "wasi_snapshot_preview1" {
                         found_preview1 = true;
                         found_wasi_like = true;
-                    } else if im.module.starts_with("wasi") {
+                    }
+                    if im.module.starts_with("wasi") {
                         found_wasi_like = true;
                     }
                 }
@@ -413,11 +342,11 @@ fn detect_cxx_eh_strings(bytes: &[u8]) -> (bool, Vec<String>) {
     }
     ( !found.is_empty(), found )
 }
-/*
+
 fn contains_any(haystack: &[u8], needles: &[&[u8]]) -> bool {
     needles.iter().any(|n| haystack.windows(n.len()).any(|w| w == *n))
 }
-*/
+
 fn find_emulated_libs(sysroot: &str) -> Vec<String> {
     // v1 super semplice: cerca sottostringhe note nei path standard (no filesystem walk, zero dipendenze)
     // Se vuoi fare meglio: usa walkdir crate e cerca "libwasi-emulated-*.a"
@@ -454,22 +383,3 @@ fn find_emulated_libs(sysroot: &str) -> Vec<String> {
     found
 }
 
-fn needs_preopen_dir(imports: &[String]) -> bool {
-    // euristica semplice ma utile
-    let fs_calls = [
-        "path_open",
-        "path_create_directory",
-        "path_filestat_get",
-        "path_unlink_file",
-        "path_remove_directory",
-        "fd_readdir",
-        "fd_filestat_get",
-        "fd_prestat_get",
-        "fd_prestat_dir_name",
-    ];
-
-    imports.iter().any(|imp| {
-        // imp è tipo "wasi_snapshot_preview1::path_open"
-        fs_calls.iter().any(|f| imp.ends_with(f))
-    })
-}
