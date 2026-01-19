@@ -16,6 +16,8 @@ mod doctor;
 use doctor::{doctor_report, report_to_text, DoctorOptions};
 mod toolchain;
 use toolchain::{toolchain_check, ToolchainOptions};
+mod bindgen;
+use bindgen::gen_rust_host_bindings;
 use std::process::Command as SysCommand;
 use anyhow::anyhow;
 
@@ -311,6 +313,35 @@ fn main() -> anyhow::Result<()> {
             };
 
             Ok(out)
+        }
+
+        Commands::Bindgen { file, lang, runtime, wit, world/*, out*/ } => {
+            let bytes = std::fs::read(&file)?;
+            // safety: ensure it's a component
+            if crate::doctor::detect_kind(&bytes)? != "component" {
+                return Err(anyhow::anyhow!("bindgen works only for components"));
+            }
+            match lang.as_str() {
+                "rust" => {
+                    let wit = wit.as_deref().ok_or_else(|| anyhow::anyhow!("--wit is required for --lang rust"))?;
+                    Ok(crate::bindgen::gen_rust_host_bindings(wit, &world)?)
+                }
+                "ts" => {
+                    let rt = runtime.as_deref().ok_or_else(|| anyhow::anyhow!("--runtime is required for --lang ts"))?;
+                    if rt != "node" {
+                        return Err(anyhow::anyhow!("Only --runtime node is supported for --lang ts"));
+                    }
+                    Ok(crate::bindgen::gen_ts_node_wrapper(&world)?)
+                }
+                _ => Err(anyhow::anyhow!("Unsupported --lang. Use rust or ts")),
+            }
+     //           return Err(anyhow::anyhow!("only --lang rust supported for now"));
+       //     }
+
+            //let src = crate::bindgen::gen_rust_host_bindings(&wit, &world)?;
+            //std::fs::write(&out, src)?;
+            //Ok(format!("✅ Wrote Rust host bindings to {}", out))
+            //Ok(src)
         }
 
         Commands::Repl => {

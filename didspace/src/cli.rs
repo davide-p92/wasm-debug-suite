@@ -107,6 +107,28 @@ pub enum Commands {
         #[arg(long = "check-toolchain")]
         check_toolchain: bool,
     },
+
+    Bindgen {
+        #[arg(value_name="FILE")]
+        file: String,
+
+        #[arg(long, default_value="rust")]
+        lang: String,
+
+        #[arg(long)]
+        runtime: Option<String>,
+
+        /// Path to directory of WIT
+        #[arg(long)]
+        wit: Option<String>,
+
+        /// World name to generate bindings for
+        #[arg(long)]
+        world: String,
+
+        // Output file for generated bindings
+        //out: String,
+    },
     
     Repl,
 

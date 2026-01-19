@@ -299,7 +299,7 @@ fn limit_vec(mut v: Vec<String>, max: usize) -> Vec<String> {
     v
 }
 
-fn detect_kind(bytes: &[u8]) -> Result<String> {
+pub fn detect_kind(bytes: &[u8]) -> Result<String> {
     let parser = Parser::new(0);
     for payload in parser.parse_all(bytes) {
         match payload? {
